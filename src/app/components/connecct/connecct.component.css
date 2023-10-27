@@ -84,7 +84,7 @@
 }
 
 .container.active .login{
-    margin-left: -50%;
+    margin-left: -42%;
     opacity: 0;
     transition: margin-left 0.18s ease, opacity 0.15s ease;
     
@@ -165,7 +165,6 @@
     text-align: center;
 }
 
-/* CSS Document */
 *{
 	margin: 0;
 	padding: 0;
@@ -208,15 +207,7 @@
 	pointer-events: none;
 	top: 50px;
 }
-/*input:focus ~ label,
-input:valid ~ label{
-	
-}
 
-input:-webkit-autofill { 
-	-webkit-box-shadow: 0 0 0px 1000px #ffffff00 inset !important;
-}
-*/
 .inputbox #UserLogin,
 .inputbox #UserPassword,
 .inputbox #newlogin,
@@ -260,16 +251,16 @@ button{
 
 .invalidUsernameOrPassword {
     width: 100%;
-    margin-top: 10px; /* Пример значения отступа сверху */
-    margin-bottom: 10px; /* Пример значения отступа снизу */
-    color: #040404; /* Установка белого цвета текста */
+    margin-top: 10px; 
+    margin-bottom: 10px; 
+    color: #040404; 
 }
 
 .invalidRegistration{
     width: 100%;
-    margin-top: 10px; /* Пример значения отступа сверху */
-    margin-bottom: 10px; /* Пример значения отступа снизу */
-    color: #040404; /* Установка белого цвета текста */
+    margin-top: 10px; 
+    margin-bottom: 10px; 
+    color: #040404;
 }
 
 
