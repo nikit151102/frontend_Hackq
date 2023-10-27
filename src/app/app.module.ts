@@ -23,6 +23,9 @@ import { HomeStatCounterComponent } from './components/director-components/home/
 import { WeeklyScheduleComponent } from './components/director-components/weekly-schedule/weekly-schedule.component';
 import { ChartAnalyticComponent } from './components/director-components/chart-analytic/chart-analytic.component';
 import { NgChartsModule } from 'ng2-charts';
+import { AuthorizationComponent } from './components/connecct/connect-components/authorization/authorization.component';
+import { RegistrationComponent } from './components/connecct/connect-components/registration/registration.component';
+import { ResetPasswordComponent } from './components/connecct/connect-components/reset-password/reset-password.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +43,10 @@ import { NgChartsModule } from 'ng2-charts';
     HomeChartsComponent,
     HomeStatCounterComponent,
     WeeklyScheduleComponent,
-    ChartAnalyticComponent
+    ChartAnalyticComponent,
+    AuthorizationComponent,
+    RegistrationComponent,
+    ResetPasswordComponent
   ],
   imports: [
     BrowserModule,

@@ -9,6 +9,8 @@ import { login, registration, resetpassword } from './connect-interface';
 export class ConnectService {
 
     constructor(private http: HttpClient) { }
+    
+    islogin:boolean = true;
 
     sendlogin(data: login) {
         return this.http.post<login>('http://127.0.0.1:8000/personal_account/user', data);
