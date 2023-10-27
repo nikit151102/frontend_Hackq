@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
-import { ConnecctComponent } from './components/connecct/connecct.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NewApplicationComponent } from './components/new-application/new-application.component';
@@ -24,11 +23,11 @@ import { WeeklyScheduleComponent } from './components/director-components/weekly
 import { ChartAnalyticComponent } from './components/director-components/chart-analytic/chart-analytic.component';
 import { NgChartsModule } from 'ng2-charts';
 
+
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    ConnecctComponent,
     NewApplicationComponent,
     MapComponent,
     DirectorsOfficeComponent,
@@ -40,7 +39,7 @@ import { NgChartsModule } from 'ng2-charts';
     HomeChartsComponent,
     HomeStatCounterComponent,
     WeeklyScheduleComponent,
-    ChartAnalyticComponent
+    ChartAnalyticComponent,
   ],
   imports: [
     BrowserModule,

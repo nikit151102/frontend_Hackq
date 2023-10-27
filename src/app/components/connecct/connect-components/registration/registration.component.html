@@ -1,0 +1,19 @@
+<form [formGroup]="createForm" (ngSubmit)="onCreateSubmit()" id="create-Form">
+    <div class="inputbox">
+        <input type="text" id="newlogin" formControlName="newlogin" placeholder="Логин"
+            autocomplete="off" required />
+        <label for="newlogin"></label>
+    </div>
+    <div class="inputbox">
+        <input type="password" id="newpassword" formControlName="newpassword" placeholder="Пароль"
+            spellcheck="false" autocomplete="off" required />
+        <label for="newpassword"></label>
+    </div>
+    <div class="inputbox">
+        <input type="email" id="newmail" formControlName="newmail" placeholder="Почта"
+            autocomplete="off" required />
+        <label for="newmail"></label>
+    </div>
+    <div class="invalidRegistration">{{ errorMessage }}</div>
+    <button type="submit" [disabled]="createForm.invalid">Регистрация</button>
+</form>
