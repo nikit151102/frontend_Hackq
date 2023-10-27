@@ -1,9 +1,9 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { Chart, Tooltip } from 'chart.js';
-import { DataService } from '../../data.service';
+import { DataService } from '../../../data.service';
 import { tree } from 'ngx-bootstrap-icons';
 import { ChartTypeRegistry } from 'chart.js/auto';
-import { SetColor } from '../chart-analytic/color'
+import { SetColor } from './color'
 import { fi } from 'date-fns/locale';
 import th from 'date-fns/esm/locale/th/index.js';
 @Component({

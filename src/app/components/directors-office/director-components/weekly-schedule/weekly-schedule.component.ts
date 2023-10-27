@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { formatDate } from '@angular/common';
-import { DataService } from '../../data.service';
+import { DataService } from '../../../data.service';
 @Component({
   selector: 'app-weekly-schedule',
   templateUrl: './weekly-schedule.component.html',

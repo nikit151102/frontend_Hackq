@@ -1,15 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { HomeComponent } from './components/home/home.component';
-import { ConnecctComponent } from './components/connecct/connecct.component';
 import {DirectorsOfficeComponent} from './components/directors-office/directors-office.component'
-import {TableComponent} from './components/director-components/table/table.component'
-import {HomeComponentdirector} from './components/director-components/home/home.component'
-import {WeeklyScheduleComponent} from './components/director-components/weekly-schedule/weekly-schedule.component'
-import {ChartAnalyticComponent}  from './components/director-components/chart-analytic/chart-analytic.component'
+import {TableComponent} from './components/directors-office/director-components/table/table.component'
+import {HomeComponentdirector} from './components/directors-office/director-components/home/home.component'
+import {WeeklyScheduleComponent} from './components/directors-office/director-components/weekly-schedule/weekly-schedule.component'
+import {ChartAnalyticComponent}  from './components/directors-office/director-components/chart-analytic/chart-analytic.component'
 const routes: Routes = [
-  { path: '', component: HomeComponent },
+  { path: '', 
+    loadChildren: () => import('./components/home/home.module').then(m => m.HomeModule) },
   {
     path: 'login',
     loadChildren: () => import('./components/connecct/connecct.module').then(m => m.ConnecctModule)
