@@ -1,0 +1,91 @@
+<div >
+    <label for="rowsPerPage">Количество строк:</label>
+    <select id="rowsPerPage" [(ngModel)]="rowsPerPage" (change)="onRowsPerPageChange()">
+        <option value="10">10</option>
+        <option value="25">25</option>
+        <option value="50">50</option>
+        <option value="all">Все</option>
+    </select>
+</div>
+<button (click)="modalService.showDialog = true">добавить</button>
+<div  class="tab">
+   
+
+    <table style="table-layout: fixed;">
+        <thead class="thead-dark">
+            <tr style="background-color: #bc5d5d;">
+                <th scope="col" width="90px"></th>
+                <th scope="col" class="id" width="90px" style="display:none;">номер заявки</th>
+                <th scope="col" width="90px" (click)="sortData('oplacheno')">статус оплаты</th>
+                <th scope="col" width="90px" (click)="sortData('status_zaiavki')">статус заявки</th>
+                <th scope="col" width="100px" (click)="sortData('sotrudnik')">сотрудник</th>
+                <th scope="col" width="200px" (click)="sortData('vipisano')"> выписано/не выписано</th>
+                <th scope="col" width="200px" (click)="sortData('company')">компания</th>
+                <th scope="col" width="250px" (click)="sortData('adres')">адрес</th>
+                <th scope="col" width="400px" (click)="sortData('opisanie')"> содержание</th>
+                <th scope="col" width="150px" (click)="sortData('telefon')">телефон</th>
+                <th scope="col" width="120px" (click)="sortData('datas')">дата</th>
+                <th scope="col" width="110px" (click)="sortData('sale_zatrat')">Затраты</th>
+                <th scope="col" width="110px" (click)="sortData('obfaia_sale')">сумма оплаты</th>
+                <th scope="col" width="110px" (click)="sortData('pribl')">прибыль</th>
+            </tr>
+        </thead>
+        <tbody id="geeks">
+            <tr *ngFor="let item of getPageData(); let i = index"
+            [ngClass]="{ 'gray-row': i % 2 === 0, 'white-row': i % 2 !== 0 }" scope="row" id=`{{item.id_zaiavki}}` >
+                <td>
+                    <div class="btnrow">
+                        <a (click)="handledeleteClick(item.id_zaiavki)"><svg width="30px" height="30px" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M10 11V17" stroke="#000000" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path d="M14 11V17" stroke="#000000" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path d="M4 7H20" stroke="#000000" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path d="M6 7H12H18V18C18 19.6569 16.6569 21 15 21H9C7.34315 21 6 19.6569 6 18V7Z"
+                                    stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M9 5C9 3.89543 9.89543 3 11 3H13C14.1046 3 15 3.89543 15 5V7H9V5Z"
+                                    stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg></a>
+                        <a edit><svg width="30px" height="30px" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M19 9L13 3M19 9H16.2C15.0799 9 14.5198 9 14.092 8.78201C13.7157 8.59027 13.4097 8.28431 13.218 7.90798C13 7.48016 13 6.9201 13 5.8V3M19 9V11M13 3H8.2C7.0799 3 6.51984 3 6.09202 3.21799C5.71569 3.40973 5.40973 3.71569 5.21799 4.09202C5 4.51984 5 5.07989 5 6.2V17.8C5 18.9201 5 19.4802 5.21799 19.908C5.40973 20.2843 5.71569 20.5903 6.09202 20.782C6.51984 21 7.07989 21 8.2 21H11M19.5 20.2361C18.9692 20.7111 18.2684 21 17.5 21C15.8431 21 14.5 19.6569 14.5 18C14.5 16.3431 15.8431 15 17.5 15C18.8062 15 19.9175 15.8348 20.3293 17M21 14.5V17.5H18"
+                                    stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                <path
+                                    d="M13 3V7.4C13 7.96005 13 8.24008 13.109 8.45399C13.2049 8.64215 13.3578 8.79513 13.546 8.89101C13.7599 9 14.0399 9 14.6 9H19M13 3H8.2C7.0799 3 6.51984 3 6.09202 3.21799C5.71569 3.40973 5.40973 3.71569 5.21799 4.09202C5 4.51984 5 5.0799 5 6.2V17.8C5 18.9201 5 19.4802 5.21799 19.908C5.40973 20.2843 5.71569 20.5903 6.09202 20.782C6.51984 21 7.0799 21 8.2 21H10.5M13 3L19 9M19 9V11M21 14.5V17.5H18M19.5 20.2361C18.9692 20.7111 18.2684 21 17.5 21C15.8431 21 14.5 19.6569 14.5 18C14.5 16.3431 15.8431 15 17.5 15C18.8062 15 19.9175 15.8348 20.3293 17"
+                                    stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg></a>
+                    </div>
+                </td>
+                <td style="display:none;">{{item.id_zaiavki}} </td>
+                <td> {{item.oplacheno}} </td>
+                <td> {{item.status_zaiavki}} </td>
+                <td> {{item.sotrudnik}} </td>
+                <td> {{item.vipisano}} </td>
+                <td> {{item.company}} </td>
+                <td>{{item.adres}} </td>
+                <td> {{item.opisanie}} </td>
+                <td> {{item.telefon}} </td>
+                <td> {{item.datas}} </td>
+                <td>{{item.sale_zatrat}}</td>
+                <td>{{item.obfaia_sale}} </td>
+                <td> {{item.pribl}} </td>
+            </tr>
+        </tbody>
+
+    </table>
+</div>
+
+
+<div class="horizontal-pagination">
+    <ul class="pagination">
+      <li class="page-item" *ngFor="let page of pages" [ngClass]="{ 'active': currentPage === page }">
+        <a class="page-link" (click)="onPageChange(page)">{{ page }}</a>
+      </li>
+    </ul>
+  </div>
+
+
+<app-add-item-modal *ngIf="modalService.showDialog"></app-add-item-modal>

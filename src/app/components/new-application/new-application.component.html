@@ -1,0 +1,61 @@
+<div class="steps-navigation">
+  <div class="step-number" [class.active]="currentStep === 1">1</div>
+  <div class="step-number" [class.active]="currentStep === 2">2</div>
+  <div class="step-number" [class.active]="currentStep === 3">3</div>
+</div>
+
+<div class="step-form">
+  <form [formGroup]="applicationForm">
+
+    <!-- Step 1 -->
+    <div class="step" id="step-1" *ngIf="currentStep === 1">
+      <h2>Шаг 1: Контактная информация</h2>
+      <div class="flex align-items-center">
+        <input type="checkbox" formControlName="applicantType" value="company" (change)="updateCheckbox($event)">
+        <label class="ml-2">Компания</label>
+      </div>
+      <ng-container *ngIf="isCheckedapplicantType">
+        <input formControlName="companyName" type="text" placeholder="Название компании" required>
+      </ng-container>
+
+      <input formControlName="fullName" type="text" placeholder="Имя и фамилия" required>
+      <input formControlName="email" type="email" placeholder="Электронная почта" required>
+      <input formControlName="Nomer" type="tel" placeholder="Телефонный номер" required>
+
+      <button class="next-step" (click)="nextStep()">Далее</button>
+    </div>
+
+    <!-- Step 2 -->
+    <div class="step" id="step-2" *ngIf="currentStep === 2">
+      <h2>Шаг 2: Описание проблемы</h2>
+      <textarea formControlName="problema" placeholder="Краткое описание проблемы или запроса" required></textarea>
+      <textarea formControlName="comments" placeholder="Поле для комментариев"></textarea>
+      <button class="prev-step" (click)="prevStep()">Назад</button>
+      <button class="next-step" (click)="nextStep()">Далее</button>
+    </div>
+
+
+    <!-- Step 3 -->
+    <div class="step" id="step-3" *ngIf="currentStep === 3">
+      <h2>Шаг 3: Адрес</h2>
+      <label>
+        <input type="checkbox" formControlName="isPrivateHouse" (change)="updateCheckboxisPrivateHouse($event)">
+        Частный дом
+      </label>
+      <input formControlName="street" type="text" placeholder="Улица">
+      <input formControlName="houseNumber" type="text" placeholder="Номер дома" required>
+      <ng-container *ngIf="!isPrivateHouse">
+        <input formControlName="officeNumber" type="text" placeholder="Номер квартиры/ офиса" required>
+      </ng-container>
+      
+      <div>
+        <label>
+          <input formControlName="agreement" type="checkbox"> Я согласен(а) с условиями предоставления услуг
+        </label>
+      </div>
+      <button class="prev-step" (click)="prevStep()">Назад</button>
+      <input type="submit" value="Отправить" target="_blank" (click)="addItim()">
+    </div>
+    
+  </form>
+</div>

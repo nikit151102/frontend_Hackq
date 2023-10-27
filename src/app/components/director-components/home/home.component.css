@@ -1,0 +1,20 @@
+.Homepage {
+	width: 100%;
+	height: 100%;
+
+}
+
+.ContentHomepage {
+	box-sizing: border-box;
+	/* Учитываем границы и отступы в общей ширине */
+	width: 100%;
+	/* Ширина блока равна 100% ширины видимого экрана */
+	height: 100vh;
+	/* Высота блока равна 100% высоты видимого экрана */
+	padding: 0px 10px 0px 10px;
+	;
+	/* Добавляем отступы по 20px с каждой стороны */
+
+	display: flex;
+	flex-direction: column;
+}

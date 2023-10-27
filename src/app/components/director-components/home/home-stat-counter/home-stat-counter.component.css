@@ -1,0 +1,62 @@
+:host {
+    --poppins: 'Poppins', sans-serif;
+    --lato: 'Lato', sans-serif;
+
+    --light: #F9F9F9;
+    --blue: rgb(139, 46, 46);
+    --light-blue: #CFE8FF;
+    --grey: #eee;
+    --dark-grey: #AAAAAA;
+    --dark: #342E37;
+    --red: #DB504A;
+    --yellow: #FFCE26;
+    --light-yellow: #FFF2C6;
+    --orange: #FD7238;
+    --light-orange: #FFE0D3;
+}
+
+
+
+.StatCounterGroup {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    width: 100%;
+}
+
+.StatCounter {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    width: 30%;
+    background: var(--light);
+    border-radius: 10px;
+}
+
+.TitleStatCounter {
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.ImgStatCounter {
+    flex: 50px;
+    margin-left: 10px;
+}
+
+.TextStatCounter {
+    flex: calc(100% - 50px);
+    margin-right: 10px;
+
+}
+
+.ValueStatCounter {
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    padding-top: 10px;
+    font-size: 25px;
+
+}

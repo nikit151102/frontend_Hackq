@@ -1,0 +1,317 @@
+
+.body{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: url("/assets/images/fon_log.jpg");
+    background-size: cover;
+    background-position: center;
+    backdrop-filter: blur(4px);
+    margin: 0px;
+}
+.divcontainer{
+    width: 75%;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    background: url("/assets/images/fon_log.jpg");
+    background-size: cover;
+    background-position: center;
+
+}
+
+
+
+@media (max-width: 991.98px) {
+    .divcontainer {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+.containertitle{
+    flex: 50;
+    display: flex;
+    flex-direction: column;
+}
+#logo{
+    width: 100%;
+    height: 180px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+.texttitle{
+    width: 100%;
+    height: calc(100% - 140px);
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+.containertitle h2{
+    font-size: 2em;
+}
+
+
+.container{
+    
+    flex: 50;
+    position: relative;
+    max-width: 365px;
+    width: 100%;
+    border-radius: 20px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    margin: 0;
+	backdrop-filter: blur(8px);
+}
+
+.container .forms{
+    display: flex;
+    align-items: center;
+    height: 100%;
+    width: 200%;
+    transition: height 0.2s ease;
+}
+
+
+.container .form{
+    width: 42%;
+    padding: 30px;
+    transition: margin-left 0.18s ease;
+}
+
+.container.active .login{
+    margin-left: -50%;
+    opacity: 0;
+    transition: margin-left 0.18s ease, opacity 0.15s ease;
+    
+}
+
+.container .signup{
+    opacity: 0;
+    transition: opacity 0.09s ease;
+}
+.container.active .signup{
+    opacity: 1;
+    transition: opacity 0.2s ease;
+}
+
+.container.active .forms{
+    height: 100%;
+}
+
+
+.form .checkbox-text{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.checkbox-text .checkbox-content{
+    display: flex;
+    align-items: center;
+}
+
+.checkbox-content input{
+    margin-right: 10px;
+    accent-color: #4070f4;
+}
+
+.form .text{
+    color: #040404;
+    font-size: 14px;
+	
+    
+}
+.form .text.reset_password,
+.form .text.viewConnectForm{
+	float: right;
+	margin-top: -27px;
+}
+.form a.text{
+    color: #4070f4;
+    text-decoration: none;
+}
+.form a:hover{
+    text-decoration: underline;
+}
+
+.form .button{
+    margin-top: 35px;
+}
+
+.form .button input{
+    border: none;
+    color: #fff;
+    font-size: 17px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    border-radius: 6px;
+    background-color: #4070f4;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.button input:hover{
+    background-color: #265df2;
+}
+
+.form .login-signup{
+    margin-top: 30px;
+    text-align: center;
+}
+
+/* CSS Document */
+*{
+	margin: 0;
+	padding: 0;
+	font-family: 'poppins',sans-serif;
+}
+
+.form_box{
+	position: relative;
+	width: 400px;
+	height: 450px;
+	background: transparent;
+	border: 2px solid rgba(255,255,255,0.5);
+	border-radius: 20px;
+	backdrop-filter: blur(5px);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.inputbox{
+	position: relative;
+    margin: 30px 0;
+    width: 310px;
+    height: 40px;
+    border-radius: 20px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-bottom: 1px solid #ffffff;
+    border-top: 1px solid #ffffff;
+}
+.inputbox label{
+	position: absolute;
+	top: 50%;
+	left: 5px;
+	transform: translateY(-50%);
+	color: #000000;
+	font-size: 1em;
+	pointer-events: none;
+	top: 50px;
+}
+/*input:focus ~ label,
+input:valid ~ label{
+	
+}
+
+input:-webkit-autofill { 
+	-webkit-box-shadow: 0 0 0px 1000px #ffffff00 inset !important;
+}
+*/
+.inputbox #UserLogin,
+.inputbox #UserPassword,
+.inputbox #newlogin,
+.inputbox #newpassword,
+.inputbox #newmail,
+.inputbox #Mail{
+	width: 87%;
+	height: 40px;
+	background: white;
+	border: none;
+	outline: none;
+	font-size: 1em;
+	padding: 0 35px 0 5px;
+	color: #040404;
+    border-radius: 20px;
+}
+
+
+.inputbox ion-icon{
+	position: absolute;
+    right: 8px;
+    color: #0a0a0a;
+    font-size: 1.5em;
+    top: 11px;
+}
+button{
+	width: 100%;
+	height: 40px;
+	border-radius: 40px;
+	background: #ffffff;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	font-size: 1em;
+	font-weight: 600;
+}
+
+.ResetPasswordForm{
+    display: none;
+}
+
+.invalidUsernameOrPassword {
+    width: 100%;
+    margin-top: 10px; /* Пример значения отступа сверху */
+    margin-bottom: 10px; /* Пример значения отступа снизу */
+    color: #040404; /* Установка белого цвета текста */
+}
+
+.invalidRegistration{
+    width: 100%;
+    margin-top: 10px; /* Пример значения отступа сверху */
+    margin-bottom: 10px; /* Пример значения отступа снизу */
+    color: #040404; /* Установка белого цвета текста */
+}
+
+
+/* Модальное окно  */
+dialog {
+	padding: 1rem 3rem;
+	background: var(--white);
+	max-width: 500px;
+	padding-top: 2rem;
+	border-radius: 20px;
+	border: 0;
+	box-shadow: 0 5px 30px 0 rgb(0 0 0 / 10%);
+	animation: fadeIn 1s ease both;
+    height: 200px;
+    margin: auto;
+}
+
+dialog::backdrop {
+		animation: fadeIn 1s ease both;
+		background: rgb(255 255 255 / 40%);
+		z-index: 2;
+		backdrop-filter: blur(20px);
+	}
+.x {
+    filter: grayscale(1);
+    border: none;
+    background: none;
+    position: absolute;
+    top: 15px;
+    right: 10px;
+    transition: ease filter, transform 0.3s;
+    cursor: pointer;
+    transform-origin: center;
+}
+.x:hover {
+    filter: grayscale(0);
+    transform: scale(1.1);
+}
+.titledialog{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}

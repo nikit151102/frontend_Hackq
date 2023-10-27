@@ -1,0 +1,99 @@
+<div class="content">
+    <div class="settingsanalytic">
+        <div class="fromANDtoDate">
+
+            <div class="Titles" (click)="toggleBlockVisibility()">
+                <p>диапазон</p>
+            </div>
+            <div class="ValueFromANDtoDate" *ngIf="isBlockVisible">
+                <label for="fromDate">От:</label>
+                <input type="date" id="fromDate" [(ngModel)]="fromDate" (ngModelChange)="onDateChange()">
+
+                <label for="toDate">до:</label>
+                <input type="date" id="toDate" [(ngModel)]="toDate" (ngModelChange)="onDateChange()">
+            </div>
+
+        </div>
+        <div class="selectline">
+            <div class="Titles" (click)="toggleselectlineBlockVisibility()">
+                <p>Тип графика</p>
+            </div>
+            <div class="Valueselectline" *ngIf="isselectlineBlockVisible">
+                <select [(ngModel)]="selectedChartType" (change)="onChartTypeChange()">
+                    <option value="line">Линейный график</option>
+                    <option value="bar">Столбчатая диаграмма</option>
+                    <option value="radar">Радиолокационная карта</option>
+                    <option value="polarArea">Карта полярных областей</option>
+                    <option value="doughnut">круговые диаграммы</option>
+                    <!-- Добавьте другие типы графиков, если необходимо -->
+                </select>
+            </div>
+        </div>
+<div class="newLine">
+    <div class="Titles" (click)="togglenewLineBlockVisibility()">
+        <p>Доп графики</p>
+    </div>
+    <div class="pair" *ngIf="isnewLineBlockVisible">
+        <select [(ngModel)]="firs" name="firstSelect">
+            <option [ngValue]="{ text: 'Все заявки', value: '' }" value=""></option>
+            <option [ngValue]="{ text: 'Выполненные', value: 'выполнена' }" value="выполнена">Выполненные</option>
+            <option [ngValue]="{ text: 'Закрытые', value: 'закрыта' }" value="закрыта">Закрытые</option>
+        </select>
+        <select [(ngModel)]="second" name="secondSelect">
+            <option value="в">В</option>
+            <option value="о">О</option>
+            <option value="и">И</option>
+        </select>
+        <button (click)="addPair()">Создать пару</button>
+    </div>
+    <div *ngFor="let pair of pairs; let i = index" class="newselectvale">
+        <p class="newselval">{{ pair.third }} -</p>
+        <p class="newselval">{{ pair.second }}</p>
+        <button (click)="removePair(i)" style="height: 20px;">x</button>
+    </div>
+</div>
+        
+
+        <div class="selectline">
+            <div class="Titles" (click)="toggleSelectDataBlockVisibility()">
+                <p>выбор данных</p>
+            </div>
+            <div class="selectlinevalue" *ngIf="isSelectDataBlockVisible">
+                <label>
+                    <input type="checkbox" [(ngModel)]="showLine1" (change)="updateChartVisibility()"> Все заявки
+                </label>
+
+                <label>
+                    <input type="checkbox" [(ngModel)]="showLine2" (change)="updateChartVisibility()"> выполненные
+                </label>
+
+                <label>
+                    <input type="checkbox" [(ngModel)]="showLine3" (change)="updateChartVisibility()"> закрытые
+                </label>
+            </div>
+
+
+        </div>
+
+        <div class="statcount">
+            <div class="Titles" (click)="toggleStatCountBlockVisibility()">
+                <p>Статистика в числах</p>
+            </div>
+            <div *ngIf="isStatCountBlockVisible">
+                <p>Всего заявок: {{countval }}</p>
+                <p>кол-во выполненных {{ countval2 }}</p>
+                <p>кол-во закрытых: {{ countval3 }}</p>
+
+                <div class="line"></div>
+                <p>Сумма прибыли: {{pribl }}</p>
+                <p>Сумма затрат на продажу: {{ saleZatrat }}</p>
+                <p>Общая сумма продаж: {{ obfaiaSale }}</p>
+            </div>
+
+
+        </div>
+    </div>
+    <div class="viewanalytic">
+        <canvas class="chartCanvas" #chartCanvas></canvas>
+    </div>
+</div>

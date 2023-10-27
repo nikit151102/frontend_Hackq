@@ -1,0 +1,128 @@
+<div class="body">
+
+
+    <div class="divcontainer" data-aos="zoom-in">
+        <div class="containertitle">
+            <div id="logo"><img src="assets/images/logo.webp" width=180px height=180px alt="Vitkon_service" /> </div>
+            <div class="texttitle">
+                <h2>Добро пожаловать</h2>
+
+            </div>
+        </div>
+        <div class="container">
+            <div class="forms">
+                <div class="form login">
+                    <form [formGroup]="connectForm" (ngSubmit)="onSubmit()" class="ConnectForm">
+                        <div class="inputbox">
+                            <input type="text" id="UserLogin" formControlName="UserLogin" placeholder="Логин" required
+                                [readonly]="readonlyInputs['UserLogin']" (focus)="onInputFocus('UserLogin')"
+                                autocomplete="off" />
+                            <label for="UserLogin" id="label"></label>
+                        </div>
+                        <div class="inputbox">
+                            <input type="password" id="UserPassword" formControlName="UserPassword" placeholder="Пароль"
+                                spellcheck="false" [readonly]="readonlyInputs['UserPassword']"
+                                (focus)="onInputFocus('UserPassword')" autocomplete="new-password" required />
+                            <label for="UserPassword" id="label"></label>
+                        </div>
+                        <div class="invalidUsernameOrPassword">{{ errorMessage }}</div>
+                        <span class="text">
+                            <a class="text reset_password" >Забыл пароль</a>
+                        </span>
+                        <button type="submit" class="connectBtn" [disabled]="connectForm.invalid">Войти</button>
+                    </form>
+
+                    
+                    <form id="ResetPasswordForm" class="ResetPasswordForm" method="post"
+                        action="/personal_account/resetpassword">
+                        <div class="inputbox">
+
+                            <input id="Mail" name="Mail" type="text" placeholder="введите почту" readonly
+                                onfocus="this.removeAttribute('readonly');" required autocomplete="off">
+                            <label for="Mail" id="label"></label>
+                        </div>
+                        <div class="invalidmail"></div>
+                        <span class="text">
+                            <a  class="text viewConnectForm" >Войти </a>
+                        </span>
+                        <button type="submit" class="connectBtn" >запросить</button>
+                    </form>
+
+
+                    <div class="login-signup">
+                        <span class="text">У вас нет аккаунта?
+                            <a class="text signup-link">Регистрация</a>
+                        </span>
+
+                    </div>
+                </div>
+
+                <div class="form signup">
+
+                    <form [formGroup]="createForm" (ngSubmit)="onCreateSubmit()" id="create-Form">
+                        <div class="inputbox">
+                          <input
+                            type="text"
+                            id="newlogin"
+                            formControlName="newlogin"
+                            placeholder="Логин"
+                            required
+                            [attr.readonly]="['readonlyInputs.newlogin'] ? 'readonly' : null"
+                            (focus)="onInputFocus('newlogin')"
+                            autocomplete="off"
+                          />
+                          <label for="newlogin"></label>
+                        </div>
+                        <div class="inputbox">
+                          <input
+                            type="password"
+                            id="newpassword"
+                            formControlName="newpassword"
+                            placeholder="Пароль"
+                            spellcheck="false"
+                            [attr.readonly]="readonlyInputs['newpassword'] ? 'readonly' : null"
+                            (focus)="onInputFocus('newpassword')"
+                            autocomplete="off"
+                            required
+                          />
+                          <label for="newpassword"></label>
+                        </div>
+                        <div class="inputbox">
+                          <input
+                            type="email"
+                            id="newmail"
+                            formControlName="newmail"
+                            placeholder="Почта"
+                            [attr.readonly]="readonlyInputs['newmail'] ? 'readonly' : null"
+                            (focus)="onInputFocus('newmail')"
+                            autocomplete="off"
+                            required
+                          />
+                          <label for="newmail"></label>
+                        </div>
+                        <div class="invalidRegistration">{{ errorMessage }}</div>
+                        <button type="submit" [disabled]="createForm.invalid">Регистрация</button>
+                      </form>
+
+
+
+                    <div class="login-signup">
+                        <span class="text">Уже зарегистрированы?
+                            <a class="text login-link" >Войти</a>
+                        </span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <dialog id="dialogyesresetpassword">
+
+        <button onclick="window.dialog.close();" aria-label="close" class="x">❌</button>
+        <div class="titledialog">
+            проверьте почту
+        </div>
+
+    </dialog>
+</div>

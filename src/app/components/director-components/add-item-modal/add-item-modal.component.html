@@ -1,0 +1,77 @@
+<div class="modal-overlay">
+  <div class="modal">
+    <h2>Добавление новой заявки</h2>
+    <div class="form-group">
+      <label for="company">Компания:</label>
+      <input type="text" id="company" [(ngModel)]="company" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="address">Адрес:</label>
+      <input type="text" id="address" [(ngModel)]="address" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="content">Содержание:</label>
+      <textarea type="text" id="content" [(ngModel)]="content" class="form-control"></textarea>
+    </div>
+    <div class="form-group">
+      <label for="phone">Телефон:</label>
+      <input type="text" id="phone" [(ngModel)]="phone" class="form-control">
+    </div>
+    
+    <div class="form-group">
+      <label for="employee">Сотрудник:</label>
+      <select id="employee" [(ngModel)]="employee" class="form-control">
+        <option value=""></option>
+        <option value="в">В</option>
+        <option value="и">И</option>
+        <option value="о">О</option>
+        <option value="н">Н</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="statusRequest">Статус заявки:</label>
+      <select id="statusRequest" [(ngModel)]="statusRequest" class="form-control">
+        <option value=""></option>
+        <option value="закрыта">Закрыта</option>
+        <option value="выполнена">Выполнена</option>
+        <option value="в работе">В работе</option>
+      </select>
+    </div>
+    
+    
+    <div class="form-group">
+      <label for="issued">Выписано/<br>Не выписано:</label>
+    <input type="text" id="issued" [(ngModel)]="issued" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="statusPayment">Статус оплаты:</label>
+      <select id="statusPayment" [(ngModel)]="statusPayment" class="form-control">
+        <option value=""></option>
+        <option value="опл.">Оплачено</option>
+        <option value="не опл.">Не оплачено</option>
+        <option value="ожид.">В ожидании</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="costs">Затраты:</label>
+      <input type="text" id="costs" [(ngModel)]="costs" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="paymentAmount">Сумма оплаты:</label>
+      <input type="text" id="paymentAmount" [(ngModel)]="paymentAmount" class="form-control">
+    </div>
+    
+
+    
+
+    <!-- Добавьте аналогичные поля для остальных данных -->
+
+    <div class="buttons">
+      <button (click)="submitItem()">Отправить</button>
+      <button (click)="closeModal()">Отмена</button> 
+    </div>
+  </div>
+
+</div>
+
+<div *ngIf="isRecordAdded" class="success-message" >Запись добавлена успешно</div>
