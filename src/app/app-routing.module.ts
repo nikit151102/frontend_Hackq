@@ -10,17 +10,18 @@ import {WeeklyScheduleComponent} from './components/director-components/weekly-s
 import {ChartAnalyticComponent}  from './components/director-components/chart-analytic/chart-analytic.component'
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'login', component: ConnecctComponent },
+  {
+    path: 'login',
+    loadChildren: () => import('./components/connecct/connecct.module').then(m => m.ConnecctModule)
+  },
   { path: 'Directors/:id', component: DirectorsOfficeComponent, children: [
     { path: '', redirectTo: 'home', pathMatch: 'full' }, 
     { path: 'home', component: HomeComponentdirector  },
     { path: 'database', component:TableComponent },
     { path: 'kanbanboard', component:WeeklyScheduleComponent },
     { path: 'analytic', component:ChartAnalyticComponent },
-    // Добавьте другие вкладки и компоненты здесь
   ] },
 ];
-
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
