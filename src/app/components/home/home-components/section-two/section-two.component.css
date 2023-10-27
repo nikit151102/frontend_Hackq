@@ -1,0 +1,169 @@
+*,
+*::before,
+*::after {
+    padding: 0;
+    margin: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul,
+ol,
+li {
+    list-style: none;
+}
+
+img {
+    vertical-align: top;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: inherit;
+    font-size: inherit;
+}
+:host{
+    --black: #020202;
+    --white: rgb(252 252 252 / 85%);
+    --gray: #d4d4d4;
+    --red: rgb(139, 46, 46);
+    --dark: #282828; 
+    --redd: rgb(163, 41, 41);
+    }
+html,
+body {
+    height: 100%;
+    line-height: 1;
+}
+
+body {
+    font-family: Rubik;
+    font-size: 12px;
+    color: #616161;
+}
+
+.wrapper {
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+}
+
+/* --------------------- */
+
+.maim {
+    flex: 1 1 auto;
+}
+
+[class*="__container"] {
+    max-width: 1087px;
+    margin: 0px auto;
+    padding: 0px 15px;
+}
+
+/* PC */
+
+@media (max-width: 1087px) {
+    [class*="__container"] {
+        max-width: 970px;
+    }
+}
+
+/* TABLET */
+
+@media (max-width: 991.98px) {
+    [class*="__container"] {
+        max-width: 750px;
+    }
+}
+
+/* MOBILE */
+
+@media (max-width: 767.98px) {
+    [class*="__container"] {
+        max-width: none;
+    }
+}
+/* Mobile SMALL (мелкие мобилки с малым разрешением) */
+@media (max-width: 479.98px) {
+}
+
+
+.stay-safe {
+    padding: 80px 0;
+}
+.stay-safe__container {
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+}
+.d_article{
+    flex: 0 1 25%;
+    padding: 0px 15px 0px 15px;
+    margin: 0 5px 0 5px;
+    background-color: #fff;
+    box-shadow: 0px 2px 24px rgba(88, 126, 236, 0.15);
+    border-radius: 16px;
+}
+.d_article-img{
+    width: 100%;
+}
+.d_article-title{
+    width: 100%;
+    color: #000;
+    font-weight: 800;
+    text-align: center;
+    margin-top: 20px;
+    font-size: 30px;
+}
+.d_article-content{
+    width: 100%;
+    color: #2e2e2e;
+    font-weight: 600;
+    text-align: center;
+    margin-top: 20px;
+    font-size: 20px;
+    padding-bottom: 20px;
+}
+
+@media (max-width: 991.98px) {
+    .stay-safe {
+        padding: 40px 0;
+    }
+}
+
+@media (min-width: 991.98px) {
+    .stay-safe__media {
+        flex: 0 1 50%;
+        padding: 0px 0px 0px 47px;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .stay-safe {
+        padding: 30px 0;
+    }
+    .stay-safe__container {
+        flex-direction: column-reverse;
+    }
+    .stay-safe__content {
+        margin: 0px 0px 30px 0px;
+    }
+}
+
+@media (max-width: 479.98px) {
+    .media-stay-safe {
+        width: 290px;
+    }
+}
+
+
+
