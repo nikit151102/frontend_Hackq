@@ -1,4 +1,5 @@
 import { Component, Renderer2, ElementRef } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-directors-office',
@@ -6,7 +7,18 @@ import { Component, Renderer2, ElementRef } from '@angular/core';
   styleUrls: ['./directors-office.component.css']
 })
 export class DirectorsOfficeComponent {
-  constructor(private renderer: Renderer2, private el: ElementRef) {}
+  constructor(private renderer: Renderer2, private el: ElementRef,private route: ActivatedRoute) {}
+
+  ngOnInit() {
+    this.route.params.subscribe(params => {
+      const id = params['id'];
+      console.log('ID:', id);
+      // Здесь можно делать что-то с полученным id
+    });
+  }
+  
+
+  
   private isSidebarHidden = false;
   toggleSidebar(): void {
     const sidebar = this.el.nativeElement.querySelector('#sidebar');

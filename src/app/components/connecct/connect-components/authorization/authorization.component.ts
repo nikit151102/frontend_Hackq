@@ -34,6 +34,7 @@ export class AuthorizationComponent implements OnInit {
         (data: any) => {
           console.log(data);
           if (data.success) {
+            console.log(data.redirect)
             window.location.href = data.redirect;
           } else {
             this.errorMessage = data.message;

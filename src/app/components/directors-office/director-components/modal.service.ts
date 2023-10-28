@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {modelADD} from './add-item-modal/model-interface'
+//import {modelADD} from './add-item-modal/model-interface'
 import { HttpClient } from '@angular/common/http';
 import { interval,Subscription  } from 'rxjs';
 @Injectable({
@@ -10,7 +10,7 @@ export class ModalService {
 
  constructor(private http: HttpClient) {}
 
- sendDataToServer(data: modelADD){
-    return this.http.post<modelADD>('http://localhost:3000/tableview/additem', data); 
+ sendDataToServer(data: any){
+    return this.http.post<any>('http://localhost:3000/tableview/additem', data); 
  }
 }
