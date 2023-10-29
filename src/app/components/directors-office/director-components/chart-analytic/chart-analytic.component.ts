@@ -57,7 +57,7 @@ export class ChartAnalyticComponent implements OnInit {
   }
 
   updateTotal() {
-    this.updateChartVisibility()
+
     this.calculateTotal(this.dataFromServer, this.fromDate, this.toDate);
   }
 
@@ -213,18 +213,27 @@ console.log(" this.line1", this.line1)
 
 
 
-
-
-  updateChartVisibility() {
+  
+  updateChartVisibility(line: string) {
     if (this.chart) {
-      this.chart.data.datasets[0].hidden = !this.showLine1;
-      this.chart.data.datasets[1].hidden = !this.showLine2;
-      this.chart.data.datasets[2].hidden = !this.showLine3;
-      // и так далее для других линий
+      if (line === 'showLine1') {
+        this.showLine1 = !this.showLine1;
+        this.chart.data.datasets[0].hidden = !this.showLine1;
+      } else if (line === 'showLine2') {
+        this.showLine2 = !this.showLine2;
+        this.chart.data.datasets[1].hidden = !this.showLine2;
+      } else if (line === 'showLine3') {
+        this.showLine3 = !this.showLine3;
+        this.chart.data.datasets[2].hidden = !this.showLine3;
+      }
+      // Add more conditions for other lines if needed
+  
       this.chart.update();
     }
   }
-
+  
+  
+  
 
 
 
