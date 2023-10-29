@@ -8,7 +8,7 @@ const routes: Routes = [
   { path: '', component: DirectorsOfficeComponent, children: [
     { path: '', redirectTo: 'home', pathMatch: 'full' }, 
     { path: 'home',  loadChildren: () => import('./director-components/home/home.module').then(m => m.HomeModule)   },
-    { path: 'database',  loadChildren: () => import('./director-components/table/table.module').then(m => m.TableModule) },
+    { path: 'database',  loadChildren: () => import('./director-components/table/table.module').then(m => m.TablepageModule) },
     { path: 'kanbanboard',  loadChildren: () => import('./director-components/weekly-schedule/weekly-schedule.module').then(m => m.WeeklyScheduleModule) },
     { path: 'analytic', component:ChartAnalyticComponent },
   ] },

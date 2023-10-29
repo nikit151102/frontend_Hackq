@@ -10,7 +10,7 @@ export class DataService {
   private pollingSubscription: Subscription | undefined;
   
   sendDataToServer() {
-    const url = 'http://localhost:3000/tableview'; // Замените на URL вашего сервера
+    const url = 'http://127.0.0.1:8000/director/table/getDataTable'; 
     return this.http.get(url);
   }
   startPolling(intervalTime: number | null) {
