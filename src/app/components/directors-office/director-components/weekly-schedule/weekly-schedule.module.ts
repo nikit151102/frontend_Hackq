@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { WeeklyScheduleComponent } from './weekly-schedule.component';
+import { weeklyScheduleRoutingModule } from './weekly-schedule.routing.module';
 
 
 
@@ -9,7 +10,9 @@ import { WeeklyScheduleComponent } from './weekly-schedule.component';
     WeeklyScheduleComponent
   ],
   imports: [
-    CommonModule
-  ]
+    CommonModule,
+    weeklyScheduleRoutingModule
+  ],
+  providers: [DatePipe]
 })
 export class WeeklyScheduleModule { }

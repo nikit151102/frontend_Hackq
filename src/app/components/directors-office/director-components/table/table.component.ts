@@ -4,6 +4,7 @@ import { ModalService } from '../modal.service'
 import { DatePipe } from '@angular/common';
 import { MessageService } from 'primeng/api';
 import { DataItem, TransformedDataItem } from './table.interface';
+
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',

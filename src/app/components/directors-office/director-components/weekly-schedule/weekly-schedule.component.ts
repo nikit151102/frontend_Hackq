@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { formatDate } from '@angular/common';
-import { DataService } from '../../../data.service';
+import { DatePipe, formatDate } from '@angular/common';
+import { WeeklyScheduleService } from './weekly-schedule.service';
+
 @Component({
   selector: 'app-weekly-schedule',
   templateUrl: './weekly-schedule.component.html',
@@ -8,127 +9,103 @@ import { DataService } from '../../../data.service';
 })
 
 export class WeeklyScheduleComponent implements OnInit {
-  currentWeekIndex: number = 0; // Индекс текущей недели
-  weeks: Date[][] = []; // Массив недель
-  displayedData: any = []; // Массив данных для отображения на карточках
-  constructor(private dataService: DataService) { }
+
+  displayedData: any = [];
+  DateMonday: string = '';
+  DateSunday: string = '';
+  daysOfWeek: string[] = [];
+
+  constructor(private weeklyScheduleService: WeeklyScheduleService, private datePipe: DatePipe) { }
 
   ngOnInit(): void {
-    // Инициализация данных для отображения недель
-    this.generateWeeks();
-    this.currentWeekIndex = this.weeks.findIndex(week => week.some(day => this.isSameDate(new Date(), day)));
-    this.dataService.startPolling(null); // Опрашивать каждые 5 секунд (настройте интервал по вашему усмотрению)
-    this.fetchData();
+    const today = new Date();
+    const currentDayOfWeek = today.getDay();
+    const mondayDifference = (currentDayOfWeek === 0) ? -6 : 1 - currentDayOfWeek;
+    const sundayDifference = (currentDayOfWeek === 0) ? 0 : 7 - currentDayOfWeek;
+    const monday = new Date(today);
+    monday.setDate(today.getDate() + mondayDifference);
+    const sunday = new Date(today);
+    sunday.setDate(today.getDate() + sundayDifference);
+
+    this.DateMonday = this.formatDate(monday)
+    this.DateSunday = this.formatDate(sunday)
+    this.filterDataByDate(this.DateMonday, this.DateSunday)
+
+    this.filterdaysOfWeek(monday);
+    console.log("this.daysOfWeek", this.daysOfWeek)
   }
-  fetchData() {
-    // Получение данных с сервера
-    this.dataService.sendDataToServer().subscribe((response) => {
-      console.log('Ответ сервера:', response);
 
-      if (Array.isArray(response)) {
-        // Если response является массивом, то используем его для инициализации showDetails и buttonText
-        this.displayedData = response;
-        this.showDetails = Array(response.length + 1).fill(false);
-        this.buttonText = Array(response.length + 1).fill("Подробнее");
-
-      } else {
-        // Обработайте ситуацию, если структура данных отличается
-        console.error('Неправильная структура данных в ответе сервера');
-      }
+  filterDataByDate(date1: string, date2: string): any {
+    this.weeklyScheduleService.sendDataToServer({ "startdate": date1, "enddate": date2 }).subscribe((response) => {
+      console.log('Ответ сервера response:', response);
+      this.displayedData = response
+      return response
     });
   }
-  filterDataByDate(date: Date): any[] {
-    return this.displayedData.filter((data: any) => this.isSameDate(date, data.datas));
-  }
-  isSameDate(date1: Date, date2: any): boolean {
 
+  filterdaysOfWeek(monday: Date) {
+    console.log("monday", monday)
+    this.daysOfWeek.splice(0, this.daysOfWeek.length);
+    console.log("this.daysOfWeekthis.daysOfWeek", this.daysOfWeek)
+    const daysOfWeek = [];
+    for (let i = 0; i < 7; i++) {
+      const day = new Date(monday);
+      day.setDate(monday.getDate() + i);
 
-    if (date1 && typeof date2 === 'string') {
-      date2 = new Date(date2); // Преобразование строки в объект Date
-      // Поменять местами месяц и день
-      const day = date2.getDate();
-      const month = date2.getMonth() + 1; // Прибавляем 1, так как месяцы в объекте Date начинаются с 0
-      const year = date2.getFullYear();
-
-      date2 = new Date(`${day}-${month}-${year}`);
+      daysOfWeek.push(this.formatDate(day));
     }
-
-    if (date1 && date2 instanceof Date) {
-      // Проверка на совпадение даты
-      return (
-        date1.getFullYear() === date2.getFullYear() &&
-        date1.getMonth() === date2.getMonth() &&
-        date1.getDate() === date2.getDate()
-      );
-    }
-    return false;
+    this.daysOfWeek = daysOfWeek;
+    console.log("this.daysOfWeek", this.daysOfWeek)
   }
 
-  generateWeeks() {
-    // Получите текущую дату
-    const currentDate = new Date();
+  viewLastWeek(dates: string[]) {
+    const [day, month, year] = dates[0].split('.').map(Number);
+    const firstDate = new Date(year, month - 1, day - 7);
 
-    // Найдите год текущей даты
-    const currentYear = currentDate.getFullYear();
+    const [day2, month2, year2] = dates[6].split('.').map(Number);
+    const lastDate = new Date(year2, month2 - 1, day2 - 7);
 
-    // Установите дату на 1 января текущего года
-    currentDate.setFullYear(currentYear, 0, 1);
-
-    // Найдите день недели для 1 января текущего года (0 - воскресенье, 1 - понедельник, ..., 6 - суббота)
-    const firstDayOfWeek = currentDate.getDay();
-
-    // Вычтите из текущей даты количество дней, чтобы вернуться к первому понедельнику текущего года
-    currentDate.setDate(currentDate.getDate() - firstDayOfWeek + 1);
-
-    // Генерация недель с Понедельника по Воскресенье до конца года текущего
-    while (currentDate.getFullYear() === currentYear) {
-      const week = [];
-      for (let j = 0; j < 7; j++) {
-        week.push(new Date(currentDate));
-        currentDate.setDate(currentDate.getDate() + 1);
-      }
-      this.weeks.push(week);
-    }
-    console.log(this.weeks);
-
-    this.weeks = this.addMissingDatesToStart(this.weeks)
-
+    return { firstDate: firstDate, lastDate: lastDate };
   }
-
-  addMissingDatesToStart(arr: any) {
-    const firstWeek = arr[0];
-    const firstDate = firstWeek[0]; // Получаем первую дату из первой недели
-    const firstYear = firstDate.getFullYear(); // Получаем год из первой даты
-    const startDate = new Date(firstYear, 0, 1); // Создаем дату для 1 января года
-    startDate.setHours(2); // Задаем часы (02)
-    startDate.setMinutes(40); // Задаем минуты (40)
-    startDate.setSeconds(4); // Задаем секунды (04)
-    const dateRange = [];
-    const currentDate = new Date(startDate);
-    while (currentDate < firstDate) {
-      dateRange.push(new Date(currentDate));
-      currentDate.setDate(currentDate.getDate() + 1);
-    }
-    if (dateRange.length > 0) {
-      dateRange.pop(); // Удаляем последний элемент
-    }
-    arr.splice(0, 0, dateRange);
-    return arr
-  }
-
 
 
   previousWeek() {
-    // Логика для переключения на предыдущую неделю
-    if (this.currentWeekIndex > 0) {
-      this.currentWeekIndex--;
+
+    let week = this.viewLastWeek(this.daysOfWeek);
+    if (week) {
+      const formattedFirstDate = week.firstDate
+      const formattedLastDate = week.lastDate
+      console.log("formattedFirstDate", formattedFirstDate)
+      this.filterdaysOfWeek(week.firstDate);
+      const formattedDate = `${formattedFirstDate.getDate().toString().padStart(2, '0')}.${(formattedFirstDate.getMonth() + 1).toString().padStart(2, '0')}.${formattedFirstDate.getFullYear()}`;
+      const formattedDate2 = `${formattedLastDate.getDate().toString().padStart(2, '0')}.${(formattedLastDate.getMonth() + 1).toString().padStart(2, '0')}.${formattedLastDate.getFullYear()}`;
+
+      this.filterDataByDate(formattedDate,formattedDate2)
     }
+
+  }
+
+  viewNextWeek(dates: string[]) {
+    const [day, month, year] = dates[0].split('.').map(Number);
+    const firstDate = new Date(year, month - 1, day + 7);
+
+    const [day2, month2, year2] = dates[6].split('.').map(Number);
+    const lastDate = new Date(year2, month2 - 1, day2 + 7);
+
+    return { firstDate: firstDate, lastDate: lastDate };
   }
 
   nextWeek() {
-    // Логика для переключения на следующую неделю
-    if (this.currentWeekIndex < this.weeks.length - 1) {
-      this.currentWeekIndex++;
+    let week = this.viewNextWeek(this.daysOfWeek);
+    if (week) {
+      const formattedFirstDate = week.firstDate
+      const formattedLastDate = week.lastDate
+      console.log("formattedFirstDate", formattedFirstDate)
+      this.filterdaysOfWeek(week.firstDate);
+      const formattedDate = `${formattedFirstDate.getDate().toString().padStart(2, '0')}.${(formattedFirstDate.getMonth() + 1).toString().padStart(2, '0')}.${formattedFirstDate.getFullYear()}`;
+      const formattedDate2 = `${formattedLastDate.getDate().toString().padStart(2, '0')}.${(formattedLastDate.getMonth() + 1).toString().padStart(2, '0')}.${formattedLastDate.getFullYear()}`;
+
+      this.filterDataByDate(formattedDate,formattedDate2)
     }
   }
 
@@ -148,41 +125,5 @@ export class WeeklyScheduleComponent implements OnInit {
     }
   }
 
-  formatDatesInData(data: any): any {
-    if (Array.isArray(data)) {
-      return data.map(item => this.formatDatesInData(item));
-    } else if (typeof data === 'object' && data !== null) {
-      const formattedData: any = {};
-      for (const key in data) {
-        if (data.hasOwnProperty(key)) {
-          if (typeof data[key] === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(data[key])) {
-            const dateParts = data[key].split('-');
-            if (dateParts.length === 3) {
-              formattedData[key] = dateParts[2] + '.' + dateParts[1] + '.' + dateParts[0];
-            } else {
-              formattedData[key] = data[key];
-            }
-          } else {
-            formattedData[key] = this.formatDatesInData(data[key]);
-          }
-        }
-      }
-      return formattedData;
-    } else {
-      return data;
-    }
-  }
 
-
-
-
-  // Добавьте свойство showDetails для контроля видимости дополнительных строк
-  public showDetails: boolean[] = [];
-  public buttonText: string[] = []; // Добавьте свойство для текста кнопки
-
-  // Метод для переключения видимости дополнительных строк
-  public toggleDetails(index: number): void {
-    this.showDetails[index] = !this.showDetails[index];
-    this.buttonText[index] = this.showDetails[index] ? "Скрыть" : "Подробнее";
-  }
 }

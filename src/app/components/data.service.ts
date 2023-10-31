@@ -37,7 +37,7 @@ export class DataService {
     console.log(JSON.stringify(data))
     return this.http.post<deletes>('http://localhost:3000/Directors/delete', data); 
   }
-
+  
 }
 
 interface deletes {
