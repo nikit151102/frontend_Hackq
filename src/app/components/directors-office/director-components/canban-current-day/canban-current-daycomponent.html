@@ -23,8 +23,12 @@
         </div>
             <div *ngFor="let data of displayedData">
                 <div *ngIf="data.status_content == '' && data.id_employee != ''  ">
-                    <div>
-                        {{data.Id_application}}
+                    <div (click)="viewEditItem(data.id_application)">
+                        
+                        <p>№{{data.number_application}}</p>
+                        <p>Компания: {{data.name_company}}</p>
+                        <p>Адрес: {{data.street}},{{data.house}},{{data.office}}</p>
+                        <p>Причина обращения: {{data.content_application}}</p>
                     </div>
                 </div>
             </div>
@@ -35,8 +39,12 @@
         </div>
             <div *ngFor="let data of displayedData">
                 <div *ngIf="data.status_content == 'Открыта'  ">
-                    <div>
-                        {{data.Id_application}}
+                    <div (click)="viewEditItem(data.id_application)">
+                        
+                        <p>№{{data.number_application}}</p>
+                        <p>Компания: {{data.name_company}}</p>
+                        <p>Адрес: {{data.street}},{{data.house}},{{data.office}}</p>
+                        <p>Причина обращения: {{data.content_application}}</p>
                     </div>
                 </div>
         </div>
@@ -47,8 +55,12 @@
         </div>
             <div *ngFor="let data of displayedData">
                 <div *ngIf="data.status_content == 'Закрыта'  ">
-                    <div>
-                        {{data.Id_application}}
+                    <div (click)="viewEditItem(data.id_application)">
+                        
+                        <p>№{{data.number_application}}</p>
+                        <p>Компания: {{data.name_company}}</p>
+                        <p>Адрес: {{data.street}},{{data.house}},{{data.office}}</p>
+                        <p>Причина обращения: {{data.content_application}}</p>
                     </div>
                 </div>
         </div>
