@@ -12,6 +12,7 @@ export class WeeklyScheduleComponent implements OnInit {
 
   displayedData: any = [];
   daysOfWeek: string[] = [];
+  datesSplit: {day: string, month: string, year: string}[] = [];
 
   constructor(private weeklyScheduleService: WeeklyScheduleService,private workingWithDates:WorkingWithDates) { }
 
@@ -20,7 +21,9 @@ export class WeeklyScheduleComponent implements OnInit {
     let currentWeek = this.workingWithDates.currentWeek()
     this.filterDataByDate(this.workingWithDates.formatDate(currentWeek.monday), this.workingWithDates.formatDate(currentWeek.sunday))
     this.daysOfWeek = this.workingWithDates.filterdaysOfWeek(currentWeek.monday);
-    console.log("this.daysOfWeek", this.daysOfWeek)
+    console.log("this.daysOfWeek", this.daysOfWeek);
+    this.datesSplit = this.DatesSplit(this.daysOfWeek);
+    console.log("this.datesSplit", this.datesSplit);
   }
 
   filterDataByDate(date1: string, date2: string): any {
@@ -31,6 +34,24 @@ export class WeeklyScheduleComponent implements OnInit {
     });
   }
 
+  DatesSplit(dates: string[]) {
+    let spltDates: {day: string, month: string, year: string}[] = [];
+    for (let date of dates) {
+      let parts = date.split('.');
+      if (parts.length === 3) {
+        let day = parts[0];
+        let month = parts[1];
+        let year = parts[2];
+        spltDates.push({ day, month, year });
+      } else {
+        console.log(`Неверный формат даты: ${date}`);
+      }
+    }
+    return spltDates;
+  }
+  
+  
+
   previousWeek() {
     let week = this.workingWithDates.viewLastWeek(this.daysOfWeek);
     if (week) {
@@ -39,6 +60,7 @@ export class WeeklyScheduleComponent implements OnInit {
       console.log("formattedFirstDate", formattedFirstDate)
       this.daysOfWeek.splice(0, this.daysOfWeek.length);
       this.daysOfWeek = this.workingWithDates.filterdaysOfWeek(week.firstDate);
+      this.datesSplit = this.DatesSplit(this.daysOfWeek);
       const formattedDate = `${formattedFirstDate.getDate().toString().padStart(2, '0')}.${(formattedFirstDate.getMonth() + 1).toString().padStart(2, '0')}.${formattedFirstDate.getFullYear()}`;
       const formattedDate2 = `${formattedLastDate.getDate().toString().padStart(2, '0')}.${(formattedLastDate.getMonth() + 1).toString().padStart(2, '0')}.${formattedLastDate.getFullYear()}`;
       this.filterDataByDate(formattedDate,formattedDate2)
@@ -54,6 +76,7 @@ export class WeeklyScheduleComponent implements OnInit {
       console.log("formattedFirstDate", formattedFirstDate)
       this.daysOfWeek.splice(0, this.daysOfWeek.length);
       this.daysOfWeek = this.workingWithDates.filterdaysOfWeek(week.firstDate);
+      this.datesSplit = this.DatesSplit(this.daysOfWeek);
       const formattedDate = `${formattedFirstDate.getDate().toString().padStart(2, '0')}.${(formattedFirstDate.getMonth() + 1).toString().padStart(2, '0')}.${formattedFirstDate.getFullYear()}`;
       const formattedDate2 = `${formattedLastDate.getDate().toString().padStart(2, '0')}.${(formattedLastDate.getMonth() + 1).toString().padStart(2, '0')}.${formattedLastDate.getFullYear()}`;
 

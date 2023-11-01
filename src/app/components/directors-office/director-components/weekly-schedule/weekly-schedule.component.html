@@ -4,14 +4,22 @@
             <button (click)="previousWeek()">Предыдущая неделя</button>
         </div>
         <div class="col">
-            <h3>
-                {{ daysOfWeek[0] }} - {{ daysOfWeek[6] }}
-            </h3>
+            <div class="title">
+                <p class="datesSplitday">{{ datesSplit[0].day }}</p>
+                <p class="datesSplitmonth">.{{ datesSplit[0].month }}</p>
+                <p class="datesSplityear">.{{ datesSplit[0].year }}</p>
+                <p class="datesSplitmonth">&nbsp;-&nbsp;</p>
+                <p class="datesSplitday">{{ datesSplit[6].day }}</p>
+                <p class="datesSplitmonth">.{{ datesSplit[6].month }}</p>
+                <p class="datesSplityear">.{{ datesSplit[6].year }}</p>
+            </div>
+                
             <div class="DIVweeks">
                 <div class="DIVdaysToweek" *ngFor="let date of daysOfWeek; let i = index;">
                     <div class="titledate">
-                        {{ daysOfWeek[i] }}
-
+                        <p class="datesSplitday">{{ datesSplit[i].day }}</p>
+                        <p class="datesSplitmonth">.{{ datesSplit[i].month }}</p>
+                        <p class="datesSplityear">.{{ datesSplit[i].year }}</p>
                     </div>
                     <div class="cards">
                         <!-- Выводим данные из массива displayedData, если они есть -->
@@ -77,16 +85,16 @@
                                     <p>Компания: {{ data.name_company }}</p>
                                     <p>Адрес: {{ data.street }},{{ data.house }},{{ data.office }},</p>
                                     <p>Телефон: {{ data.client_phone }}</p>
-    
+
                                     <div class="BtnCreate">
                                         <button>изменить</button>
                                         <button> Показать</button>
                                     </div>
-    
+
                                 </div>
                             </ng-container>
 
-                            
+
 
                         </div>
                     </div>
