@@ -17,7 +17,7 @@
             <tr>
                 <th style="width: 5rem"></th>
                 <th></th>
-                <th pSortableColumn="id_application">ID заявки <p-sortIcon field="id_application"></p-sortIcon></th>
+                <th pSortableColumn="id_application" style="display: none;">ID заявки <p-sortIcon field="id_application"></p-sortIcon></th>
                 <th pSortableColumn="number_application">Номер заявки <p-sortIcon field="number_application"></p-sortIcon></th>
                 <th pSortableColumn="payment_content">Статус оплаты <p-sortIcon field="payment_content"></p-sortIcon></th>
                 <th pSortableColumn="status_content">Статус заявки <p-sortIcon field="status_content"></p-sortIcon></th>
@@ -60,7 +60,7 @@
                         </svg></a>
                     </div>
                 </td>
-                <td>{{data.id_application}}</td>
+                <td style="display: none;">{{data.id_application}}</td>
                 <td>{{data.number_application}}</td>
                 <td>{{data.payment_content}}</td>
                 <td>{{data.status_content}}</td>
@@ -107,7 +107,6 @@
         </ng-template>
     </p-table>
 </div>
-
 
 <p-toast></p-toast>
 <app-add-item-modal *ngIf="modalService.showDialog"></app-add-item-modal>

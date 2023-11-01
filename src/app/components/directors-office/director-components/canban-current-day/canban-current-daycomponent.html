@@ -1,0 +1,58 @@
+<div class="container">
+    <div class="containerItem NewItems">
+        <div class="title">
+            Новые заявки
+        </div>
+
+            <div  class="newItem" *ngFor="let data of displayedData ">
+                <div  *ngIf="(data.status_content == '' || data.status_content == null)  && (data.id_employee == '' || data.id_employee == null)  ">
+                    <div (click)="viewEditItem(data.id_application)">
+                        
+                        <p>№{{data.number_application}}</p>
+                        <p>Компания: {{data.name_company}}</p>
+                        <p>Адрес: {{data.street}},{{data.house}},{{data.office}}</p>
+                        <p>Причина обращения: {{data.content_application}}</p>
+                    </div>
+                </div>
+            </div>
+
+    </div>
+    <div class="containerItem AtWorkItems">
+        <div class="title">
+            В работе заявки
+        </div>
+            <div *ngFor="let data of displayedData">
+                <div *ngIf="data.status_content == '' && data.id_employee != ''  ">
+                    <div>
+                        {{data.Id_application}}
+                    </div>
+                </div>
+            </div>
+    </div>
+    <div class="containerItem CompletedItems">
+        <div class="title">
+            Завершенные заявки
+        </div>
+            <div *ngFor="let data of displayedData">
+                <div *ngIf="data.status_content == 'Открыта'  ">
+                    <div>
+                        {{data.Id_application}}
+                    </div>
+                </div>
+        </div>
+    </div>
+    <div class="containerItem ClosedItems">
+        <div class="title">
+            Закрытые заявки
+        </div>
+            <div *ngFor="let data of displayedData">
+                <div *ngIf="data.status_content == 'Закрыта'  ">
+                    <div>
+                        {{data.Id_application}}
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+
+<app-add-item-modal [parameter]="someValue" *ngIf="modalOpen"></app-add-item-modal>

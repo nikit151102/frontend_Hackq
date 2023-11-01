@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ModalService } from '../modal.service';
 
 @Component({
@@ -7,6 +7,9 @@ import { ModalService } from '../modal.service';
   styleUrls: ['./add-item-modal.component.css']
 })
 export class AddItemModalComponent {
+
+  @Input() parameter: string = '';
+
  // Поля для ввода данных
  statusPayment: string = "";
  statusRequest: string = "";

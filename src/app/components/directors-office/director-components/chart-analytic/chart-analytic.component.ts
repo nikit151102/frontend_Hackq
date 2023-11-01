@@ -14,11 +14,14 @@ export class ChartAnalyticComponent implements OnInit {
 
   private chart: Chart | undefined;
   @ViewChild('chartCanvas', { static: false }) chartCanvas!: ElementRef;
+  constructor(private dataService: DataService) {
+    // this.updateDateRange(); // Вызываем функцию при инициализации компонента
+  }
   pribl: number = 0;
   saleZatrat: number = 0;
   obfaiaSale: number = 0;
-  fromDate: string = '2023-09-01';
-  toDate: string = '2023-09-30';
+  fromDate: string = '2023-10-25';
+  toDate: string = '2023-11-10';
   dateRange: string[] = [];
   dataFromServer: any = [];
   line1: line[] = []
@@ -36,9 +39,7 @@ export class ChartAnalyticComponent implements OnInit {
   isChartVisible: boolean = false;
   selectedChartType: keyof ChartTypeRegistry = 'line';
 
-  constructor(private dataService: DataService) {
-    // this.updateDateRange(); // Вызываем функцию при инициализации компонента
-  }
+ 
 
   ngOnInit() {
     this.dataService.startPolling(null); // Опрашивать каждые 5 секунд (настройте интервал по вашему усмотрению)
@@ -180,7 +181,7 @@ console.log(" this.line1", this.line1)
     const day = date.getDate().toString().padStart(2, '0'); // Получаем день и добавляем ведущий ноль
     const month = (date.getMonth() + 1).toString().padStart(2, '0'); // Получаем месяц (начиная с 0) и добавляем ведущий ноль
     const year = date.getFullYear();
-    return `${day}-${month}-${year}`;
+    return `${year}-${month}-${day}`;
   }
 
 
@@ -202,6 +203,7 @@ console.log(" this.line1", this.line1)
 
       // Подсчитываем количество элементов после фильтрации
       const count = filteredData.filter((item) => item.datas === date).length;
+      console.log("date",date)
       dateCounts.push({ date, count });
     }
 
@@ -325,29 +327,6 @@ console.log(" this.line1", this.line1)
     this.updateTotal()
   }
 
-  //скрытие блоков
-  isBlockVisible: boolean = false;
-  isselectlineBlockVisible: boolean = false;
-  isSelectDataBlockVisible: boolean = false;
-  isStatCountBlockVisible: boolean = false;
-  isnewLineBlockVisible: boolean = false;
-  toggleBlockVisibility() {
-    this.isBlockVisible = !this.isBlockVisible;
-  }
-  toggleselectlineBlockVisibility() {
-    this.isselectlineBlockVisible = !this.isselectlineBlockVisible;
-  }
-  toggleSelectDataBlockVisibility() {
-    this.isSelectDataBlockVisible = !this.isSelectDataBlockVisible;
-  }
-
-  toggleStatCountBlockVisibility() {
-    this.isStatCountBlockVisible = !this.isStatCountBlockVisible;
-  }
-  togglenewLineBlockVisibility() {
-    this.isnewLineBlockVisible = !this.isnewLineBlockVisible;
-  }
-  
 
 
 

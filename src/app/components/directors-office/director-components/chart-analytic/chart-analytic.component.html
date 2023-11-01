@@ -1,0 +1,84 @@
+<div class="content">
+    <div class="settingsanalytic">
+        <div class="card flex justify-content-center">
+            <p-accordion [activeIndex]="0">
+                <p-accordionTab header="Header 1">
+                        <div class="ValueFromANDtoDate">
+                            <label for="fromDate">От:</label>
+                            <input type="date" id="fromDate" [(ngModel)]="fromDate" (ngModelChange)="onDateChange()">
+            
+                            <label for="toDate">до:</label>
+                            <input type="date" id="toDate" [(ngModel)]="toDate" (ngModelChange)="onDateChange()">
+                        </div>
+                </p-accordionTab>
+                <p-accordionTab header="Header 2">
+                        <div class="Valueselectline" >
+                            <select [(ngModel)]="selectedChartType" (change)="onChartTypeChange()">
+                                <option value="line">Линейный график</option>
+                                <option value="bar">Столбчатая диаграмма</option>
+                                <option value="radar">Радиолокационная карта</option>
+                                <option value="polarArea">Карта полярных областей</option>
+                                <option value="doughnut">круговые диаграммы</option>
+                                <!-- Добавьте другие типы графиков, если необходимо -->
+                            </select>
+                        </div>
+                </p-accordionTab>
+                <p-accordionTab header="Header 3">
+                        <div class="pair">
+                            <select [(ngModel)]="firs" name="firstSelect">
+                                <option [ngValue]="{ text: 'Все заявки', value: '' }" value=""></option>
+                                <option [ngValue]="{ text: 'Выполненные', value: 'выполнена' }" value="выполнена">Выполненные
+                                </option>
+                                <option [ngValue]="{ text: 'Закрытые', value: 'закрыта' }" value="закрыта">Закрытые</option>
+                            </select>
+                            <select [(ngModel)]="second" name="secondSelect">
+                                <option value="в">В</option>
+                                <option value="о">О</option>
+                                <option value="и">И</option>
+                            </select>
+                            <button (click)="addPair()">Создать пару</button>
+                        </div>
+                        <div *ngFor="let pair of pairs; let i = index" class="newselectvale">
+                            <p class="newselval">{{ pair.third }} -</p>
+                            <p class="newselval">{{ pair.second }}</p>
+                            <button (click)="removePair(i)" style="height: 20px;">x</button>
+                        </div>
+                </p-accordionTab>
+                <p-accordionTab header="Header 4">
+                        <div class="selectlinevalue">
+            
+                            <label>
+                                <input type="checkbox" [(ngModel)]="showLine1" (change)="updateChartVisibility('showLine1')"> Все
+                                заявки
+                            </label>
+            
+                            <label>
+                                <input type="checkbox" [(ngModel)]="showLine2" (change)="updateChartVisibility('showLine2')">
+                                выполненные
+                            </label>
+            
+                            <label>
+                                <input type="checkbox" [(ngModel)]="showLine3" (change)="updateChartVisibility('showLine3')">
+                                закрытые
+                            </label>
+                        </div>
+                </p-accordionTab>
+                <p-accordionTab header="Header 5">
+                        <div>
+                            <p>Всего заявок: {{countval }}</p>
+                            <p>кол-во выполненных {{ countval2 }}</p>
+                            <p>кол-во закрытых: {{ countval3 }}</p>
+            
+                            <div class="line"></div>
+                            <p>Сумма прибыли: {{pribl }}</p>
+                            <p>Сумма затрат на продажу: {{ saleZatrat }}</p>
+                            <p>Общая сумма продаж: {{ obfaiaSale }}</p>
+                        </div>
+                </p-accordionTab>
+            </p-accordion>
+        </div>
+    </div>
+    <div class="viewanalytic">
+        <canvas class="chartCanvas" #chartCanvas></canvas>
+    </div>
+</div>
