@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { WeeklyScheduleService } from './weekly-schedule.service';
 import { WorkingWithDates } from './dates';
+import { ModalService } from '../modal.service';
 
 @Component({
   selector: 'app-weekly-schedule',
@@ -13,8 +14,9 @@ export class WeeklyScheduleComponent implements OnInit {
   displayedData: any = [];
   daysOfWeek: string[] = [];
   datesSplit: {day: string, month: string, year: string}[] = [];
+  someValue:string = ''
 
-  constructor(private weeklyScheduleService: WeeklyScheduleService,private workingWithDates:WorkingWithDates) { }
+  constructor(private weeklyScheduleService: WeeklyScheduleService,private workingWithDates:WorkingWithDates,public modalService: ModalService) { }
 
   ngOnInit(): void {
     this.daysOfWeek.splice(0, this.daysOfWeek.length);
@@ -82,5 +84,11 @@ export class WeeklyScheduleComponent implements OnInit {
 
       this.filterDataByDate(formattedDate,formattedDate2)
     }
+  }
+
+
+  viewItem(id:string){
+    this.someValue = id;
+    this.modalService.showDialog = true;
   }
 }
