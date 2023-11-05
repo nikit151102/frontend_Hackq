@@ -36,7 +36,9 @@ th {
     justify-items: center;
 }
 
-
+.p-overlay {
+  top: -150px !important;
+}
 
 .horizontal-pagination {
     display: flex;
