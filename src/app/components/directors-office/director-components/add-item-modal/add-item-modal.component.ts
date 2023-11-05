@@ -1,79 +1,124 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ModalService } from '../modal.service';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ViewApplicationService } from './view-application.service';
+import { StatusApplication, StatusPayment } from './model-interface';
+import { MenuItem } from 'primeng/api';
 
 @Component({
   selector: 'app-add-item-modal',
   templateUrl: './add-item-modal.component.html',
   styleUrls: ['./add-item-modal.component.css']
 })
-export class AddItemModalComponent {
+export class AddItemModalComponent implements OnInit {
 
   @Input() parameter: string = '';
+  form: FormGroup;
+  activeIndex: number = 0;
 
- // Поля для ввода данных
- statusPayment: string = "";
- statusRequest: string = "";
- employee: string = "";
- issued: string = "";
- company: string = "";
- address: string = "";
- content: string = "";
- phone: string = "";
- costs: string = "";
- paymentAmount: string = "";
- profit: string = "";
+  isRecordAdded: boolean = false;
+  dataStatusApplication: StatusApplication[] | undefined = [];
+  dataStatusPayment: StatusPayment[] | undefined = [];
+  dataApplication: any = [];
 
- isRecordAdded: boolean = false;
+  constructor(public modalService: ModalService, private fb: FormBuilder, private viewApplicationService: ViewApplicationService) {
+    this.form = this.fb.group({
+      company: ['', Validators.required],
+      address: ['', Validators.required],
+      content: ['', Validators.required],
+      phone: ['', Validators.required],
+      employee: [''],
+      statusRequest: [''],
+      issued: [''],
+      statusPayment: [''],
+      costs: [''],
+      profit: [{ value: '', disabled: true }],
+      paymentAmount: [''],
+      comments: [''],
+      positions: this.fb.array([])
+    });
+  }
 
- constructor(public modalService: ModalService) { }
-
-
-closeModal() {
-  this.modalService.showDialog = false
-  this.statusPayment = "";
-  this.statusRequest = "";
-  this.employee = "";
-  this.issued = "";
-  this.company = "";
-  this.address= "";
-  this.content = "";
-  this.phone= "";
-  this.costs= "";
-  this.paymentAmount = "";
-  this.profit = "";
-}
-
- submitItem() {
-  const data = {
-    name: "изменение",
-    SToplata: this.statusPayment,
-    STzaiavki: this.statusRequest,
-    employee: this.employee,
-    vipiska: this.issued,
-    company: this.company,
-    adres: this.address,
-    opisanie: this.content,
-    nomer: this.phone,
-    sale_zatrat: Number(this.costs) ,
-    obfaia_sale: Number(this.paymentAmount) ,
-  };
-  this.RecordAdded()
- 
-  this.modalService.sendDataToServer(data).subscribe((response) => {
-    console.log('Ответ сервера:', response);
+  get positions() {
+    return (this.form.get('positions') as FormArray);
+  }
   
-  });
+  addPosition() {
+    const positions = this.form.get('positions') as FormArray;
+    positions.push(this.createPosition());
+  }
   
- }
- RecordAdded(){
-  this.isRecordAdded = true;
-  setTimeout(() => {
-    console.log("isRecordAdded")
-    this.isRecordAdded = false;
-      this.modalService.showDialog = false
-   
-  }, 2000); // Скрываем сообщение через 3 секунды
+  removePosition(index: number) {
+    const positions = this.form.get('positions') as FormArray;
+    positions.removeAt(index);
+  }
   
- }
+  createPosition(): FormGroup {
+    return this.fb.group({
+      position: [{ value: '', disabled: true }],
+      quantity: [{ value: '', disabled: true }],
+    });
+  }
+  enableFields(index: number) {
+    const positions = this.form.get('positions') as FormArray;
+    const positionGroup = positions.at(index) as FormGroup;
+  
+    positionGroup.get('position')?.enable();
+    positionGroup.get('quantity')?.enable();
+  }
+  itemsMenuPositions: MenuItem[] | undefined;
 
+  ngOnInit(): void {
+    this.itemsMenuPositions = [
+      {
+          label: 'Дабать услугу',
+          command: () => {
+            this.addPosition();
+        }
+      },
+      {
+        label: 'Дабать товар',
+        command: () => {
+          this.addPosition();
+      }
+    },
+    ]
+    console.log("parameter", this.parameter)
+    this.viewApplicationService.getApplication(this.parameter).subscribe(
+      (response) => {
+        this.dataApplication = response;
+        console.log("this.dataApplication", this.dataApplication)
+      }
+    );
+
+    this.viewApplicationService.getStatusApplication().subscribe(
+      (response: StatusApplication[]) => {
+        this.dataStatusApplication = response;
+      }
+    );
+
+    this.viewApplicationService.getStatusPayment().subscribe(
+      (response: StatusPayment[]) => {
+        this.dataStatusPayment = response;
+      }
+    );
+  }
+
+  closeModal() {
+    this.modalService.showDialog = false;
+  }
+
+  submitItem() {
+    // Обработка отправки формы
+    this.RecordAdded()
+  }
+
+  RecordAdded() {
+    this.isRecordAdded = true;
+    setTimeout(() => {
+      console.log("isRecordAdded")
+      this.isRecordAdded = false;
+      this.modalService.showDialog = false;
+    }, 2000);
+  }
 }

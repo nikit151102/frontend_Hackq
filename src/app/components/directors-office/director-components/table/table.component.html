@@ -1,27 +1,28 @@
-
 <div class="card">
     <div class="mb-3">
-        <p-button type="button" icon="pi pi-chevron-left" (click)="prev()" [disabled]="isFirstPage()" styleClass="p-button-text"></p-button>
+        <p-button type="button" icon="pi pi-chevron-left" (click)="prev()" [disabled]="isFirstPage()"
+            styleClass="p-button-text"></p-button>
         <p-button type="button" icon="pi pi-refresh" (click)="reset()" styleClass="p-button-text"></p-button>
-        <p-button type="button" icon="pi pi-chevron-right" (click)="next()" [disabled]="isLastPage()" styleClass="p-button-text"></p-button>
+        <p-button type="button" icon="pi pi-chevron-right" (click)="next()" [disabled]="isLastPage()"
+            styleClass="p-button-text"></p-button>
     </div>
     <p-table [value]="transformedData" dataKey="id_application" [tableStyle]="{ 'min-width': '60rem' }"
-        [paginator]="true"
-        [rows]="3"
-        [showCurrentPageReport]="true"
-        [tableStyle]="{ 'min-width': '50rem' }"
+        [paginator]="true" [rows]="3" [showCurrentPageReport]="true" [tableStyle]="{ 'min-width': '50rem' }"
         currentPageReportTemplate="Отображение с {first} по {last} из  {totalRecords} записей"
-        (onPage)="pageChange($event)"
-        [rowsPerPageOptions]="[3, 25, 50]">
+        (onPage)="pageChange($event)" [rowsPerPageOptions]="[3, 25, 50]">
         <ng-template pTemplate="header">
             <tr>
                 <th style="width: 5rem"></th>
                 <th></th>
-                <th pSortableColumn="id_application" style="display: none;">ID заявки <p-sortIcon field="id_application"></p-sortIcon></th>
-                <th pSortableColumn="number_application">Номер заявки <p-sortIcon field="number_application"></p-sortIcon></th>
-                <th pSortableColumn="payment_content">Статус оплаты <p-sortIcon field="payment_content"></p-sortIcon></th>
+                <th pSortableColumn="id_application" style="display: none;">ID заявки <p-sortIcon
+                        field="id_application"></p-sortIcon></th>
+                <th pSortableColumn="number_application">Номер заявки <p-sortIcon
+                        field="number_application"></p-sortIcon></th>
+                <th pSortableColumn="payment_content">Статус оплаты <p-sortIcon field="payment_content"></p-sortIcon>
+                </th>
                 <th pSortableColumn="status_content">Статус заявки <p-sortIcon field="status_content"></p-sortIcon></th>
-                <th pSortableColumn="employee_fullname">Сотрудник <p-sortIcon field="employee_fullname"></p-sortIcon></th>
+                <th pSortableColumn="employee_fullname">Сотрудник <p-sortIcon field="employee_fullname"></p-sortIcon>
+                </th>
                 <th pSortableColumn="discharged">Выписано/Не выписано <p-sortIcon field="discharged"></p-sortIcon></th>
                 <th pSortableColumn="datas">Дата <p-sortIcon field="datas"></p-sortIcon></th>
                 <th pSortableColumn="revenue">Доход <p-sortIcon field="revenue"></p-sortIcon></th>
@@ -30,34 +31,41 @@
             </tr>
         </ng-template>
         <ng-template pTemplate="body" let-data let-expanded="expanded">
-            <tr >
+            <tr>
                 <td>
-                    <button type="button" pButton pRipple [pRowToggler]="data" class="p-button-text p-button-rounded p-button-plain"></button>
+                    <a [pRowToggler]="data">
+                        <svg width="60px" height="60px" viewBox="0 0 24 24" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M9.71069 18.2929C10.1012 18.6834 10.7344 18.6834 11.1249 18.2929L16.0123 13.4006C16.7927 12.6195 16.7924 11.3537 16.0117 10.5729L11.1213 5.68254C10.7308 5.29202 10.0976 5.29202 9.70708 5.68254C9.31655 6.07307 9.31655 6.70623 9.70708 7.09676L13.8927 11.2824C14.2833 11.6729 14.2833 12.3061 13.8927 12.6966L9.71069 16.8787C9.32016 17.2692 9.32016 17.9023 9.71069 18.2929Z"
+                                fill="#0F0F0F" />
+                        </svg>
+                    </a>
                 </td>
                 <td>
                     <div class="btnrow">
-                        <a (click)="handledeleteClick(data.id_application)"><svg width="30px" height="30px" viewBox="0 0 24 24" fill="none"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path d="M10 11V17" stroke="#000000" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round" />
-                            <path d="M14 11V17" stroke="#000000" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round" />
-                            <path d="M4 7H20" stroke="#000000" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round" />
-                            <path d="M6 7H12H18V18C18 19.6569 16.6569 21 15 21H9C7.34315 21 6 19.6569 6 18V7Z"
-                                stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                            <path d="M9 5C9 3.89543 9.89543 3 11 3H13C14.1046 3 15 3.89543 15 5V7H9V5Z"
-                                stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                        </svg></a>
-                    <a (click)="openModal()"><svg width="30px" height="30px" viewBox="0 0 24 24" fill="none"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M19 9L13 3M19 9H16.2C15.0799 9 14.5198 9 14.092 8.78201C13.7157 8.59027 13.4097 8.28431 13.218 7.90798C13 7.48016 13 6.9201 13 5.8V3M19 9V11M13 3H8.2C7.0799 3 6.51984 3 6.09202 3.21799C5.71569 3.40973 5.40973 3.71569 5.21799 4.09202C5 4.51984 5 5.07989 5 6.2V17.8C5 18.9201 5 19.4802 5.21799 19.908C5.40973 20.2843 5.71569 20.5903 6.09202 20.782C6.51984 21 7.07989 21 8.2 21H11M19.5 20.2361C18.9692 20.7111 18.2684 21 17.5 21C15.8431 21 14.5 19.6569 14.5 18C14.5 16.3431 15.8431 15 17.5 15C18.8062 15 19.9175 15.8348 20.3293 17M21 14.5V17.5H18"
-                                stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                            <path
-                                d="M13 3V7.4C13 7.96005 13 8.24008 13.109 8.45399C13.2049 8.64215 13.3578 8.79513 13.546 8.89101C13.7599 9 14.0399 9 14.6 9H19M13 3H8.2C7.0799 3 6.51984 3 6.09202 3.21799C5.71569 3.40973 5.40973 3.71569 5.21799 4.09202C5 4.51984 5 5.0799 5 6.2V17.8C5 18.9201 5 19.4802 5.21799 19.908C5.40973 20.2843 5.71569 20.5903 6.09202 20.782C6.51984 21 7.0799 21 8.2 21H10.5M13 3L19 9M19 9V11M21 14.5V17.5H18M19.5 20.2361C18.9692 20.7111 18.2684 21 17.5 21C15.8431 21 14.5 19.6569 14.5 18C14.5 16.3431 15.8431 15 17.5 15C18.8062 15 19.9175 15.8348 20.3293 17"
-                                stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                        </svg></a>
+                        <a (click)="handledeleteClick(data.id_application)"><svg width="30px" height="30px"
+                                viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M10 11V17" stroke="#000000" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path d="M14 11V17" stroke="#000000" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path d="M4 7H20" stroke="#000000" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path d="M6 7H12H18V18C18 19.6569 16.6569 21 15 21H9C7.34315 21 6 19.6569 6 18V7Z"
+                                    stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M9 5C9 3.89543 9.89543 3 11 3H13C14.1046 3 15 3.89543 15 5V7H9V5Z"
+                                    stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg></a>
+                        <a (click)="openModal()"><svg width="30px" height="30px" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M19 9L13 3M19 9H16.2C15.0799 9 14.5198 9 14.092 8.78201C13.7157 8.59027 13.4097 8.28431 13.218 7.90798C13 7.48016 13 6.9201 13 5.8V3M19 9V11M13 3H8.2C7.0799 3 6.51984 3 6.09202 3.21799C5.71569 3.40973 5.40973 3.71569 5.21799 4.09202C5 4.51984 5 5.07989 5 6.2V17.8C5 18.9201 5 19.4802 5.21799 19.908C5.40973 20.2843 5.71569 20.5903 6.09202 20.782C6.51984 21 7.07989 21 8.2 21H11M19.5 20.2361C18.9692 20.7111 18.2684 21 17.5 21C15.8431 21 14.5 19.6569 14.5 18C14.5 16.3431 15.8431 15 17.5 15C18.8062 15 19.9175 15.8348 20.3293 17M21 14.5V17.5H18"
+                                    stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                <path
+                                    d="M13 3V7.4C13 7.96005 13 8.24008 13.109 8.45399C13.2049 8.64215 13.3578 8.79513 13.546 8.89101C13.7599 9 14.0399 9 14.6 9H19M13 3H8.2C7.0799 3 6.51984 3 6.09202 3.21799C5.71569 3.40973 5.40973 3.71569 5.21799 4.09202C5 4.51984 5 5.0799 5 6.2V17.8C5 18.9201 5 19.4802 5.21799 19.908C5.40973 20.2843 5.71569 20.5903 6.09202 20.782C6.51984 21 7.0799 21 8.2 21H10.5M13 3L19 9M19 9V11M21 14.5V17.5H18M19.5 20.2361C18.9692 20.7111 18.2684 21 17.5 21C15.8431 21 14.5 19.6569 14.5 18C14.5 16.3431 15.8431 15 17.5 15C18.8062 15 19.9175 15.8348 20.3293 17"
+                                    stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg></a>
                     </div>
                 </td>
                 <td style="display: none;">{{data.id_application}}</td>
@@ -78,34 +86,34 @@
                     <div class="p-1">
                         <p-table [value]="data.child" dataKey="id_application">
                             <ng-template pTemplate="header">
-                                <tr>
-                                    <th>Компания</th>
-                                    <th>Адрес</th>
-                                    <th>Содержание</th>
-                                    <th>Комментарий</th>
-                                    <th>Клиент</th>
-                                    <th>Телефон клиента</th>
-                                    <th>Оценка</th>
-                                </tr>
-                            </ng-template>
-                            <ng-template pTemplate="body" let-child>
-                                <tr>
-                                    <td>{{child.name_company}}</td>
-                                    <td>{{child.street}}, {{child.house}}, {{child.office}}</td>
-                                    <td>{{child.content_application}}</td>
-                                    <td>{{child.comment_application}}</td>
-                                    <td>{{child.client_fullname}}</td>
-                                    <td>{{child.client_phone}}</td>
-                                    <td>{{child.estimation}}</td>
-                                </tr>
-                            </ng-template>
-                            
-                        </p-table>
-                    </div>
-                </td>
+            <tr>
+                <th>Компания</th>
+                <th>Адрес</th>
+                <th>Содержание</th>
+                <th>Комментарий</th>
+                <th>Клиент</th>
+                <th>Телефон клиента</th>
+                <th>Оценка</th>
             </tr>
         </ng-template>
+        <ng-template pTemplate="body" let-child>
+            <tr>
+                <td>{{child.name_company}}</td>
+                <td>{{child.street}}, {{child.house}}, {{child.office}}</td>
+                <td>{{child.content_application}}</td>
+                <td>{{child.comment_application}}</td>
+                <td>{{child.client_fullname}}</td>
+                <td>{{child.client_phone}}</td>
+                <td>{{child.estimation}}</td>
+            </tr>
+        </ng-template>
+
     </p-table>
+</div>
+</td>
+</tr>
+</ng-template>
+</p-table>
 </div>
 
 <p-toast></p-toast>

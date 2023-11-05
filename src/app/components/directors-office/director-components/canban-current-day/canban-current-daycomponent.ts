@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CanbanCurrentDayService } from './canban-current-day.service';
+import { ModalService } from '../modal.service';
 
 @Component({
   selector: 'app-weekly-schedule',
@@ -11,7 +12,7 @@ export class CanbanCurrentDayComponent implements OnInit {
 
   displayedData: any = [];
 
-  constructor(private canbanCurrentDayService: CanbanCurrentDayService) { }
+  constructor(private canbanCurrentDayService: CanbanCurrentDayService,public modalService: ModalService) { }
 
   ngOnInit(): void {
     this.filterDataByDate();
@@ -24,13 +25,13 @@ export class CanbanCurrentDayComponent implements OnInit {
       console.log("{{ typeof displayedData }}", typeof this.displayedData );
     });
   }
-  
-  modalOpen:boolean = false;
+ 
   someValue:string = ''
   viewEditItem(id:string){
     console.log("id",id);
     this.someValue = id;
-    this.modalOpen = true;
+    this.modalService.showDialog = true;
   }
 
 }
+
