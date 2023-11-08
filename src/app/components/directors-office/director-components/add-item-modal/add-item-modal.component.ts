@@ -88,6 +88,13 @@ export class AddItemModalComponent implements OnInit {
       (response) => {
         this.dataApplication = response;
         console.log("this.dataApplication", this.dataApplication)
+        this.form.patchValue({
+          company: this.dataApplication.name_company,
+          address: this.dataApplication.address,
+          content: this.dataApplication.content,
+          phone: this.dataApplication.client_phone,
+          // Заполняйте остальные поля аналогично
+        });
       }
     );
 
