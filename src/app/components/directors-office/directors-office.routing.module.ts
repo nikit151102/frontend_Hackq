@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DirectorsOfficeComponent } from './directors-office.component';
-
+import { 
+  AuthGuardService as AuthGuard 
+} from './auth-guard.service';
 
 const routes: Routes = [
-  { path: '', component: DirectorsOfficeComponent, children: [
+  { path: '', component: DirectorsOfficeComponent, canActivate: [AuthGuard] , children: [
     { path: '', redirectTo: 'home', pathMatch: 'full' }, 
     { path: 'home',  loadChildren: () => import('./director-components/home/home.module').then(m => m.HomeModule)   },
     { path: 'database',  loadChildren: () => import('./director-components/table/table.module').then(m => m.TablepageModule) },

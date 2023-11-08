@@ -35,6 +35,9 @@ export class AuthorizationComponent implements OnInit {
           console.log(data);
           if (data.success) {
             console.log(data.redirect)
+
+            localStorage.setItem('token', data.token);
+
             window.location.href = data.redirect;
           } else {
             this.errorMessage = data.message;

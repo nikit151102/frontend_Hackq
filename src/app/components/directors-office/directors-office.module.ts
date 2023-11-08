@@ -9,6 +9,12 @@ import { ChartModule } from 'primeng/chart';
 import { NgChartsModule } from 'ng2-charts';
 import { RouterModule } from '@angular/router';
 import { DirectorsOfficeComponent } from './directors-office.component';
+import { AuthGuardService } from './auth-guard.service';
+import { JwtHelperService, JwtModule } from '@auth0/angular-jwt';
+
+export function tokenGetter() {
+  return localStorage.getItem('token');
+}
 
 @NgModule({
   declarations: [
@@ -22,8 +28,13 @@ import { DirectorsOfficeComponent } from './directors-office.component';
     DirectorRoutingModule,
     ChartModule,
     NgChartsModule,
-     
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        allowedDomains: ['http://localhost:8000'], 
+      }
+    }),
   ],
-  providers: [ModalService],
+  providers: [ModalService,AuthGuardService,JwtHelperService],
 })
 export class DirectorsOfficeModule { }
