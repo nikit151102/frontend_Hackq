@@ -55,6 +55,10 @@
 	display: flex;
 	justify-content: center;
 }
+
+#sidebar .brand span {
+	margin-left: 15px;
+}
 #sidebar .side-menu {
 	width: 100%;
 	margin-top: 48px;
@@ -106,6 +110,11 @@
 	white-space: nowrap;
 	overflow-x: hidden;
 }
+
+#sidebar .side-menu li a span {
+	margin-left: 15px;
+}
+
 #sidebar .side-menu.top li.active a {
 	color: var(--blue);
 }
@@ -125,3 +134,4 @@
 	justify-content: center;
 }
 /* SIDEBAR */
+
