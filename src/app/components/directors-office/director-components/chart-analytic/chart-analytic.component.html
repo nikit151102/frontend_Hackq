@@ -9,49 +9,56 @@
             <div class="settingsanalytic">
                 <div class="card flex justify-content-center">
                     <p-accordion [activeIndex]="0">
-                        <p-accordionTab header="Header 1">
+                        <p-accordionTab header="диапазона">
                             <div class="ValueFromANDtoDate">
                                 <label for="fromDate">От:</label>
-                                <input type="date" id="fromDate" [(ngModel)]="fromDate"
-                                    (ngModelChange)="onDateChange()">
-
+                                <p-calendar id="fromDate" [(ngModel)]="fromDate"
+                                    (ngModelChange)="onDateChange()"></p-calendar>
                                 <label for="toDate">до:</label>
-                                <input type="date" id="toDate" [(ngModel)]="toDate" (ngModelChange)="onDateChange()">
+                                <p-calendar id="toDate" [(ngModel)]="toDate"
+                                    (ngModelChange)="onDateChange()"></p-calendar>
                             </div>
                         </p-accordionTab>
-                        <p-accordionTab header="Header 2">
+                        <p-accordionTab header="Тип графика">
                             <div class="Valueselectline">
-                                <select (change)="onChartTypeChange($event.target)">
-                                    <option value="line">Линейный график</option>
-                                    <option value="bar">Столбчатая диаграмма</option>
-                                    <option value="radar">Радиолокационная карта</option>
-                                    <option value="polarArea">Карта полярных областей</option>
-                                    <option value="doughnut">круговые диаграммы</option>
-                                </select>
+                                <p-dropdown [options]="typeLine" [(ngModel)]="selectedTypeLine" optionLabel="type"
+                                    placeholder="Выберите тип графиков" (onChange)="onChartTypeChange()"></p-dropdown>
                             </div>
                         </p-accordionTab>
-                        <p-accordionTab header="Header 3">
+                        <p-accordionTab header="Добавление новых графиков">
                             <div class="pair">
-                                <div class="form-group" class="card flex justify-content-left ">
+                                <div class="form-group" class="card flex flex-row justify-content-left align-items-center">
                                     <div class="flex flex-column gap-2">
                                         <label for="statusRequest">Статус заявки:</label>
-                                        <p-dropdown id="statusRequest" 
-                                            [options]="dataStatusApplication" optionLabel="status_application"
-                                            [style]="{'width':'170px'}" [(ngModel)]="status_application">
+                                        <p-dropdown id="statusRequest" [options]="dataStatusApplication"
+                                            optionLabel="status_application" [style]="{'width':'130px'}"
+                                            [(ngModel)]="status_application">
                                         </p-dropdown>
                                     </div>
-                                </div>  
+                                    <div class="flex flex-column gap-2">
+                                        <label for="valueinitials">Сотрудник:</label>
+                                        <p-dropdown id="valueinitials" [options]="Initials"
+                                            optionLabel="valueinitials" [style]="{'width':'100px'}"
+                                            [(ngModel)]="valueinitials">
+                                        </p-dropdown>
+                                    </div>
+                                    <a (click)="addPair()" style="margin-top: 30px; margin-left: 5px;"><svg width="35px" height="35px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+                                        <g id="SVGRepo_bgCarrier" stroke-width="0"/>
+                                        
+                                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+                                        
+                                        <g id="SVGRepo_iconCarrier"> <path d="M15 12L12 12M12 12L9 12M12 12L12 9M12 12L12 15" stroke="#000000" stroke-width="1.5" stroke-linecap="round"/> <path d="M7 3.33782C8.47087 2.48697 10.1786 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 10.1786 2.48697 8.47087 3.33782 7" stroke="#000000" stroke-width="1.5" stroke-linecap="round"/> </g>
+                                        
+                                        </svg></a>
+                                </div>
+
+                               
                                 
-                                <select [(ngModel)]="second" name="secondSelect">
-                                    <option value="в">В</option>
-                                    <option value="о">О</option>
-                                    <option value="и">И</option>
-                                </select>
-                                <button (click)="addPair()">Создать пару</button>
                             </div>
 
                         </p-accordionTab>
-                        <p-accordionTab header="Header 5">
+                        <p-accordionTab header="Статистика">
                             <div>
                                 <p>Всего заявок: {{countval }}</p>
                                 <p>кол-во выполненных {{ countval2 }}</p>

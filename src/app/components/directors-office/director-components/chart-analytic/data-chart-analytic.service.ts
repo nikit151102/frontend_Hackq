@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable  } from 'rxjs';
 import { StatusApplication, StatusPayment } from '../add-item-modal/model-interface';
+import { Initials } from './chart-anakytic.interface';
 @Injectable({
   providedIn: 'root'
 })
@@ -23,6 +24,11 @@ export class DataChartAnalyticService {
     const url = 'http://127.0.0.1:8000/director/viewApplication/getStatusPayment'; 
     return this.http.get<StatusPayment[]>(url);
   }
+  getInitials(): Observable<Initials[]> {
+    const url = 'http://127.0.0.1:8000/director/analytic/getInitialsAnalytic'; 
+    return this.http.get<Initials[]>(url);
+  }
+  
   
 }
 

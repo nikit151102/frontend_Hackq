@@ -1,11 +1,12 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
-import { Chart } from 'chart.js';
+import { Chart, ChartTypeRegistry } from 'chart.js';
 import { SetColor } from './color'
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { CreateChart } from './Class-chart';
 import { WorkingWithDates } from './dates-class';
 import { DataChartAnalyticService } from './data-chart-analytic.service';
 import { StatusApplication, StatusPayment } from '../add-item-modal/model-interface';
+import { Initials } from './chart-anakytic.interface';
 
 @Component({
   selector: 'app-chart-analytic',
@@ -35,25 +36,42 @@ export class ChartAnalyticComponent implements OnInit {
   pribl: number = 0;
   saleZatrat: number = 0;
   obfaiaSale: number = 0;
-  fromDate: string = '2023-10-25';
-  toDate: string = '2023-11-10';
+  fromDate: string = '';
+  toDate: string = '';
   line1: any[] = []
 
   dataStatusApplication: StatusApplication[] | undefined = [];
+  Initials:Initials[] | undefined = []
+  typeLine: any[] | undefined = []; 
+  selectedTypeLine:{type: string,code: keyof ChartTypeRegistry} = {type: '', code: 'line'}
 
   ngOnInit() {
     setTimeout(() => {
       this.dataChartAnalyticService.getStatusApplication().subscribe(
         (response: StatusApplication[]) => {
           this.dataStatusApplication = response;
+          console.log("this.dataStatusApplication",this.dataStatusApplication)
         }
       );
       this.isLoading = false;
+      this.typeLine = [
+        { type: 'Линейный график', code: 'line' },
+        { type: 'Столбчатая диаграмма', code: 'bar' },
+        { type: 'Радиолокационная карта', code: 'radar' },
+        { type: 'Карта полярных областей', code: 'polarArea' },
+        { type: 'Круговые диаграммы', code: 'doughnut' }
+    ];
+    this.dataChartAnalyticService.getInitials().subscribe(
+      (response: Initials[]) => {
+        this.Initials = response;
+        console.log("this.Initials",this.Initials)
+      }
+    );
       this.fetchData();
     }, 500);
 
   }
-
+  
   fetchData() {
     this.dataChartAnalyticService.sendDataToServer().subscribe((response) => {
       console.log("response",response)
@@ -126,25 +144,28 @@ export class ChartAnalyticComponent implements OnInit {
   }
 
 
-  onChartTypeChange(value: any) {
+  onChartTypeChange() {
     this.workingWithDates.updateDateRange(this.fromDate, this.toDate);
-    this.createdChart.setChartType(value.value)
+    let code = this.selectedTypeLine['code']
+    this.createdChart.setChartType(code)
     this.updateTotal()
     this.createChart()
+    console.log("selectedTypeLine",)
   }
 
 
   firs: { text: string, value: string } = { text: '', value: '' };;
-  second: string = '';
   itemColor: number = 0
-  status_application: {status_application:string} ={status_application: ''}
+  status_application: {status_application:string} ={status_application: ''};
+  valueinitials: {valueinitials:string} ={valueinitials: ''};
   addPair() {
     //first: this.firs.value, second: this.second, third: this.firs.text
     let backgroundColors = this.createdChart.createColor(this.chartCanvas.nativeElement.getContext('2d'), SetColor[this.itemColor].Color1, SetColor[this.itemColor].Color2)
       let borderColors = SetColor[this.itemColor].Color3;
-    if(this.second){
-      let DateCounts = this.createdChart.updateDateCounts(true,this.status_application.status_application,true,this.second)
-      this.createdChart.createChartData(this.status_application.status_application+'-'+this.second,backgroundColors, borderColors, 1, DateCounts);
+    if(this.valueinitials){
+      console.log("this.valueinitialsthis.valueinitials",this.valueinitials)
+      let DateCounts = this.createdChart.updateDateCounts(true,this.status_application.status_application,true,this.valueinitials.valueinitials)
+      this.createdChart.createChartData(this.status_application.status_application+'-'+this.valueinitials.valueinitials,backgroundColors, borderColors, 1, DateCounts);
       this.createChart()
       this.updateTotal()
     }else{
