@@ -70,6 +70,7 @@ export class ChartAnalyticComponent implements OnInit {
 
 
   onDateChange() {
+    this.createdChart.setLines([])
     this.createdChart.setdateRange(this.workingWithDates.updateDateRange(this.fromDate, this.toDate))
     console.log(this.createdChart.getdateRange())
     this.updateTotal();

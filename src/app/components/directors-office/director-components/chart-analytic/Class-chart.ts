@@ -14,6 +14,9 @@ export class CreateChart {
   getChartType(){
     return this.selectedChartType ;
   }
+  setLines(values: any) {
+    this.Lines =values
+  }
   getLines() {
     return this.Lines
   }
@@ -32,7 +35,6 @@ export class CreateChart {
   }
 
   createColor(ctx: any, rgb1: string, rgb2: string) {
-    //const ctx = this.chartCanvas.nativeElement.getContext('2d');
     const gradient = ctx.createLinearGradient(0, 0, 0, 400);
     gradient.addColorStop(0, rgb1);
     gradient.addColorStop(1, rgb2);
@@ -68,7 +70,6 @@ export class CreateChart {
 
     const lineArray: number[] = dateCounts.map(item => item.count);
 
-
     return lineArray;
   }
 }
@@ -83,8 +84,3 @@ interface lines {
   data: number[]
 }
 
-interface YourDataStructure {
-  datas: string;
-  status_zaiavki: string;
-  sotrudnik: string;
-}
