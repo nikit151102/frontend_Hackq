@@ -2,11 +2,18 @@ import { Component, OnInit } from '@angular/core';
 import { WeeklyScheduleService } from './weekly-schedule.service';
 import { WorkingWithDates } from './dates';
 import { ModalService } from '../modal.service';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 
 @Component({
   selector: 'app-weekly-schedule',
   templateUrl: './weekly-schedule.component.html',
-  styleUrls: ['./weekly-schedule.component.css']
+  styleUrls: ['./weekly-schedule.component.css'],
+  animations: [
+    trigger('customFadeIn', [
+      state('void', style({ opacity: 0 })), // Состояние компонента при его создании
+      transition(':enter', animate('500ms ease-out', style({ opacity: 1 }))) // Анимация при входе
+    ])
+  ]
 })
 
 export class WeeklyScheduleComponent implements OnInit {
@@ -15,17 +22,25 @@ export class WeeklyScheduleComponent implements OnInit {
   daysOfWeek: string[] = [];
   datesSplit: {day: string, month: string, year: string}[] = [];
   someValue:string = ''
+  isLoading: boolean = true;
 
   constructor(private weeklyScheduleService: WeeklyScheduleService,private workingWithDates:WorkingWithDates,public modalService: ModalService) { }
 
   ngOnInit(): void {
-    this.daysOfWeek.splice(0, this.daysOfWeek.length);
-    let currentWeek = this.workingWithDates.currentWeek()
-    this.filterDataByDate(this.workingWithDates.formatDate(currentWeek.monday), this.workingWithDates.formatDate(currentWeek.sunday))
-    this.daysOfWeek = this.workingWithDates.filterdaysOfWeek(currentWeek.monday);
-    console.log("this.daysOfWeek", this.daysOfWeek);
-    this.datesSplit = this.DatesSplit(this.daysOfWeek);
-    console.log("this.datesSplit", this.datesSplit);
+
+    setTimeout(() => {
+      this.isLoading = false;
+
+      this.daysOfWeek.splice(0, this.daysOfWeek.length);
+      let currentWeek = this.workingWithDates.currentWeek()
+      this.filterDataByDate(this.workingWithDates.formatDate(currentWeek.monday), this.workingWithDates.formatDate(currentWeek.sunday))
+      this.daysOfWeek = this.workingWithDates.filterdaysOfWeek(currentWeek.monday);
+      console.log("this.daysOfWeek", this.daysOfWeek);
+      this.datesSplit = this.DatesSplit(this.daysOfWeek);
+      console.log("this.datesSplit", this.datesSplit);
+    }, 500); 
+
+   
   }
 
   filterDataByDate(date1: string, date2: string): any {

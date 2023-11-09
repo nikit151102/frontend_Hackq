@@ -4,11 +4,18 @@ import { ModalService } from '../modal.service'
 import { DatePipe } from '@angular/common';
 import { MessageService } from 'primeng/api';
 import { DataItem, TransformedDataItem } from './table.interface';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
-  styleUrls: ['./table.component.css']
+  styleUrls: ['./table.component.css'],
+  animations: [
+    trigger('customFadeIn', [
+      state('void', style({ opacity: 0 })), // Состояние компонента при его создании
+      transition(':enter', animate('500ms ease-out', style({ opacity: 1 }))) // Анимация при входе
+    ])
+  ]
 })
 export class TableComponent implements OnInit {
 
@@ -19,7 +26,11 @@ export class TableComponent implements OnInit {
   pages: number[] = []; // Список страниц
 
   constructor(private dataService: DataService,public modalService: ModalService,private cdr: ChangeDetectorRef,private messageService: MessageService,private datePipe: DatePipe) { }
+  isLoading: boolean = true;
   ngOnInit() {
+    setTimeout(() => {
+      this.isLoading = false;
+    }, 500); 
     this.dataService.startPolling(null); // Опрашивать каждые 5 секунд (настройте интервал по вашему усмотрению)
     this.fetchData();
     this.dataService.sendDataToServer().subscribe((response) => {

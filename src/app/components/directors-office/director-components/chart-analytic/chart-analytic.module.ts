@@ -4,6 +4,7 @@ import { ChartAnalyticComponent } from './chart-analytic.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ChartAnalyticRoutingModule } from './chart-analytic.routing.module';
 import { AccordionModule } from 'primeng/accordion';
+import { DropdownModule } from 'primeng/dropdown';
 @NgModule({
   declarations: [
     ChartAnalyticComponent
@@ -13,7 +14,8 @@ import { AccordionModule } from 'primeng/accordion';
     ChartAnalyticRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    AccordionModule
+    AccordionModule,
+    DropdownModule
   ],
   exports: [
     ChartAnalyticComponent
