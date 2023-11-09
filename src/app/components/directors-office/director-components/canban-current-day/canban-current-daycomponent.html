@@ -4,9 +4,9 @@
             Новые заявки
         </div>
 
-            <div  class="newItem" *ngFor="let data of displayedData ">
+            <div   *ngFor="let data of displayedData ">
                 <div  *ngIf="(data.status_content == '' || data.status_content == null)  && (data.id_employee == '' || data.id_employee == null)  ">
-                    <div (click)="viewEditItem(data.id_application)">
+                    <div class="newItem" (click)="viewEditItem(data.id_application)">
                         
                         <p>№{{data.number_application}}</p>
                         <p>Компания: {{data.name_company}}</p>
@@ -23,7 +23,7 @@
         </div>
             <div *ngFor="let data of displayedData">
                 <div *ngIf="data.status_content == '' && data.id_employee != ''  ">
-                    <div (click)="viewEditItem(data.id_application)">
+                    <div class="newItem" (click)="viewEditItem(data.id_application)">
                         
                         <p>№{{data.number_application}}</p>
                         <p>Компания: {{data.name_company}}</p>
@@ -39,7 +39,7 @@
         </div>
             <div *ngFor="let data of displayedData">
                 <div *ngIf="data.status_content == 'Открыта'  ">
-                    <div (click)="viewEditItem(data.id_application)">
+                    <div class="newItem" (click)="viewEditItem(data.id_application)">
                         
                         <p>№{{data.number_application}}</p>
                         <p>Компания: {{data.name_company}}</p>
@@ -55,7 +55,7 @@
         </div>
             <div *ngFor="let data of displayedData">
                 <div *ngIf="data.status_content == 'Закрыта'  ">
-                    <div (click)="viewEditItem(data.id_application)">
+                    <div class="newItem" (click)="viewEditItem(data.id_application)">
                         
                         <p>№{{data.number_application}}</p>
                         <p>Компания: {{data.name_company}}</p>
