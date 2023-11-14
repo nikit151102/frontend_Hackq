@@ -4,6 +4,8 @@ import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ViewApplicationService } from './view-application.service';
 import { StatusApplication, StatusPayment } from './model-interface';
 import { MenuItem } from 'primeng/api';
+import { Initials } from '../chart-analytic/chart-anakytic.interface';
+import { DataChartAnalyticService } from '../chart-analytic/data-chart-analytic.service';
 
 @Component({
   selector: 'app-add-item-modal',
@@ -21,7 +23,11 @@ export class AddItemModalComponent implements OnInit {
   dataStatusPayment: StatusPayment[] | undefined = [];
   dataApplication: any = [];
 
-  constructor(public modalService: ModalService, private fb: FormBuilder, private viewApplicationService: ViewApplicationService) {
+
+  Initials:Initials[] | undefined = []
+  valueinitials: {valueinitials:string} ={valueinitials: ''};
+
+  constructor(public modalService: ModalService, private fb: FormBuilder,private dataChartAnalyticService: DataChartAnalyticService, private viewApplicationService: ViewApplicationService) {
     this.form = this.fb.group({
       company: ['', Validators.required],
       address: ['', Validators.required],
@@ -84,6 +90,12 @@ export class AddItemModalComponent implements OnInit {
     },
     ]
     console.log("parameter", this.parameter)
+    this.dataChartAnalyticService.getInitials().subscribe(
+      (response: Initials[]) => {
+        this.Initials = response;
+        console.log("this.Initials",this.Initials)
+      }
+    );
     this.viewApplicationService.getApplication(this.parameter).subscribe(
       (response) => {
         this.dataApplication = response;

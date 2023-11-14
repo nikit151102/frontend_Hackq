@@ -115,6 +115,10 @@
 	margin-left: 15px;
 }
 
+#sidebar .side-menu li a i{
+	margin-left: 7px;
+}
+
 #sidebar .side-menu.top li.active a {
 	color: var(--blue);
 }

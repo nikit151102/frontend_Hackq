@@ -43,12 +43,11 @@
                     <label for="issued">Выписано/Не выписано:</label>
                     <input pInputText id="issued" aria-describedby="issued-help" formControlName="issued" />
                   </div>
-                  <div class="form-group" class="card flex justify-content-center ">
-                    <div class="flex flex-column gap-2">
-                      <label for="employee">Сотрудник:</label>
-                      <p-dropdown id="employee" formControlName="employee" [options]="dataStatusApplication"
-                        optionLabel="status_application"></p-dropdown>
-                    </div>
+                  <div class="flex flex-column gap-2">
+                    <label for="valueinitials">Сотрудник:</label>
+                    <p-dropdown id="valueinitials" [options]="Initials" optionLabel="valueinitials"
+                      [style]="{'width':'100px'}" [(ngModel)]="valueinitials">
+                    </p-dropdown>
                   </div>
 
                 </div>
@@ -130,7 +129,7 @@
                       </div>
                       <div class="card flex justify-content-left">
                         <div class="flex flex-column gap-2">
-                            <label htmlFor="quantity{{i}}">Количество:</label>
+                          <label htmlFor="quantity{{i}}">Количество:</label>
                           <input pInputText id="quantity{{i}}" aria-describedby="quantity-help"
                             formControlName="quantity" style="width: 100px;" />
                         </div>
