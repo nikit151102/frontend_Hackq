@@ -11,6 +11,7 @@ import { RouterModule } from '@angular/router';
 import { DirectorsOfficeComponent } from './directors-office.component';
 import { AuthGuardService } from './auth-guard.service';
 import { JwtHelperService, JwtModule } from '@auth0/angular-jwt';
+import { AuthService } from './auth.service';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -35,6 +36,6 @@ export function tokenGetter() {
       }
     }),
   ],
-  providers: [ModalService,AuthGuardService,JwtHelperService],
+  providers: [ModalService,AuthGuardService,JwtHelperService,AuthService],
 })
 export class DirectorsOfficeModule { }

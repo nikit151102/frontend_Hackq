@@ -13,8 +13,10 @@ export class DirectorsOfficeComponent {
     this.route.params.subscribe(params => {
       const id = params['id'];
       console.log('ID:', id);
-      // Здесь можно делать что-то с полученным id
+      
+      
     });
+   
   }
   
 

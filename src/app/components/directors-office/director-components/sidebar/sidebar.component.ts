@@ -1,19 +1,23 @@
-import { Component, AfterViewInit, Renderer2, ElementRef, ViewChild } from '@angular/core';
+import { Component, AfterViewInit, Renderer2, ElementRef, ViewChild, OnInit} from '@angular/core';
+import { AuthService } from '../../auth.service';
 
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.css']
 })
-export class SidebarComponent implements AfterViewInit {
+export class SidebarComponent implements AfterViewInit, OnInit {
   @ViewChild('sidebar') sidebar!: ElementRef;
 
-  constructor(private renderer: Renderer2) { }
+  constructor(private renderer: Renderer2, public authService: AuthService) { }
+  ngOnInit(): void {
+    
+  }
 
   ngAfterViewInit(): void {
     this.setupSidebar();
-
   }
+
   setupSidebar() {
     const allSideMenu = this.sidebar.nativeElement.querySelectorAll('.side-menu.top li a');
 
@@ -31,6 +35,6 @@ export class SidebarComponent implements AfterViewInit {
         this.renderer.addClass(li, 'active');
       });
     });
-
   }
+
 }

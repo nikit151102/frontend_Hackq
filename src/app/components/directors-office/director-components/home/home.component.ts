@@ -18,11 +18,13 @@ export class HomeComponentdirector implements OnInit {
   constructor() { }
 
   isLoading: boolean = true;
+  activeTab:string =''
 
   ngOnInit(): void {
     setTimeout(() => {
       this.isLoading = false;
     }, 500); 
+  
   }
-
+  
 }
