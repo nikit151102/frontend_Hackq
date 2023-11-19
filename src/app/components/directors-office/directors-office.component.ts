@@ -28,10 +28,10 @@ export class DirectorsOfficeComponent {
 
   if (this.isSidebarHidden) {
     sidebar.classList.add('hide');
-    this.togglecontent(60); // Передаем ширину 60
+    this.togglecontent(290); // Передаем ширину 60
   } else {
     sidebar.classList.remove('hide');
-    this.togglecontent(280); // Передаем ширину 280
+    this.togglecontent(60); // Передаем ширину 280
   }
   }
   

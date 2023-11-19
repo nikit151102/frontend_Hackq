@@ -27,10 +27,7 @@ export class SidebarComponent implements AfterViewInit, OnInit {
       this.renderer.listen(item, 'click', () => {
         allSideMenu.forEach((i: HTMLElement) => {
           this.renderer.removeClass(i.parentElement, 'active');
-          if (this.sidebar.nativeElement.classList.contains('hide')) {
-            console.log('Класс myClass присутствует в элементе.');
-            this.renderer.removeClass(this.sidebar.nativeElement, 'hide');
-          }
+          
         });
         this.renderer.addClass(li, 'active');
       });

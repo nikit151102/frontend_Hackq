@@ -14,13 +14,14 @@
 	--orange: #FD7238;
 	--light-orange: #FFE0D3;
 }
-/* SIDEBAR */
+
+
 /* SIDEBAR */
 #sidebar {
 	position: fixed;
 	top: 0;
 	left: 0;
-	width: 290px;
+	width: 60px;
 	height: 100%;
 	background: var(--light);
 	z-index: 2000;
@@ -33,7 +34,7 @@
 	display: none;
 }
 #sidebar.hide {
-	width: 60px;
+	width: 290px;
 }
 #sidebar .brand {
 	font-size: 24px;
@@ -99,7 +100,7 @@
 	z-index: -1;
 }
 #sidebar .side-menu li a {
-	width: 100%;
+	width: calc(48px - (4px * 2));
 	height: 100%;
 	background: var(--light);
 	display: flex;
@@ -123,7 +124,7 @@
 	color: var(--blue);
 }
 #sidebar.hide .side-menu li a {
-	width: calc(48px - (4px * 2));
+	width: 100%;
 	transition: width .3s ease;
 }
 #sidebar .side-menu li a.logout {
