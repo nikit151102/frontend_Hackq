@@ -8,7 +8,7 @@ import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
-
+import { RatingModule } from 'primeng/rating';
 @NgModule({
   declarations: [
     TableComponent
@@ -21,6 +21,7 @@ import { MessageService } from 'primeng/api';
     TableModule,
     ButtonModule,
     ToastModule,
+    RatingModule
   ],
   providers: [DatePipe,MessageService]
 })
