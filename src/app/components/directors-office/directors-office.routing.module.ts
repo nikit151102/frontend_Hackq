@@ -13,7 +13,7 @@ const routes: Routes = [
     { path: 'KanbanCurrentDay',  loadChildren: () => import('./director-components/canban-current-day/canban-current-day.module').then(m => m.CanbanCurrentDayModule) },
     { path: 'kanbanboard',  loadChildren: () => import('./director-components/weekly-schedule/weekly-schedule.module').then(m => m.WeeklyScheduleModule) },
     { path: 'analytic', loadChildren: () => import('./director-components/chart-analytic/chart-analytic.module').then(m => m.ChartAnalyticModule) },
-
+    { path: 'settings', loadChildren: () => import('./director-components/settings/settings.module').then(m => m.SettingsModule) },
     
   ] },
 ];
