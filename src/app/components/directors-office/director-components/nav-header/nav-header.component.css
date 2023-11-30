@@ -208,7 +208,7 @@ nav li:hover>.submenu {
   .topmenu {
     display: flex;
   }
-  .submenu > li:not(:nth-last-child(-n+2)) {
+  .user-profile > li:not(:nth-last-child(-n+2)) {
     display: none;
   }
 }
