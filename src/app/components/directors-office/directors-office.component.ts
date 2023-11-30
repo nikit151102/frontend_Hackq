@@ -31,7 +31,11 @@ export class DirectorsOfficeComponent {
     this.togglecontent(290); // Передаем ширину 60
   } else {
     sidebar.classList.remove('hide');
-    this.togglecontent(60); // Передаем ширину 280
+    if (window.innerWidth < 1024) {
+      this.togglecontent(0); // Передаем ширину 280
+    }else{
+      this.togglecontent(60); // Передаем ширину 280
+    }
   }
   }
   
