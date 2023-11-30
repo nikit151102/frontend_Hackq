@@ -4,7 +4,7 @@
         <div class="card_profile_img">
             <img src="../../../../../../../assets//images//profile_picture.png" alt="Картинка 1">
         </div>
-        <div class="user_details">
+        <div class="user_details" *ngIf="CurrentUser">
             <h3>{{CurrentUser.fullname}}</h3>
             <p>{{CurrentUser.post}}</p>
         </div>
