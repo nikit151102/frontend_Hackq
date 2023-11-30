@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { login } from '../../connect-interface';
 import { ConnectService } from '../../connect.service';
+import { HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-authorization',
@@ -36,7 +37,7 @@ export class AuthorizationComponent implements OnInit {
             console.log(data.redirect)
 
             localStorage.setItem('token', data.token);
-
+            new HttpHeaders().set('Authorization', `Bearer ${data.token}`);
             window.location.href = data.redirect;
           } else {
             this.errorMessage = data.message;
