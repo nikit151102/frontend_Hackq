@@ -44,14 +44,14 @@
                 </div>
             </p-fieldset>
             <p-fieldset legend="Сброс пароля" [toggleable]="true" [collapsed]="true">
-                <form [formGroup]="userForm">
+                <form [formGroup]="resetPasswordForm">
                     <div>
                         <label for="firstName">новый пароль:</label>
-                        <input type="text" id="firstName" pInputText formControlName="firstName" />
+                        <input type="text" id="firstName" pInputText formControlName="newPassword" />
                     </div>
                     <div>
                         <label for="lastName">Подтвердите пароль:</label>
-                        <input type="text" id="lastName" pInputText formControlName="lastName" />
+                        <input type="text" id="lastName" pInputText formControlName="ConfirmNewPassword" />
                     </div>
                 </form>
                 <div class="btns">

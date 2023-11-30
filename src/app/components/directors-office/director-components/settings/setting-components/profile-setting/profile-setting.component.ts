@@ -10,15 +10,15 @@ import { SettingsService } from './settings.service';
 export class ProfileSettingComponent {
   CurrentUser: any;
   userForm!: FormGroup;
-
-  constructor(private fb: FormBuilder,private settingsService:SettingsService) { }
+  resetPasswordForm!: FormGroup;
+  constructor(private fb: FormBuilder, private settingsService: SettingsService) { }
 
   ngOnInit(): void {
     this.settingsService.getDataCurrentUser().subscribe(
       response => {
         console.log('CurrentUser', response);
         this.CurrentUser = response;
-  
+
         this.userForm.patchValue({
           firstName: this.CurrentUser.fullname.split(' ')[1],
           lastName: this.CurrentUser.fullname.split(' ')[0],
@@ -31,7 +31,7 @@ export class ProfileSettingComponent {
         console.error('Error:', error);
       }
     );
-  
+
     this.userForm = this.fb.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
@@ -39,8 +39,14 @@ export class ProfileSettingComponent {
       phoneNumber: ['', [Validators.required, Validators.pattern(/^\+?[0-9]*$/)]],
       email: ['', [Validators.required, Validators.email]],
     });
+
+    this.resetPasswordForm = this.fb.group({
+      newPassword: ['', [Validators.required, Validators.minLength(8)]],
+      ConfirmNewPassword: ['', [Validators.required, Validators.minLength(8)]],
+    });
+    
   }
-  
+
 
   onSubmit() {
     if (this.userForm.valid) {
