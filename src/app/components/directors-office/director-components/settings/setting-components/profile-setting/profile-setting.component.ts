@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SettingsService } from './settings.service';
+import { FileUpload } from 'primeng/fileupload';
 
 @Component({
   selector: 'app-profile-setting',
@@ -44,13 +45,26 @@ export class ProfileSettingComponent {
       newPassword: ['', [Validators.required, Validators.minLength(8)]],
       ConfirmNewPassword: ['', [Validators.required, Validators.minLength(8)]],
     });
-    
+
   }
 
 
   onSubmit() {
     if (this.userForm.valid) {
       console.log('Form submitted:', this.userForm.value);
+    }
+  }
+
+
+  uploadedFiles: any[] = [];
+
+  onUpload(event: any) {
+    if (event instanceof FileUpload) {
+      if (event.files) {
+        for (let file of event.files) {
+          this.uploadedFiles.push(file);
+        }
+      }
     }
   }
 }

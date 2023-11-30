@@ -9,6 +9,7 @@ import { ButtonModule } from 'primeng/button';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
 import { FieldsetModule } from 'primeng/fieldset';
+import { FileUploadModule } from 'primeng/fileupload';
 @NgModule({
   declarations: [
     SettingsComponent,
@@ -23,7 +24,8 @@ import { FieldsetModule } from 'primeng/fieldset';
     FormsModule,
     ReactiveFormsModule,
     InputTextModule,
-    FieldsetModule
+    FieldsetModule,
+    FileUploadModule
   ],
 })
 export class SettingsModule { }

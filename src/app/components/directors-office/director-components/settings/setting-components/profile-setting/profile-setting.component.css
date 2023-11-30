@@ -140,8 +140,29 @@ flex-wrap: wrap;
 
 
 
-
-
+.p-fileupload-choose {
+    font-size: 16px;
+  }
+  @media screen and (max-width: 914px) {
+    :host ::ng-deep .p-fileupload-filename{
+        display: none !important;
+      }
+  }
+ 
+  @media screen and (max-width: 768px) {
+    .p-fileupload-choose {
+      font-size: 14px; 
+    }
+    
+  }
+  @media screen and (max-width: 469px) {
+    :host ::ng-deep  .ng-star-inserted {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+    
+  }
+  
 @media (max-width: 767.98px) {
     .container{
         flex-direction: column;
