@@ -29,7 +29,6 @@ export class AuthorizationComponent implements OnInit {
         UserLogin: this.connectForm.value.UserLogin,
         UserPassword: this.connectForm.value.UserPassword,
       };
-
       this.connectService.sendlogin(formData).subscribe(
         (data: any) => {
           console.log(data);

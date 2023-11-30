@@ -1,1 +1,63 @@
-<p>profile-setting works!</p>
+<div class="container">
+    <div class="card">
+        <div class="card_background_img"></div>
+        <div class="card_profile_img">
+            <img src="../../../../../../../assets//images//profile_picture.png" alt="Картинка 1">
+        </div>
+        <div class="user_details">
+            <h3>Фамилия имя</h3>
+            <p>должность</p>
+        </div>
+    </div>
+    <div class="information">
+        <div class="information-item">
+            <p-fieldset legend="Информация пользователя" class="User-Information" [toggleable]="true"
+                [collapsed]="true">
+                <form [formGroup]="userForm">
+                    <div class="userform">
+                        <div>
+                            <label for="firstName">Имя:</label>
+                            <input type="text" id="firstName" pInputText formControlName="firstName" />
+                        </div>
+                        <div>
+                            <label for="lastName">Фамилия:</label>
+                            <input type="text" id="lastName" pInputText formControlName="lastName" />
+                        </div>
+                        <div>
+                            <label for="middleName">Отчество:</label>
+                            <input type="text" id="middleName" pInputText formControlName="middleName" />
+                        </div>
+                    </div>
+                    <div class="userform">
+                        <div>
+                            <label for="phoneNumber">Номер телефона:</label>
+                            <input type="tel" id="phoneNumber" pInputText formControlName="phoneNumber" />
+                        </div>
+                        <div>
+                            <label for="email">Email:</label>
+                            <input type="email" id="email" pInputText formControlName="email" />
+                        </div>
+                    </div>
+                </form>
+                <div class="btns">
+                    <p-button label="Изменить"></p-button>
+                </div>
+            </p-fieldset>
+            <p-fieldset legend="Сброс пароля" [toggleable]="true" [collapsed]="true">
+                <form [formGroup]="userForm">
+                    <div>
+                        <label for="firstName">новый пароль:</label>
+                        <input type="text" id="firstName" pInputText formControlName="firstName" />
+                    </div>
+                    <div>
+                        <label for="lastName">Подтвердите пароль:</label>
+                        <input type="text" id="lastName" pInputText formControlName="lastName" />
+                    </div>
+                </form>
+                <div class="btns">
+                    <p-button label="Изменить"></p-button>
+                </div>
+            </p-fieldset>
+        </div>
+    </div>
+</div>
