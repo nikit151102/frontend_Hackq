@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SettingsService } from './settings.service';
 import { FileUpload } from 'primeng/fileupload';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-profile-setting',
@@ -38,12 +39,28 @@ export class ProfileSettingComponent {
       email: ['', [Validators.required, Validators.email]],
     });
     this.userForm.disable();
+
     this.resetPasswordForm = this.fb.group({
       newPassword: ['', [Validators.required, Validators.minLength(8)]],
       ConfirmNewPassword: ['', [Validators.required, Validators.minLength(8)]],
-    });
+    }, { validator: this.passwordMatchValidator });
 
+    this.resetPasswordForm.get('ConfirmNewPassword')?.valueChanges.subscribe(() => {
+      setTimeout(() => {
+        this.resetPasswordForm.get('ConfirmNewPassword')?.updateValueAndValidity();
+      });
+    });
   }
+
+  passwordMatchValidator(group: FormGroup): { [key: string]: boolean } | null {
+    const newPassword = group.get('newPassword')?.value;
+    const confirmPassword = group.get('ConfirmNewPassword')?.value;
+    if (confirmPassword && confirmPassword.length < 8) {
+      return { 'passwordLength': true };
+    }
+    return newPassword === confirmPassword ? null : { 'passwordMismatch': true };
+  }
+
 
   setCurrentUserData(CurrentUser: any) {
     this.userForm.patchValue({

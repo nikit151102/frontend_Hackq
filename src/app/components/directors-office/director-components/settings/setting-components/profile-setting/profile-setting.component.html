@@ -16,13 +16,13 @@
                 <form [formGroup]="userForm">
                     <div class="userform">
                         <div>
-                            <label for="lastName">Фамилия:</label>
-                            <input type="text" id="lastName" pInputText formControlName="lastName"
+                            <label for="userlastName">Фамилия:</label>
+                            <input type="text" id="userlastName" pInputText formControlName="lastName"
                                 [attr.disabled]="isEditMode ? null : true" />
                         </div>
                         <div>
-                            <label for="firstName">Имя:</label>
-                            <input type="text" id="firstName" pInputText formControlName="firstName"
+                            <label for="userFirstName">Имя:</label>
+                            <input type="text" id="userFirstName" pInputText formControlName="firstName"
                                 [attr.disabled]="isEditMode ? null : true" />
                         </div>
                         <div>
@@ -39,11 +39,12 @@
                         </div>
                         <div>
                             <label for="email">Email:</label>
-                            <input type="email" id="email" pInputText formControlName="email"
+                            <input type="email" id="userEmail" pInputText formControlName="email"
                                 [attr.disabled]="isEditMode ? null : true" />
                         </div>
                     </div>
                 </form>
+
                 <div class="btns">
                     <ng-container *ngIf="!isEditMode">
                         <p-button label="Изменить" (onClick)="toggleEditMode()"></p-button>
@@ -58,17 +59,24 @@
             <p-fieldset legend="Сброс пароля" [toggleable]="true" [collapsed]="true">
                 <form [formGroup]="resetPasswordForm">
                     <div>
-                        <label for="firstName">новый пароль:</label>
-                        <input type="text" id="firstName" pInputText formControlName="newPassword" />
+                      <label for="newPassword">новый пароль:</label>
+                      <input type="password" id="newPassword" pInputText formControlName="newPassword" />
                     </div>
                     <div>
-                        <label for="lastName">Подтвердите пароль:</label>
-                        <input type="text" id="lastName" pInputText formControlName="ConfirmNewPassword" />
+                      <label for="ConfirmNewPassword">Подтвердите пароль:</label>
+                      <input type="password" id="ConfirmNewPassword" pInputText formControlName="ConfirmNewPassword" />
+                      <div *ngIf="resetPasswordForm.hasError('passwordMismatch')">
+                        Пароли не совпадают.
+                      </div>
+                      <div *ngIf="resetPasswordForm.hasError('passwordLength')">
+                        Пароль должен содержать не менее 8 символов.
+                      </div>
                     </div>
-                </form>
+                  </form>                  
                 <div class="btns">
                     <p-button label="Изменить"></p-button>
                 </div>
+
             </p-fieldset>
             <p-fieldset legend="изменение фотографии" [toggleable]="true" [collapsed]="true">
 
