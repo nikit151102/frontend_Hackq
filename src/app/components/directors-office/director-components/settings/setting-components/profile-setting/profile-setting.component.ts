@@ -9,9 +9,12 @@ import { FileUpload } from 'primeng/fileupload';
   styleUrls: ['./profile-setting.component.css']
 })
 export class ProfileSettingComponent {
+
   CurrentUser: any;
   userForm!: FormGroup;
   resetPasswordForm!: FormGroup;
+  isEditMode: boolean = false;
+
   constructor(private fb: FormBuilder, private settingsService: SettingsService) { }
 
   ngOnInit(): void {
@@ -19,14 +22,8 @@ export class ProfileSettingComponent {
       response => {
         console.log('CurrentUser', response);
         this.CurrentUser = response;
+        this.setCurrentUserData(this.CurrentUser);
 
-        this.userForm.patchValue({
-          firstName: this.CurrentUser.fullname.split(' ')[1],
-          lastName: this.CurrentUser.fullname.split(' ')[0],
-          middleName: this.CurrentUser.fullname.split(' ')[2] || '',
-          phoneNumber: this.CurrentUser.phone,
-          email: this.CurrentUser.email
-        });
       },
       error => {
         console.error('Error:', error);
@@ -40,7 +37,7 @@ export class ProfileSettingComponent {
       phoneNumber: ['', [Validators.required, Validators.pattern(/^\+?[0-9]*$/)]],
       email: ['', [Validators.required, Validators.email]],
     });
-
+    this.userForm.disable();
     this.resetPasswordForm = this.fb.group({
       newPassword: ['', [Validators.required, Validators.minLength(8)]],
       ConfirmNewPassword: ['', [Validators.required, Validators.minLength(8)]],
@@ -48,13 +45,30 @@ export class ProfileSettingComponent {
 
   }
 
-
-  onSubmit() {
-    if (this.userForm.valid) {
-      console.log('Form submitted:', this.userForm.value);
-    }
+  setCurrentUserData(CurrentUser: any) {
+    this.userForm.patchValue({
+      firstName: CurrentUser.fullname.split(' ')[1],
+      lastName: CurrentUser.fullname.split(' ')[0],
+      middleName: CurrentUser.fullname.split(' ')[2] || '',
+      phoneNumber: CurrentUser.phone,
+      email: CurrentUser.email
+    });
   }
 
+  resetUserForm() {
+    console.log("resetUserForm")
+    this.setCurrentUserData(this.CurrentUser);
+    this.toggleEditMode();
+  }
+
+  toggleEditMode() {
+    this.isEditMode = !this.isEditMode;
+    if (this.isEditMode) {
+      this.userForm.enable();
+    } else {
+      this.userForm.disable();
+    }
+  }
 
   uploadedFiles: any[] = [];
 
