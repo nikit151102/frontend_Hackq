@@ -68,6 +68,17 @@
     text-align: center;
 }
 
+.user_view{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;  
+    gap: 5px;
+    margin-top: 10px;
+    padding-bottom: 10px;
+}
+
+
+
 @media screen and (max-width: 543px) {
 .card{
     display: flex;
@@ -86,5 +97,17 @@
     width: 70px;
     height: 70px;
 }
-
+.user_view{
+    flex-direction: column;
 }
+}
+
+
+
+
+
+
+
+
+
+

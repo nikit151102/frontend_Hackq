@@ -154,7 +154,6 @@ flex-wrap: wrap;
     .p-fileupload-choose {
       font-size: 14px; 
     }
-    
   }
   @media screen and (max-width: 469px) {
     :host ::ng-deep  .ng-star-inserted {

@@ -13,10 +13,16 @@ export class StaffUserComponent {
     middlename: string,
     position: string,
   } = {
-    id: '',
+      id: '',
       lastname: '',
       firstname: '',
       middlename: '',
       position: '',
     };
+  showdetails: boolean = false;
+  
+  clickdcard(){
+    this.showdetails = !this.showdetails
+  }
+
 }
