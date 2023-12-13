@@ -10,11 +10,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
 import { FieldsetModule } from 'primeng/fieldset';
 import { FileUploadModule } from 'primeng/fileupload';
+import { StaffUserComponent } from './setting-components/staff/staff_user/staff-user.component';
+
 @NgModule({
   declarations: [
     SettingsComponent,
     ProfileSettingComponent,
-    StaffComponent
+    StaffComponent,
+    StaffUserComponent
   ],
   imports: [
     CommonModule,
