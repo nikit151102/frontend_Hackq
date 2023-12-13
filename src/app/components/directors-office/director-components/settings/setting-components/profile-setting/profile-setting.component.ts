@@ -64,11 +64,11 @@ export class ProfileSettingComponent {
 
   setCurrentUserData(CurrentUser: any) {
     this.userForm.patchValue({
-      firstName: CurrentUser.fullname.split(' ')[1],
-      lastName: CurrentUser.fullname.split(' ')[0],
-      middleName: CurrentUser.fullname.split(' ')[2] || '',
-      phoneNumber: CurrentUser.phone,
-      email: CurrentUser.email
+      firstName: CurrentUser.FirstName,
+      lastName: CurrentUser.LastName,
+      middleName: CurrentUser.MiddleName || '',
+      phoneNumber: CurrentUser.Phone,
+      email: CurrentUser.Email
     });
   }
 

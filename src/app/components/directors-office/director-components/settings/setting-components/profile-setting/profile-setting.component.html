@@ -5,7 +5,7 @@
             <img src="../../../../../../../assets//images//profile_picture.png" alt="Картинка 1">
         </div>
         <div class="user_details" *ngIf="CurrentUser">
-            <h3>{{CurrentUser.fullname}}</h3>
+            <h3>{{CurrentUser.LastName}} {{CurrentUser.FirstName}} {{CurrentUser.MiddleName}}</h3>
             <p>{{CurrentUser.post}}</p>
         </div>
     </div>
