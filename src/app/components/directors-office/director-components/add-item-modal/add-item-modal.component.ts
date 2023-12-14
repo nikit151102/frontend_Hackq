@@ -24,23 +24,29 @@ export class AddItemModalComponent implements OnInit {
   dataApplication: any = [];
 
 
-  Initials:Initials[] | undefined = []
-  valueinitials: {valueinitials:string} ={valueinitials: ''};
+  Initials: Initials[] | undefined = []
+  valueinitials: { valueinitials: string } = { valueinitials: '' };
 
-  constructor(public modalService: ModalService, private fb: FormBuilder,private dataChartAnalyticService: DataChartAnalyticService, private viewApplicationService: ViewApplicationService) {
+  constructor(public modalService: ModalService, private fb: FormBuilder, private dataChartAnalyticService: DataChartAnalyticService, private viewApplicationService: ViewApplicationService) {
     this.form = this.fb.group({
       company: ['', Validators.required],
-      address: ['', Validators.required],
+      street: ['', Validators.required],
+      house: ['', Validators.required],
+      office: [''],
       content: ['', Validators.required],
+      comment: ['', Validators.required],
+      clientlastname: ['', Validators.required],
+      clientfirstname: ['', Validators.required],
+      clientmiddlename: [''],
       phone: ['', Validators.required],
       employee: [''],
       statusRequest: [''],
-      issued: [''],
+      discharged: [''],
       statusPayment: [''],
-      costs: [''],
+      expenses: [''],
+      revenue: [''],
       profit: [{ value: '', disabled: true }],
       paymentAmount: [''],
-      comments: [''],
       positions: this.fb.array([])
     });
   }
@@ -48,17 +54,17 @@ export class AddItemModalComponent implements OnInit {
   get positions() {
     return (this.form.get('positions') as FormArray);
   }
-  
+
   addPosition() {
     const positions = this.form.get('positions') as FormArray;
     positions.push(this.createPosition());
   }
-  
+
   removePosition(index: number) {
     const positions = this.form.get('positions') as FormArray;
     positions.removeAt(index);
   }
-  
+
   createPosition(): FormGroup {
     return this.fb.group({
       position: [{ value: '', disabled: true }],
@@ -68,7 +74,7 @@ export class AddItemModalComponent implements OnInit {
   enableFields(index: number) {
     const positions = this.form.get('positions') as FormArray;
     const positionGroup = positions.at(index) as FormGroup;
-  
+
     positionGroup.get('position')?.enable();
     positionGroup.get('quantity')?.enable();
   }
@@ -77,35 +83,45 @@ export class AddItemModalComponent implements OnInit {
   ngOnInit(): void {
     this.itemsMenuPositions = [
       {
-          label: 'Дабать услугу',
-          command: () => {
-            this.addPosition();
+        label: 'Дабать услугу',
+        command: () => {
+          this.addPosition();
         }
       },
       {
         label: 'Дабать товар',
         command: () => {
           this.addPosition();
-      }
-    },
+        }
+      },
     ]
     console.log("parameter", this.parameter)
     this.dataChartAnalyticService.getInitials().subscribe(
       (response: Initials[]) => {
         this.Initials = response;
-        console.log("this.Initials",this.Initials)
+        console.log("this.Initials", this.Initials)
       }
     );
     this.viewApplicationService.getApplication(this.parameter).subscribe(
       (response) => {
         this.dataApplication = response;
-        console.log("this.dataApplication", this.dataApplication)
+        console.log("this.response", response)
         this.form.patchValue({
-          company: this.dataApplication.name_company,
-          address: this.dataApplication.address,
-          content: this.dataApplication.content,
-          phone: this.dataApplication.client_phone,
-          // Заполняйте остальные поля аналогично
+          company: this.dataApplication.namecompany,
+          street: this.dataApplication.street,
+          house: this.dataApplication.house,
+          office: this.dataApplication.office,
+          discharged: this.dataApplication.discharged,
+          content: this.dataApplication.reason,
+          comment: this.dataApplication.comment,
+          phone: this.dataApplication.clientphone,
+          clientlastname: this.dataApplication.clientlastname,
+          clientfirstname: this.dataApplication.clientfirstname,
+          clientmiddlename: this.dataApplication.clientmiddlename,
+          expenses: this.dataApplication.expenses,
+          revenue: this.dataApplication.revenue,
+          profit: this.dataApplication.profit,
+
         });
       }
     );

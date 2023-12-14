@@ -24,7 +24,8 @@ export class TableComponent implements OnInit {
   rowsPerPage: number = 10; // Количество строк на странице
   currentPage: number = 1; // Текущая страница
   pages: number[] = []; // Список страниц
-
+  someValue: string = ''
+  
   constructor(private dataService: DataService,public modalService: ModalService,private cdr: ChangeDetectorRef,private messageService: MessageService,private datePipe: DatePipe) { }
   isLoading: boolean = true;
   ngOnInit() {
@@ -149,8 +150,9 @@ handledeleteClick(rowId: string) {
 }
 
 
-openModal() {
+openModal(id: string) {
   this.modalService.showDialog = true;
+  this.someValue = id;
 }
 
 }

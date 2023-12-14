@@ -10,7 +10,7 @@
         </svg>
       </a>
     </div>
-    <h2>№{{dataApplication.number_application}}</h2>
+    <h2>№{{dataApplication.requestnumber}}</h2>
     <form [formGroup]="form">
       <p-tabView [(activeIndex)]="activeIndex">
 
@@ -29,9 +29,19 @@
               <div style="display: flex; gap: 10px;">
                 <div id="input" class="card flex justify-content-center">
                   <div class="flex flex-column gap-2">
-                    <label htmlFor="address">Адрес:</label>
-                    <input pInputText id="address" aria-describedby="address-help" formControlName="address"
-                      style="width: 350px;" />
+                    <label htmlFor="street">Улица:</label>
+                    <input pInputText id="street" aria-describedby="street-help" formControlName="street"
+                      style="width: 200px;" />
+                  </div>
+                  <div class="flex flex-column gap-2">
+                    <label htmlFor="house">Дом:</label>
+                    <input pInputText id="house" aria-describedby="house-help" formControlName="house"
+                      style="width: 75px;" />
+                  </div>
+                  <div class="flex flex-column gap-2">
+                    <label htmlFor="office">офис:</label>
+                    <input pInputText id="office" aria-describedby="office-help" formControlName="office"
+                      style="width: 75px;" />
                   </div>
                 </div>
               </div>
@@ -40,8 +50,8 @@
 
                 <div style="display: flex;  gap: 10px;">
                   <div class="flex flex-column gap-2">
-                    <label for="issued">Выписано/Не выписано:</label>
-                    <input pInputText id="issued" aria-describedby="issued-help" formControlName="issued" />
+                    <label for="discharged">Выписано/Не выписано:</label>
+                    <input pInputText id="discharged" aria-describedby="discharged-help" formControlName="discharged" />
                   </div>
                   <div class="flex flex-column gap-2">
                     <label for="valueinitials">Сотрудник:</label>
@@ -84,9 +94,9 @@
               </div>
               <div id="input" class="card flex justify-content-center">
                 <div class="flex flex-column gap-2">
-                  <label htmlFor="comments">Комментарий:</label>
-                  <textarea rows="5" cols="30" pInputTextarea [autoResize]="true" id="comments"
-                    formControlName="comments" style="width: 400px;"></textarea>
+                  <label htmlFor="comment">Комментарий:</label>
+                  <textarea rows="5" cols="30" pInputTextarea [autoResize]="true" id="comment"
+                    formControlName="comment" style="width: 400px;"></textarea>
                 </div>
               </div>
             </div>
@@ -97,14 +107,26 @@
         <p-tabPanel header="Данные о клиенте">
           <div class="card flex justify-content-center">
             <div class="flex flex-row gap-2">
-              <label htmlFor="phone">Фио клиента:</label>
-              <input pInputText id="phone" aria-describedby="phone-help" formControlName="phone" />
+              <label htmlFor="clientlastname">Фамилия:</label>
+              <input pInputText id="clientlastname"  formControlName="clientlastname" />
+            </div>
+          </div>
+          <div class="card flex justify-content-center">
+            <div class="flex flex-row gap-2">
+              <label htmlFor="clientfirstname">Имя:</label>
+              <input pInputText id="clientfirstname"  formControlName="clientfirstname" />
+            </div>
+          </div>
+          <div class="card flex justify-content-center">
+            <div class="flex flex-row gap-2">
+              <label htmlFor="clientmiddlename">Отчество:</label>
+              <input pInputText id="clientmiddlename" formControlName="clientmiddlename" />
             </div>
           </div>
           <div class="card flex justify-content-center">
             <div class="flex flex-row gap-2">
               <label htmlFor="phone">Телефон:</label>
-              <input pInputText id="phone" aria-describedby="phone-help" formControlName="phone" />
+              <input pInputText id="phone" formControlName="phone" />
             </div>
           </div>
         </p-tabPanel>
@@ -172,16 +194,16 @@
               </div>
               <div class="card flex justify-content-center">
                 <div class="flex flex-column gap-2">
-                  <label for="costs">Затраты:</label>
-                  <input pInputText id="costs" aria-describedby="costs-help" formControlName="costs"
+                  <label for="expenses">Затраты:</label>
+                  <input pInputText id="expenses" aria-describedby="expenses-help" formControlName="expenses"
                     style="width: 150px;" />
                 </div>
               </div>
               <div class="card flex justify-content-center">
                 <div class="flex flex-column gap-2">
-                  <label for="paymentAmount">Сумма оплаты:</label>
-                  <input pInputText id="paymentAmount" aria-describedby="paymentAmount-help"
-                    formControlName="paymentAmount" style="width: 150px;" />
+                  <label for="revenue">Сумма оплаты:</label>
+                  <input pInputText id="revenue" aria-describedby="revenue-help"
+                    formControlName="revenue" style="width: 150px;" />
                 </div>
               </div>
 
