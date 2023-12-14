@@ -4,7 +4,7 @@
 <ng-template #content>
     <div [@customFadeIn]>
         <div class="card">
-            <p-table [value]="transformedData" dataKey="id_application" [tableStyle]="{ 'min-width': '60rem' }"
+            <p-table [value]="transformedData" dataKey="id" [tableStyle]="{ 'min-width': '60rem' }"
                 [paginator]="true" [rows]="3" [showCurrentPageReport]="true" [tableStyle]="{ 'min-width': '50rem' }"
                 currentPageReportTemplate="Отображение с {first} по {last} из  {totalRecords} записей"
                 (onPage)="pageChange($event)" [rowsPerPageOptions]="[3, 25, 50]">
@@ -12,21 +12,21 @@
                     <tr>
                         <th style="width: 5rem"></th>
                         <th></th>
-                        <th pSortableColumn="id_application" style="display: none;">ID заявки <p-sortIcon
-                                field="id_application"></p-sortIcon></th>
-                        <th pSortableColumn="number_application">Номер заявки <p-sortIcon
-                                field="number_application"></p-sortIcon></th>
-                        <th pSortableColumn="payment_content">Статус оплаты <p-sortIcon
-                                field="payment_content"></p-sortIcon>
+                        <th pSortableColumn="id" style="display: none;">ID заявки <p-sortIcon
+                                field="id"></p-sortIcon></th>
+                        <th pSortableColumn="requestnumber" style="width: 100px;">Номер заявки <p-sortIcon
+                                field="requestnumber"></p-sortIcon></th>
+                        <th pSortableColumn="statuspayment">Статус оплаты <p-sortIcon
+                                field="statuspayment"></p-sortIcon>
                         </th>
-                        <th pSortableColumn="status_content">Статус заявки <p-sortIcon
-                                field="status_content"></p-sortIcon></th>
-                        <th pSortableColumn="employee_fullname">Сотрудник <p-sortIcon
-                                field="employee_fullname"></p-sortIcon>
+                        <th pSortableColumn="statusrequest" style="width: 125px;">Статус заявки <p-sortIcon
+                                field="statusrequest"></p-sortIcon></th>
+                        <th pSortableColumn="employeelastname">Сотрудник <p-sortIcon
+                                field="employeelastname"></p-sortIcon>
                         </th>
-                        <th pSortableColumn="discharged">Выписано/Не выписано <p-sortIcon
+                        <th pSortableColumn="discharged" style="width: 150px;">Выписано/Не выписано <p-sortIcon
                                 field="discharged"></p-sortIcon></th>
-                        <th pSortableColumn="datas">Дата <p-sortIcon field="datas"></p-sortIcon></th>
+                        <th pSortableColumn="submissiondate">Дата <p-sortIcon field="submissiondate"></p-sortIcon></th>
                         <th pSortableColumn="revenue">Доход <p-sortIcon field="revenue"></p-sortIcon></th>
                         <th pSortableColumn="expenses">Затраты <p-sortIcon field="expenses"></p-sortIcon></th>
                         <th pSortableColumn="profit">Прибыль <p-sortIcon field="profit"></p-sortIcon></th>
@@ -75,13 +75,13 @@
                                     </svg></a>
                             </div>
                         </td>
-                        <td style="display: none;">{{data.id_application}}</td>
-                        <td>{{data.number_application}}</td>
-                        <td>{{data.payment_content}}</td>
-                        <td>{{data.status_content}}</td>
-                        <td>{{data.employee_fullname}}</td>
+                        <td style="display: none;">{{data.id}}</td>
+                        <td>{{data.requestnumber}}</td>
+                        <td>{{data.statuspayment}}</td>
+                        <td>{{data.statusrequest}}</td>
+                        <td>{{data.employeelastname}} {{data.employeefirstname}} {{data.employeemiddlename}}</td>
                         <td>{{data.discharged}}</td>
-                        <td>{{data.datas}}</td>
+                        <td>{{data.submissiondate}}</td>
                         <td>{{data.revenue}}</td>
                         <td>{{data.expenses}}</td>
                         <td>{{data.profit}}</td>
@@ -91,7 +91,7 @@
                     <tr>
                         <td colspan="12">
                             <div class="p-1">
-                                <p-table [value]="data.child" dataKey="id_application">
+                                <p-table [value]="data.child" dataKey="id">
                                     <ng-template pTemplate="header">
                     <tr>
                         <th>Компания</th>
@@ -99,18 +99,18 @@
                         <th>Содержание</th>
                         <th>Комментарий</th>
                         <th>Клиент</th>
-                        <th>Телефон клиента</th>
+                        <th style="width: 100px;">Телефон клиента</th>
                         <th>Оценка</th>
                     </tr>
                 </ng-template>
                 <ng-template pTemplate="body" let-child>
                     <tr>
-                        <td>{{child.name_company}}</td>
+                        <td>{{child.namecompany}}</td>
                         <td>{{child.street}}, {{child.house}}, {{child.office}}</td>
-                        <td>{{child.content_application}}</td>
-                        <td>{{child.comment_application}}</td>
-                        <td>{{child.client_fullname}}</td>
-                        <td>{{child.client_phone}}</td>
+                        <td>{{child.reason}}</td>
+                        <td>{{child.comment}}</td>
+                        <td>{{child.clientlastname}} {{child.clientfirstname}} {{child.clientmiddlename}}</td>
+                        <td>{{child.clientphone}}</td>
                         <td> <p-rating [(ngModel)]="child.estimation" [readonly]="true" [cancel]="false"></p-rating>
                         </td>
                     </tr>

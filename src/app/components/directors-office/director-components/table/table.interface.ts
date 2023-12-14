@@ -1,47 +1,56 @@
 export interface DataItem {
-    id_application: string;
-    number_application: string;
-    discharged: null | string;
-    content_application: string;
-    comment_application: string;
-    datas: string;
-    estimation: null | number;
-    expenses: null | number;
-    revenue: null | number;
-    profit: null | number;
-    payment_content: null | string;
-    status_content: null | string;
-    employee_fullname: null | string;
-    client_fullname: string;
-    client_phone: string;
-    name_company: string;
+    id: string;
+    requestnumber: string;
+    statusrequest: string;
+    statuspayment: string;
+    discharged: string;
+    reason: string;
+    comment: string;
+    submissiondate: string;
+    completiondate: string;
+    estimation: number,
+    revenue: number,
+    expenses: number,
+    profit: number,
+    employeelastname: string;
+    employeefirstname: string;
+    employeemiddlename: string;
+    clientlastname: string;
+    clientfirstname: string;
+    clientmiddlename: string;
+    clientphone: string;
     street: string;
-    house: number | null;
-    office: number | null;
+    house: string;
+    office: string;
+    namecompany: string;
 }
 
 export interface DataItemChild {
-    content_application: string;
-    comment_application: string;
+    reason: string;
+    comment: string;
     estimation: null | number;
-    client_fullname: string;
-    client_phone: string;
-    name_company: string;
+    clientlastname: string;
+    clientfirstname: string;
+    clientmiddlename: string;
+    clientphone: string;
     street: string;
-    house: number | null;
-    office: number | null;
+    house: string;
+    office: string;
+    namecompany: string;
 }
 
 export interface TransformedDataItem {
-    id_application: string;
-    number_application: string;
+    id: string;
+    requestnumber: string;
     discharged: null | string;
-    datas: string | null;
-    expenses: null | number;
+    submissiondate: string | null;
     revenue: null | number;
+    expenses: null | number;
     profit: null | number;
-    payment_content: null | string;
-    status_content: null | string;
-    employee_fullname: null | string;
+    statuspayment: null | string;
+    statusrequest: null | string;
+    employeelastname: string;
+    employeefirstname: string;
+    employeemiddlename: string;
     child: DataItemChild[];
 }
