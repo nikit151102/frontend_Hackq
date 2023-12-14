@@ -3,6 +3,8 @@ import { WeeklyScheduleService } from './weekly-schedule.service';
 import { WorkingWithDates } from './dates';
 import { ModalService } from '../modal.service';
 import { animate, state, style, transition, trigger } from '@angular/animations';
+import { map } from 'rxjs/operators';
+import { ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'app-weekly-schedule',
@@ -24,32 +26,38 @@ export class WeeklyScheduleComponent implements OnInit {
   someValue:string = ''
   isLoading: boolean = true;
 
-  constructor(private weeklyScheduleService: WeeklyScheduleService,private workingWithDates:WorkingWithDates,public modalService: ModalService) { }
+  constructor(private weeklyScheduleService: WeeklyScheduleService,private workingWithDates:WorkingWithDates,private cdRef: ChangeDetectorRef,public modalService: ModalService) { }
 
   ngOnInit(): void {
-
-    setTimeout(() => {
-      this.isLoading = false;
-
-      this.daysOfWeek.splice(0, this.daysOfWeek.length);
-      let currentWeek = this.workingWithDates.currentWeek()
-      this.filterDataByDate(this.workingWithDates.formatDate(currentWeek.monday), this.workingWithDates.formatDate(currentWeek.sunday))
-      this.daysOfWeek = this.workingWithDates.filterdaysOfWeek(currentWeek.monday);
-      console.log("this.daysOfWeek", this.daysOfWeek);
-      this.datesSplit = this.DatesSplit(this.daysOfWeek);
-      console.log("this.datesSplit", this.datesSplit);
-    }, 500); 
-
-   
+    this.daysOfWeek.splice(0, this.daysOfWeek.length);
+    const currentWeek = this.workingWithDates.currentWeek();
+  
+    this.filterDataByDate(this.workingWithDates.formatDate(currentWeek.monday), this.workingWithDates.formatDate(currentWeek.sunday))
+      .subscribe((response: any) => {
+        this.displayedData = response;
+        console.log('displayedData:', this.displayedData);
+  
+        this.daysOfWeek = this.workingWithDates.filterdaysOfWeek(currentWeek.monday);
+        console.log("this.daysOfWeek", this.daysOfWeek);
+        this.datesSplit = this.DatesSplit(this.daysOfWeek);
+        console.log("this.datesSplit", this.datesSplit);
+  
+        this.isLoading = false;
+        this.cdRef.detectChanges(); // Manually trigger change detection
+      });
   }
-
+  
+  
   filterDataByDate(date1: string, date2: string): any {
-    this.weeklyScheduleService.sendDataToServer({ "startdate": date1, "enddate": date2 }).subscribe((response) => {
-      console.log('Ответ сервера response:', response);
-      this.displayedData = response
-      return response
-    });
+    return this.weeklyScheduleService.sendDataToServer({ "startdate": date1, "enddate": date2 })
+      .pipe(
+        map(response => {
+          console.log('Ответ сервера displayedData:', response);
+          return response;
+        })
+      );
   }
+  
 
   DatesSplit(dates: string[]) {
     let spltDates: {day: string, month: string, year: string}[] = [];
@@ -102,8 +110,5 @@ export class WeeklyScheduleComponent implements OnInit {
   }
 
 
-  viewItem(id:string){
-    this.someValue = id;
-    this.modalService.showDialog = true;
-  }
+ 
 }
