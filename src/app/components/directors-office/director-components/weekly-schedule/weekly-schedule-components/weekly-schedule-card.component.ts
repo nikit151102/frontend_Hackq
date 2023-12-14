@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ModalService } from '../../modal.service';
 
 @Component({
@@ -7,7 +7,7 @@ import { ModalService } from '../../modal.service';
   styleUrls: ['./weekly-schedule-card.component.css'],
 })
 
-export class WeeklySchedulCardComponent implements OnInit {
+export class WeeklySchedulCardComponent {
 
   constructor(public modalService: ModalService){}
 
@@ -63,9 +63,6 @@ export class WeeklySchedulCardComponent implements OnInit {
       "namecompany": ""
     }
 
-  ngOnInit(): void {
-    throw new Error('Method not implemented.');
-  }
 
   viewItem(id:string){
     this.modalService.someValue = id;
