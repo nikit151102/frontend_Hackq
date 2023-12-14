@@ -5,13 +5,13 @@
         </div>
 
             <div   *ngFor="let data of displayedData ">
-                <div  *ngIf="(data.status_content == '' || data.status_content == null)  && (data.id_employee == '' || data.id_employee == null)  ">
-                    <div class="newItem" (click)="viewEditItem(data.id_application)">
+                <div  *ngIf="(data.statusrequest == '' || data.statusrequest == null)  && (data.id_employee == '' || data.id_employee == null)  ">
+                    <div class="newItem" (click)="viewEditItem(data.id)">
                         
-                        <p>№{{data.number_application}}</p>
-                        <p>Компания: {{data.name_company}}</p>
+                        <p>№{{data.RequestNumber}}</p>
+                        <p>Компания: {{data.namecompany}}</p>
                         <p>Адрес: {{data.street}},{{data.house}},{{data.office}}</p>
-                        <p>Причина обращения: {{data.content_application}}</p>
+                        <p>Причина обращения: {{data.reason}}</p>
                     </div>
                 </div>
             </div>
@@ -22,13 +22,13 @@
             В работе заявки
         </div>
             <div *ngFor="let data of displayedData">
-                <div *ngIf="data.status_content == '' && data.id_employee != ''  ">
-                    <div class="newItem" (click)="viewEditItem(data.id_application)">
+                <div *ngIf="data.statusrequest == '' && data.EmployeeId != ''  ">
+                    <div class="newItem" (click)="viewEditItem(data.id)">
                         
-                        <p>№{{data.number_application}}</p>
-                        <p>Компания: {{data.name_company}}</p>
+                        <p>№{{data.requestnumber}}</p>
+                        <p>Компания: {{data.namecompany}}</p>
                         <p>Адрес: {{data.street}},{{data.house}},{{data.office}}</p>
-                        <p>Причина обращения: {{data.content_application}}</p>
+                        <p>Причина обращения: {{data.reason}}</p>
                     </div>
                 </div>
             </div>
@@ -38,13 +38,13 @@
             Завершенные заявки
         </div>
             <div *ngFor="let data of displayedData">
-                <div *ngIf="data.status_content == 'Открыта'  ">
-                    <div class="newItem" (click)="viewEditItem(data.id_application)">
+                <div *ngIf="data.statusrequest == 'Открыта'  ">
+                    <div class="newItem" (click)="viewEditItem(data.id)">
                         
-                        <p>№{{data.number_application}}</p>
-                        <p>Компания: {{data.name_company}}</p>
+                        <p>№{{data.requestnumber}}</p>
+                        <p>Компания: {{data.namecompany}}</p>
                         <p>Адрес: {{data.street}},{{data.house}},{{data.office}}</p>
-                        <p>Причина обращения: {{data.content_application}}</p>
+                        <p>Причина обращения: {{data.reason}}</p>
                     </div>
                 </div>
         </div>
@@ -54,13 +54,13 @@
             Закрытые заявки
         </div>
             <div *ngFor="let data of displayedData">
-                <div *ngIf="data.status_content == 'Закрыта'  ">
-                    <div class="newItem" (click)="viewEditItem(data.id_application)">
+                <div *ngIf="data.statusrequest == 'Закрыта'  ">
+                    <div class="newItem" (click)="viewEditItem(data.id)">
                         
-                        <p>№{{data.number_application}}</p>
-                        <p>Компания: {{data.name_company}}</p>
+                        <p>№{{data.requestnumber}}</p>
+                        <p>Компания: {{data.namecompany}}</p>
                         <p>Адрес: {{data.street}},{{data.house}},{{data.office}}</p>
-                        <p>Причина обращения: {{data.content_application}}</p>
+                        <p>Причина обращения: {{data.reason}}</p>
                     </div>
                 </div>
         </div>
