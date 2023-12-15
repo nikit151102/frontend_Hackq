@@ -12,7 +12,7 @@
     </div>
     <h2>№{{dataApplication.requestnumber}}</h2>
     <form [formGroup]="form">
-      <p-tabView [(activeIndex)]="activeIndex">
+      <p-tabView [(activeIndex)]="activeIndex" [scrollable]="true">
 
         <p-tabPanel header="Данные о заявке">
           <div class="tabpanel1">
@@ -95,8 +95,8 @@
               <div id="input" class="card flex justify-content-center">
                 <div class="flex flex-column gap-2">
                   <label htmlFor="comment">Комментарий:</label>
-                  <textarea rows="5" cols="30" pInputTextarea [autoResize]="true" id="comment"
-                    formControlName="comment" style="width: 400px;"></textarea>
+                  <textarea rows="5" cols="30" pInputTextarea [autoResize]="true" id="comment" formControlName="comment"
+                    style="width: 400px;"></textarea>
                 </div>
               </div>
             </div>
@@ -108,13 +108,13 @@
           <div class="card flex justify-content-center">
             <div class="flex flex-row gap-2">
               <label htmlFor="clientlastname">Фамилия:</label>
-              <input pInputText id="clientlastname"  formControlName="clientlastname" />
+              <input pInputText id="clientlastname" formControlName="clientlastname" />
             </div>
           </div>
           <div class="card flex justify-content-center">
             <div class="flex flex-row gap-2">
               <label htmlFor="clientfirstname">Имя:</label>
-              <input pInputText id="clientfirstname"  formControlName="clientfirstname" />
+              <input pInputText id="clientfirstname" formControlName="clientfirstname" />
             </div>
           </div>
           <div class="card flex justify-content-center">
@@ -202,8 +202,8 @@
               <div class="card flex justify-content-center">
                 <div class="flex flex-column gap-2">
                   <label for="revenue">Сумма оплаты:</label>
-                  <input pInputText id="revenue" aria-describedby="revenue-help"
-                    formControlName="revenue" style="width: 150px;" />
+                  <input pInputText id="revenue" aria-describedby="revenue-help" formControlName="revenue"
+                    style="width: 150px;" />
                 </div>
               </div>
 
