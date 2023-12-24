@@ -89,6 +89,17 @@ export class WeeklyScheduleComponent implements OnInit {
       const formattedDate = `${formattedFirstDate.getDate().toString().padStart(2, '0')}.${(formattedFirstDate.getMonth() + 1).toString().padStart(2, '0')}.${formattedFirstDate.getFullYear()}`;
       const formattedDate2 = `${formattedLastDate.getDate().toString().padStart(2, '0')}.${(formattedLastDate.getMonth() + 1).toString().padStart(2, '0')}.${formattedLastDate.getFullYear()}`;
       this.filterDataByDate(formattedDate,formattedDate2)
+      .subscribe((response: any) => {
+        this.displayedData = response;
+        console.log('displayedData:', this.displayedData);
+        console.log("this.daysOfWeek", this.daysOfWeek);
+
+        this.datesSplit = this.DatesSplit(this.daysOfWeek);
+        console.log("this.datesSplit", this.datesSplit);
+  
+        this.isLoading = false;
+        this.cdRef.detectChanges(); 
+      });
     }
   }
 
@@ -106,6 +117,17 @@ export class WeeklyScheduleComponent implements OnInit {
       const formattedDate2 = `${formattedLastDate.getDate().toString().padStart(2, '0')}.${(formattedLastDate.getMonth() + 1).toString().padStart(2, '0')}.${formattedLastDate.getFullYear()}`;
 
       this.filterDataByDate(formattedDate,formattedDate2)
+      .subscribe((response: any) => {
+        this.displayedData = response;
+        console.log('displayedData:', this.displayedData);
+        console.log("this.daysOfWeek", this.daysOfWeek);
+
+        this.datesSplit = this.DatesSplit(this.daysOfWeek);
+        console.log("this.datesSplit", this.datesSplit);
+  
+        this.isLoading = false;
+        this.cdRef.detectChanges(); 
+      });
     }
   }
 
