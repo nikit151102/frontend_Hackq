@@ -9,6 +9,7 @@ import { AutoCompleteModule } from 'primeng/autocomplete';
 import { DropdownModule } from 'primeng/dropdown';
 import { ButtonModule } from 'primeng/button';
 import { MenubarModule } from 'primeng/menubar';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { MenubarModule } from 'primeng/menubar';
     AutoCompleteModule,
     DropdownModule,
     ButtonModule,
-    MenubarModule
+    MenubarModule,
+    ConfirmDialogModule
   ],
   exports: [
     AddItemModalComponent

@@ -7,8 +7,10 @@ import { TableRoutingModule } from './table.routing.module';
 import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
 import { ToastModule } from 'primeng/toast';
-import { MessageService } from 'primeng/api';
+import { ConfirmationService, MessageService } from 'primeng/api';
 import { RatingModule } from 'primeng/rating';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+
 @NgModule({
   declarations: [
     TableComponent
@@ -21,8 +23,9 @@ import { RatingModule } from 'primeng/rating';
     TableModule,
     ButtonModule,
     ToastModule,
-    RatingModule
+    RatingModule,
+    ConfirmDialogModule
   ],
-  providers: [DatePipe,MessageService]
+  providers: [DatePipe,MessageService,ConfirmationService]
 })
 export class TablepageModule { }

@@ -6,7 +6,7 @@ import { WorkingWithDates } from './dates';
 import { AddItemModalModule } from '../add-item-modal/add-item-modal.module';
 import { WeeklySchedulCardComponent } from './weekly-schedule-components/weekly-schedule-card.component';
 import { ButtonModule } from 'primeng/button';
-   
+
 @NgModule({
   declarations: [
     WeeklyScheduleComponent,
