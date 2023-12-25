@@ -1,28 +1,119 @@
-import { Component, OnInit,ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { DataService } from '../../../data.service';
 import { ModalService } from '../modal.service'
+import { DatePipe } from '@angular/common';
+import { ConfirmationService, MessageService } from 'primeng/api';
+import { DataItem, TransformedDataItem } from './table.interface';
+import { animate, state, style, transition, trigger } from '@angular/animations';
+
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
-  styleUrls: ['./table.component.css']
+  styleUrls: ['./table.component.css'],
+  animations: [
+    trigger('customFadeIn', [
+      state('void', style({ opacity: 0 })), // Состояние компонента при его создании
+      transition(':enter', animate('500ms ease-out', style({ opacity: 1 }))) // Анимация при входе
+    ])
+  ]
 })
 export class TableComponent implements OnInit {
 
-  dataFromServer: any = [];
+  dataFromServer: DataItem[] = [];
+  transformedData: TransformedDataItem[] = [];
   rowsPerPage: number = 10; // Количество строк на странице
   currentPage: number = 1; // Текущая страница
   pages: number[] = []; // Список страниц
+  someValue: string = ''
 
-  constructor(private dataService: DataService,public modalService: ModalService,private cdr: ChangeDetectorRef) { }
+  constructor(private confirmationService: ConfirmationService,
+              private dataService: DataService, public modalService: ModalService,
+              private cdr: ChangeDetectorRef,
+              private messageService: MessageService,
+              private datePipe: DatePipe) { }
+
+  isLoading: boolean = true;
+
   ngOnInit() {
+    setTimeout(() => {
+      this.isLoading = false;
+    }, 500);
     this.dataService.startPolling(null); // Опрашивать каждые 5 секунд (настройте интервал по вашему усмотрению)
     this.fetchData();
+    this.dataService.sendDataToServer().subscribe((response) => {
+      console.log('Ответ сервера:', response);
+
+      this.dataFromServer = response as DataItem[];
+
+      this.transformedData = this.dataFromServer.map(item => {
+        return {
+          id: item.id,
+          requestnumber: item.requestnumber,
+          discharged: item.discharged,
+          submissiondate: item.submissiondate,
+          revenue: item.revenue,
+          expenses: item.expenses,
+          profit: item.profit,
+          statuspayment: item.statuspayment,
+          statusrequest: item.statusrequest,
+          employeelastname: item.employeelastname,
+          employeefirstname: item.employeefirstname,
+          employeemiddlename: item.employeemiddlename,
+
+          child: [{
+            reason: item.reason,
+            comment: item.comment,
+            estimation: item.estimation,
+            clientlastname: item.clientlastname,
+            clientfirstname: item.clientfirstname,
+            clientmiddlename: item.clientmiddlename,
+            clientphone: item.clientphone,
+            namecompany: item.namecompany,
+            street: item.street,
+            house: item.house,
+            office: item.office,
+          }]
+        };
+      });
+
+      console.log("transformedData.child[0]", this.transformedData[0].child)
+    });
   }
-  
+
+
+  first = 0;
+
+  rows = 3;
+
+  next() {
+    this.first = this.first + this.rows;
+  }
+
+  prev() {
+    this.first = this.first - this.rows;
+  }
+
+  reset() {
+    this.first = 0;
+  }
+
+  pageChange(event: any) {
+    this.first = event.first;
+    this.rows = event.rows;
+  }
+
+  isLastPage(): boolean {
+    return this.transformedData ? this.first === this.transformedData.length - this.rows : true;
+  }
+
+  isFirstPage(): boolean {
+    return this.transformedData ? this.first === 0 : true;
+  }
+
   fetchData() {
     this.dataService.sendDataToServer().subscribe((response) => {
       console.log('Ответ сервера:', response);
-      this.updateTable(response); 
+      this.updateTable(response);
       this.cdr.detectChanges();
     });
   }
@@ -45,65 +136,34 @@ export class TableComponent implements OnInit {
   }
 
   updatePages(): void {
-    // Вычисление списка страниц на основе dataFromServer и rowsPerPage
-    // Например, если у вас есть 100 записей и rowsPerPage установлено на 10, то у вас будет 10 страниц
     const totalPages = Math.ceil(this.dataFromServer.length / this.rowsPerPage);
     this.pages = Array.from({ length: totalPages }, (_, i) => i + 1);
   }
 
-  getPageData(): any[] {
-    const startIndex = (this.currentPage - 1) * this.rowsPerPage;
-    const endIndex = startIndex + this.rowsPerPage;
-    return this.dataFromServer.slice(startIndex, endIndex);
+  openModal(id: string) {
+    this.modalService.showDialog = true;
+    this.someValue = id;
   }
 
-
-  sortField: string | null = null;
-  sortOrder: number = 1; // 1 для сортировки по возрастанию, -1 для сортировки по убыванию
-
-  //сортировка
-  sortData(field: string): void {
-    if (this.sortField === field) {
-        this.sortOrder *= -1; // Изменить порядок сортировки
-    } else {
-        this.sortField = field;
-        this.sortOrder = 1; // По умолчанию сортировать по возрастанию
-    }
-    this.updateData();
-}
-updateData(): void {
-  // Сортировка данных
-  this.dataFromServer.sort((a: any, b: any) => {
-      if (this.sortField) {
-          const aValue = a[this.sortField];
-          const bValue = b[this.sortField];
-          if (aValue < bValue) {
-              return -1 * this.sortOrder;
-          } else if (aValue > bValue) {
-              return 1 * this.sortOrder;
-          }
+  confirm1(event: Event, rowId: string, rowNumber: string) {
+    this.confirmationService.confirm({
+      target: event.target as EventTarget,
+      message: 'Вы действительно хотите удалить  заявку №' + rowNumber + " ?",
+      header: 'Удаление',
+      icon: 'pi pi-exclamation-triangle',
+      acceptIcon: "none",
+      rejectIcon: "none",
+      rejectButtonStyleClass: "p-button-text",
+      acceptLabel: "Подтвердить",
+      rejectLabel: "Отмена",
+      accept: () => {
+        this.messageService.add({ severity: 'info', summary: 'Удаление', detail: 'Удалена заявка №' + rowNumber });
+      },
+      reject: () => {
+        this.messageService.add({ severity: 'error', summary: 'Отмена', detail: 'Отмена удаление заявки №' + rowNumber, life: 3000 });
       }
-      return 0;
-  });
-}
-
-//кнопка удаления
-handledeleteClick(rowId: number) {
-  // Здесь вы можете выполнить необходимые действия с id строки, например, вывести его в консоль
-  console.log('Clicked on row with id:', Number(rowId) );
-  this.dataService.deleteItem( Number(rowId)).subscribe(response => {
-    // Обработка ответа от сервера
-    console.log('Server Response:', response);
-    
-  });
-}
-
- isModalOpen: boolean = false;
-
-openModal() {
-  this.isModalOpen = true;
-  console.log('isModalOpen:', this.isModalOpen)
-}
-
+    });
+  }
 
 }
+

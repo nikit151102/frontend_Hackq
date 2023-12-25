@@ -4,8 +4,8 @@ import { HomeComponentdirector } from './home.component';
 import { HomeChartsComponent } from './home-charts/home-charts.component';
 import { HomeStatCounterComponent } from './home-stat-counter/home-stat-counter.component';
 import { HomeRoutingModule } from './home.routng.module';
-
-
+import { TreeSelectModule } from 'primeng/treeselect';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -15,7 +15,10 @@ import { HomeRoutingModule } from './home.routng.module';
   ],
   imports: [
     CommonModule,
-    HomeRoutingModule
+    HomeRoutingModule,
+    TreeSelectModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class HomeModule { }

@@ -19,6 +19,7 @@
     "@angular/platform-browser": "^16.2.0",
     "@angular/platform-browser-dynamic": "^16.2.0",
     "@angular/router": "^16.2.0",
+    "@auth0/angular-jwt": "^5.2.0",
     "@types/chart.js": "^2.9.37",
     "chart.js": "^4.4.0",
     "date-fns": "^2.30.0",

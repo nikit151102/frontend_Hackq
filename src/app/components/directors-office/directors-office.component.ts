@@ -13,8 +13,10 @@ export class DirectorsOfficeComponent {
     this.route.params.subscribe(params => {
       const id = params['id'];
       console.log('ID:', id);
-      // Здесь можно делать что-то с полученным id
+      
+      
     });
+   
   }
   
 
@@ -26,10 +28,14 @@ export class DirectorsOfficeComponent {
 
   if (this.isSidebarHidden) {
     sidebar.classList.add('hide');
-    this.togglecontent(60); // Передаем ширину 60
+    this.togglecontent(290); // Передаем ширину 60
   } else {
     sidebar.classList.remove('hide');
-    this.togglecontent(280); // Передаем ширину 280
+    if (window.innerWidth < 1024) {
+      this.togglecontent(0); // Передаем ширину 280
+    }else{
+      this.togglecontent(60); // Передаем ширину 280
+    }
   }
   }
   
