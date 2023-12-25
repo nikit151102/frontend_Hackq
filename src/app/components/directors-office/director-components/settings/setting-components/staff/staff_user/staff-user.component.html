@@ -1,0 +1,20 @@
+<div class="card" (click)="clickdcard()">
+    <div class="card_background_img"></div>
+    <div class="card_profile_img">
+        <img src="../../../../../../../assets//images//profile_picture.png" alt="Картинка 1">
+    </div>
+    <ng-container *ngIf="!showdetails">
+        <div class="user_details">
+            <h3>{{contentUser.lastname}} {{contentUser.firstname}} {{contentUser.middlename}}</h3>
+            <p>{{contentUser.position}}</p>
+        </div>
+    </ng-container>
+    <ng-container *ngIf="showdetails">
+        <div class="user_view">
+            <p-button label="Изменить"></p-button>
+            <button pButton pRipple label="Удалить" class="p-button-danger"></button>
+        </div>
+    </ng-container>
+</div>
+
+

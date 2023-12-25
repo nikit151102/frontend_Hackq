@@ -6,8 +6,8 @@ import { interval,Subscription  } from 'rxjs';
   providedIn: 'root'
 })
 export class ModalService {
- showDialog: boolean = false
-
+ showDialog: boolean = false;
+ someValue: string ="";
  constructor(private http: HttpClient) {}
 
  sendDataToServer(data: any){

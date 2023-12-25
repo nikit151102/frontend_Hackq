@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class NavHeaderComponent {
 
-}
+  exit(){
+    localStorage.removeItem('token');
+  }
+  
+}1
