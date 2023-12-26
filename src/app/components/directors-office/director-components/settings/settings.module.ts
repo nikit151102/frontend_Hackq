@@ -11,7 +11,9 @@ import { InputTextModule } from 'primeng/inputtext';
 import { FieldsetModule } from 'primeng/fieldset';
 import { FileUploadModule } from 'primeng/fileupload';
 import { StaffUserComponent } from './setting-components/staff/staff_user/staff-user.component';
-
+import { ConfirmPopupModule } from 'primeng/confirmpopup';
+import { ToastModule } from 'primeng/toast';
+import { ConfirmationService, MessageService } from 'primeng/api';
 @NgModule({
   declarations: [
     SettingsComponent,
@@ -28,7 +30,10 @@ import { StaffUserComponent } from './setting-components/staff/staff_user/staff-
     ReactiveFormsModule,
     InputTextModule,
     FieldsetModule,
-    FileUploadModule
+    FileUploadModule,
+    ConfirmPopupModule,
+    ToastModule
   ],
+  providers: [ConfirmationService,MessageService]
 })
 export class SettingsModule { }

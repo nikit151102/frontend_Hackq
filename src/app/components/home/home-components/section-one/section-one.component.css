@@ -221,7 +221,7 @@ body {
 .get-started__container::before {
     content: "";
     position: absolute;
-    width: 100vw;
+    width: 30vw;
     height: 100%;
     right: 267px;
     top: 0;

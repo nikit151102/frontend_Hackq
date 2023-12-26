@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectorRef, Component, Input } from '@angular/core';
+import { ConfirmationService, MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-staff-user',
@@ -21,8 +22,24 @@ export class StaffUserComponent {
     };
   showdetails: boolean = false;
   
+  constructor(private confirmationService: ConfirmationService, private messageService: MessageService){}
+    
   clickdcard(){
     this.showdetails = !this.showdetails
   }
 
+  confirm2(event: Event) {
+    this.confirmationService.confirm({
+        target: event.target as EventTarget,
+        message: 'Вы действительно хотитье удалить аккаунт сотрудника?',
+        icon: 'pi pi-info-circle',
+        acceptButtonStyleClass: 'p-button-danger p-button-sm',
+        accept: () => {
+            this.messageService.add({ severity: 'info', summary: 'Confirmed', detail: 'Record deleted', life: 3000 });
+        },
+        reject: () => {
+            this.messageService.add({ severity: 'error', summary: 'Rejected', detail: 'You have rejected', life: 3000 });
+        }
+    });
+}
 }

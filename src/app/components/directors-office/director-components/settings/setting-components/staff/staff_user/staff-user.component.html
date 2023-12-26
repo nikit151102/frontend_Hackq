@@ -12,9 +12,10 @@
     <ng-container *ngIf="showdetails">
         <div class="user_view">
             <p-button label="Изменить"></p-button>
-            <button pButton pRipple label="Удалить" class="p-button-danger"></button>
+            <p-button (click)="confirm2($event)" icon="pi pi-times" label="Delete" severity="danger"></p-button>
         </div>
     </ng-container>
 </div>
 
-
+<p-toast></p-toast>
+<p-confirmPopup></p-confirmPopup>
