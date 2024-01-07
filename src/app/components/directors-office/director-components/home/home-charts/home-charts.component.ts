@@ -1,8 +1,7 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { Chart, ChartTypeRegistry, Tooltip } from 'chart.js';
-import {ModalgrafsService} from '../modalgrafs.service'
+import { ModalgrafsService } from '../modalgrafs.service'
 import { FormBuilder, FormGroup } from '@angular/forms';
-
 @Component({
   selector: 'app-home-charts',
   templateUrl: './home-charts.component.html',
@@ -10,41 +9,41 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 })
 
 export class HomeChartsComponent implements OnInit {
-  
 
-  
+
   formGroup1!: FormGroup;
   formGroup2!: FormGroup;
   selectedValue1: {
-    label:string,
+    label: string,
     value: keyof ChartTypeRegistry,
     parent: any
   } = {
-    label: "Линейный график",
-    value:"line",
-    parent: []
-  };
+      label: "Линейный график",
+      value: "line",
+      parent: []
+    };
   selectedValue2: {
-    label:string,
+    label: string,
     value: keyof ChartTypeRegistry,
     parent: any
   } = {
-    label: "Линейный график",
-    value:"line",
-    parent: []
-  };
+      label: "Линейный график",
+      value: "line",
+      parent: []
+    };
 
   nodes = [
     { label: 'Линейный график', value: 'line' },
-    { label: 'Столбчатая диаграмма', value: 'bar'},
-    { label: 'Радиолокационная карта', value: 'radar'},
-    { label: 'круговые диаграммы', value: 'doughnut'},
+    { label: 'Столбчатая диаграмма', value: 'bar' },
+    { label: 'Радиолокационная карта', value: 'radar' },
+    { label: 'круговые диаграммы', value: 'doughnut' },
   ];
+
   @ViewChild('canvas', { static: true }) canvas!: ElementRef<HTMLCanvasElement>;
-  
-  private ctx: CanvasRenderingContext2D | null = null; 
+
+  private ctx: CanvasRenderingContext2D | null = null;
   dataFromEJS: any[] = [];
-  constructor(private  modalgrafsService : ModalgrafsService,private fb: FormBuilder) { }
+  constructor(private modalgrafsService: ModalgrafsService, private fb: FormBuilder) { }
 
   ngOnInit(): void {
     this.fetchChartData();
@@ -56,8 +55,8 @@ export class HomeChartsComponent implements OnInit {
       selectedNodes: []
     });
   }
- 
-  createColor(rgb1: string, rgb2: string, ctx:CanvasRenderingContext2D  ) {
+
+  createColor(rgb1: string, rgb2: string, ctx: CanvasRenderingContext2D) {
     const gradient = ctx.createLinearGradient(0, 0, 0, 400);
     gradient.addColorStop(0, rgb1);
     gradient.addColorStop(1, rgb2);
@@ -73,7 +72,7 @@ export class HomeChartsComponent implements OnInit {
     this.fetchChartData()
 
   }
-  
+
   fetchChartData() {
     this.modalgrafsService.viewline().subscribe((dataFromEJS: any[]) => {
       this.dataFromEJS = dataFromEJS;
@@ -89,25 +88,25 @@ export class HomeChartsComponent implements OnInit {
       return gradient;
     }
     return null; // Возвращаем null, если ctx равен null
-}
+  }
 
-private chart1: Chart | undefined;
+  private chart1: Chart | undefined;
   createChart(dataFromEJS: any[]) {
     const ctx = this.canvas.nativeElement.getContext('2d');
     if (ctx) {
       if (this.chart1) {
         this.chart1.destroy();
       }
-      this.canvas.nativeElement.width = 300; 
-      this.canvas.nativeElement.height = 300; 
+      this.canvas.nativeElement.width = 300;
+      this.canvas.nativeElement.height = 300;
 
-      const gradientBlue = this.createColor('rgba(0, 123, 255, 0.5)','rgba(0, 123, 255, 0.05)',ctx);
-      const gradientGreen = this.createColor('rgba(40, 167, 69, 0.5)','rgba(40, 167, 69, 0.05)',ctx);
-      const gradientRed = this.createColor('rgba(220, 53, 69, 0.5)','rgba(220, 53, 69, 0.05)',ctx);
+      const gradientBlue = this.createColor('rgba(0, 123, 255, 0.5)', 'rgba(0, 123, 255, 0.05)', ctx);
+      const gradientGreen = this.createColor('rgba(40, 167, 69, 0.5)', 'rgba(40, 167, 69, 0.05)', ctx);
+      const gradientRed = this.createColor('rgba(220, 53, 69, 0.5)', 'rgba(220, 53, 69, 0.05)', ctx);
 
-  
-      console.log("item",dataFromEJS)
-      this.chart1 =new Chart(ctx, {
+
+      console.log("item", dataFromEJS)
+      this.chart1 = new Chart(ctx, {
         type: this.selectedValue1.value,
         data: {
           labels: dataFromEJS.map(item => item.datas),
@@ -139,20 +138,20 @@ private chart1: Chart | undefined;
                 stepSize: 1,
               }
             }
-        },
+          },
           plugins: {
-            
+
             legend: {
               display: false,
               position: 'bottom',
             },
           }
-          
+
         },
-        
+
       });
     }
-    
+
   }
 
 
@@ -164,7 +163,7 @@ private chart1: Chart | undefined;
   @ViewChild('doughnutChart', { static: true }) doughnutChart!: ElementRef<HTMLCanvasElement>;
 
 
-   
+
   updateSelectedValue2(value: any) {
     this.selectedValue2 = value;
     console.log(this.selectedValue2);
@@ -178,7 +177,7 @@ private chart1: Chart | undefined;
   getDoughnutDataAndRenderChart() {
     this.modalgrafsService.getDoughnutData().subscribe(
       (doughnuttoday: any) => {
-        console.log("doughnuttoday",doughnuttoday)
+        console.log("doughnuttoday", doughnuttoday)
         this.renderDoughnutChart(doughnuttoday);
       },
       (error) => {
@@ -186,7 +185,7 @@ private chart1: Chart | undefined;
       }
     );
   }
-   
+
   private chart2: Chart | undefined;
   renderDoughnutChart(doughnuttoday: any) {
     const ctx = this.doughnutChart.nativeElement.getContext('2d');
@@ -197,11 +196,11 @@ private chart1: Chart | undefined;
       if (this.chart2) {
         this.chart2.destroy();
       }
-      const gradientBlue = this.createColor('rgba(0, 123, 255, 0.5)','rgba(0, 123, 255, 0.05)',ctx);
-      const gradientGreen = this.createColor('rgba(40, 167, 69, 0.5)','rgba(40, 167, 69, 0.05)',ctx);
-      const gradientRed = this.createColor('rgba(220, 53, 69, 0.5)','rgba(220, 53, 69, 0.05)',ctx);
-      this.doughnutChart.nativeElement.width = 300; 
-      this.doughnutChart.nativeElement.height = 300; 
+      const gradientBlue = this.createColor('rgba(0, 123, 255, 0.5)', 'rgba(0, 123, 255, 0.05)', ctx);
+      const gradientGreen = this.createColor('rgba(40, 167, 69, 0.5)', 'rgba(40, 167, 69, 0.05)', ctx);
+      const gradientRed = this.createColor('rgba(220, 53, 69, 0.5)', 'rgba(220, 53, 69, 0.05)', ctx);
+      this.doughnutChart.nativeElement.width = 300;
+      this.doughnutChart.nativeElement.height = 300;
       this.chart2 = new Chart(ctx, {
         type: this.selectedValue2.value,
         data: {
@@ -214,7 +213,7 @@ private chart1: Chart | undefined;
         options: {
           responsive: false,
           plugins: {
-            
+
           },
           elements: {
             arc: {
@@ -225,5 +224,13 @@ private chart1: Chart | undefined;
       });
     }
   }
-  
+
+
+
+
 }
+
+
+
+
+
