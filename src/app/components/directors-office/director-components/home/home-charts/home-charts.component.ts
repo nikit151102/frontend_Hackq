@@ -1,7 +1,9 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
-import { Chart, ChartTypeRegistry, Tooltip } from 'chart.js';
+import { Chart, ChartComponent, ChartTypeRegistry, Tooltip } from 'chart.js';
 import { ModalgrafsService } from '../modalgrafs.service'
 import { FormBuilder, FormGroup } from '@angular/forms';
+import * as Highcharts from 'highcharts';
+
 @Component({
   selector: 'app-home-charts',
   templateUrl: './home-charts.component.html',
@@ -45,7 +47,13 @@ export class HomeChartsComponent implements OnInit {
   dataFromEJS: any[] = [];
   constructor(private modalgrafsService: ModalgrafsService, private fb: FormBuilder) { }
 
+
+  @ViewChild('chartTest', { static: false }) chartTest!: ChartComponent;
+  Highcharts: any = Highcharts;
+  chartOptions: any;
+
   ngOnInit(): void {
+
     this.fetchChartData();
     this.getDoughnutDataAndRenderChart();
     this.formGroup2 = this.fb.group({
@@ -54,6 +62,62 @@ export class HomeChartsComponent implements OnInit {
     this.formGroup1 = this.fb.group({
       selectedNodes: []
     });
+
+    this.chartOptions =  {
+      chart: {
+          type: 'area'
+      },
+      title: {
+          text: 'Greenhouse gases from Norwegian economic activity',
+          align: 'left'
+      },
+      credits: {
+        enabled: false
+      },
+      yAxis: {
+          title: {
+              useHTML: true,
+              text: 'Million tonnes CO<sub>2</sub>-equivalents'
+          }
+      },
+      tooltip: {
+          shared: true,
+          headerFormat: '<span style="font-size:12px"><b>{point.key}</b></span><br>'
+      },
+      plotOptions: {
+          series: {
+              pointStart: 2012
+          },
+          area: {
+              stacking: 'normal',
+              lineColor: '#666666',
+              lineWidth: 1,
+              marker: {
+                  lineWidth: 1,
+                  lineColor: '#666666'
+              }
+          }
+      },
+      series: [{
+          name: 'Ocean transport',
+          data: [13234, 12729, 11533, 17798, 10398, 12811, 15483, 16196, 16214]
+      }, {
+          name: 'Households',
+          data: [6685, 6535, 6389, 6384, 6251, 5725, 5631, 5047, 5039]
+  
+      }, {
+          name: 'Agriculture and hunting',
+          data: [4752, 4820, 4877, 4925, 5006, 4976, 4946, 4911, 4913]
+      }, {
+          name: 'Air transport',
+          data: [3164, 3541, 3898, 4115, 3388, 3569, 3887, 4593, 1550]
+  
+      }, {
+          name: 'Construction',
+          data: [2019, 2189, 2150, 2217, 2175, 2257, 2344, 2176, 2186]
+      }]
+  };
+
   }
 
   createColor(rgb1: string, rgb2: string, ctx: CanvasRenderingContext2D) {
@@ -224,6 +288,7 @@ export class HomeChartsComponent implements OnInit {
       });
     }
   }
+
 
 
 

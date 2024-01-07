@@ -6,6 +6,7 @@ import { HomeStatCounterComponent } from './home-stat-counter/home-stat-counter.
 import { HomeRoutingModule } from './home.routng.module';
 import { TreeSelectModule } from 'primeng/treeselect';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HighchartsChartModule } from 'highcharts-angular';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     TreeSelectModule,
     FormsModule,
     ReactiveFormsModule,
+    HighchartsChartModule
   ]
 })
 export class HomeModule { }

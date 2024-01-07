@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalStatCounterService } from '../modal-stat-counter.service';
 
-
 @Component({
   selector: 'app-home-stat-counter',
   templateUrl: './home-stat-counter.component.html',
