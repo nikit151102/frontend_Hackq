@@ -1,0 +1,9 @@
+<p-fileUpload name="demo[]" url="https://www.primefaces.org/cdn/api/upload.php" (onUpload)="onUpload($event)"
+  [multiple]="false" accept="image/*" [maxFileSize]="100000" chooseLabel="Загрузить" uploadLabel="Обновить"
+  cancelLabel="" uploadIcon="pi pi-upload" [showCancelButton]="false">
+  <ng-template pTemplate="content">
+    <ul *ngIf="uploadedFiles.length">
+      <li *ngFor="let file of uploadedFiles">{{ file.size }} bytes</li>
+    </ul>
+  </ng-template>
+</p-fileUpload>

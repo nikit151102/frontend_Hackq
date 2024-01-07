@@ -1,0 +1,7 @@
+.userform{
+    width: 100%;
+    display: flex;
+    gap: 5px;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}

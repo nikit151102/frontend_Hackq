@@ -1,0 +1,42 @@
+<form [formGroup]="userForm">
+    <div class="userform">
+        <div>
+            <label for="userlastName">Фамилия:</label>
+            <input type="text" id="userlastName" pInputText formControlName="lastName"
+                [attr.disabled]="isEditMode ? null : true" />
+        </div>
+        <div>
+            <label for="userFirstName">Имя:</label>
+            <input type="text" id="userFirstName" pInputText formControlName="firstName"
+                [attr.disabled]="isEditMode ? null : true" />
+        </div>
+        <div>
+            <label for="middleName">Отчество:</label>
+            <input type="text" id="middleName" pInputText formControlName="middleName"
+                [attr.disabled]="isEditMode ? null : true" />
+        </div>
+    </div>
+    <div class="userform">
+        <div>
+            <label for="phoneNumber">Номер телефона:</label>
+            <input type="tel" id="phoneNumber" pInputText formControlName="phoneNumber"
+                [attr.disabled]="isEditMode ? null : true" />
+        </div>
+        <div>
+            <label for="email">Email:</label>
+            <input type="email" id="userEmail" pInputText formControlName="email"
+                [attr.disabled]="isEditMode ? null : true" />
+        </div>
+    </div>
+</form>
+
+<div class="btns">
+    <ng-container *ngIf="!isEditMode">
+        <p-button label="Изменить" (onClick)="toggleEditMode()"></p-button>
+    </ng-container>
+    <ng-container *ngIf="isEditMode">
+        <button pButton pRipple label="Сохранить" class="p-button-success"></button>
+        <button pButton pRipple label="Отмена" class="p-button-danger"
+            (click)="resetUserForm()"></button>
+    </ng-container>
+</div>
