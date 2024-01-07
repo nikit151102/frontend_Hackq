@@ -24,6 +24,8 @@
     "angular-plotly.js": "^5.2.2",
     "chart.js": "^4.4.0",
     "date-fns": "^2.30.0",
+    "highcharts": "^11.2.0",
+    "highcharts-angular": "^4.0.0",
     "ionicons": "^7.1.2",
     "moment": "^2.29.4",
     "ng2-charts": "^5.0.3",
