@@ -31,7 +31,7 @@ export class PieChartComponent implements OnInit {
     if (chartData) {
         this.chartOptions = {
             chart: {
-                type: 'pie'
+                type: 'pie',
             },
             title: {
                 text: 'Количество заявок за день'
