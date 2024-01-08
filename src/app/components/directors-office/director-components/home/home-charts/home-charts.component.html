@@ -1,38 +1,12 @@
 <div class="DivCanvas">
     <div class="viewCanvas">
-        <div class="card flex justify-content-center">
-            <form [formGroup]="formGroup1">
-                <p-treeSelect
-                  class="md:w-20rem w-full"
-                  containerStyleClass="w-full"
-                  formControlName="selectedNodes"
-                  [options]="nodes"
-                  placeholder="Select Item"
-                  [ngModel]="selectedValue1"
-                  (ngModelChange)="updateSelectedValue($event)"
-                ></p-treeSelect>
-              </form>
-        </div>
-
-        <canvas #canvas></canvas>
+      <div class="card flex justify-content-center">
+        <app-pie-chart [chartData]="dataPie"></app-pie-chart>
+      </div>
     </div>
     <div class="viewCanvas">
-        <div class="card flex justify-content-center">
-            <form [formGroup]="formGroup2">
-                <p-treeSelect
-                  class="md:w-20rem w-full"
-                  containerStyleClass="w-full"
-                  formControlName="selectedNodes"
-                  [options]="nodes"
-                  placeholder="Select Item"
-                  [ngModel]="selectedValue2"
-                  (ngModelChange)="updateSelectedValue2($event)"
-                ></p-treeSelect>
-              </form>
-        </div>
-        <canvas #doughnutChart></canvas>
-    </div>
-    <div>
-      <highcharts-chart [Highcharts]="Highcharts" [options]="chartOptions"></highcharts-chart>
+      <div class="card flex justify-content-center">
+        <app-area-chart [chartData]="dataFromEJS"></app-area-chart>
+      </div>
     </div>
 </div>

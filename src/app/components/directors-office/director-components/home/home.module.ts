@@ -7,6 +7,8 @@ import { HomeRoutingModule } from './home.routng.module';
 import { TreeSelectModule } from 'primeng/treeselect';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HighchartsChartModule } from 'highcharts-angular';
+import { ChartComponent } from './home-charts/area-chart/chart.component';
+import { PieChartComponent } from './home-charts/pie-chart/pie-chart.component';
 
 
 @NgModule({
@@ -14,6 +16,8 @@ import { HighchartsChartModule } from 'highcharts-angular';
     HomeComponentdirector,
     HomeChartsComponent,
     HomeStatCounterComponent,
+    ChartComponent,
+    PieChartComponent
   ],
   imports: [
     CommonModule,
