@@ -16,163 +16,70 @@
 }
 
 
-.container{
+.container {
     width: 100%;
     display: flex;
     flex-direction: row;
-    justify-content: space-around; 
+    justify-content: space-around;
     align-items: flex-start;
 }
 
-.short-description{
+.short-description {
     width: 20%;
     height: 400px;
     display: flex;
     flex-direction: column;
-    justify-content: space-around; 
-    align-items: center; 
+    justify-content: space-around;
+    align-items: center;
     background: var(--light);
     border-radius: 10px;
     box-shadow: 0px 0px 10px rgba(20, 18, 18, 0.15);
 }
 
 
-.card {
-    width: 360px;
-    height: auto;
-    background-color: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.15);
-}
-
-.card_profile_img {
-    width: 120px;
-    height: 120px;
-    border-radius: 120px;
-    margin: 0 auto;
-    margin-top: -60px;
-
-}
-.card_profile_img img{
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    object-fit: cover;
-}
-
-.card_background_img {
-    width: 100%;
-    height: 180px;
-    border-radius: 10px;
-    background-color: #e1e7ed;
-    background: url("https://source.unsplash.com/9wg5jCEPBsw");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-}
-
-.user_details{
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-}
-
-.user_details p {
-    margin-bottom: 20px;
-    margin-top: -5px;
-}
-
-.user_details h3 {
-    margin-top: 10px;
-}
 
 
-
-
-.information{
+.information {
     width: 70%;
     background: var(--light);
     border-radius: 10px;
     box-shadow: 0px 0px 10px rgba(20, 18, 18, 0.15);
     display: flex;
-    justify-content: space-around; 
-    flex-direction: column;  
+    justify-content: space-around;
+    flex-direction: column;
 }
 
-.information-item{
+.information-item {
     width: 100%;
     display: flex;
     flex-direction: column;
     padding: 10px;
 }
-.User-Information{
+
+.User-Information {
     margin-bottom: 5px;
 }
-.information-item form{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    flex-wrap: wrap;
-}
-
-.userform{
-display: flex;
-justify-content: flex-start;
-gap: 20px;     
-flex-wrap: wrap;
-}
 
 
-.userform input{
-    display: flex;
-    gap: 10px;
-    margin-bottom: 10px;
-}
-
-
-
-.btns{
-    display: flex;
-    justify-content: flex-end; 
-    align-items: flex-start; 
-    flex-direction: row;  
-    padding: 10px;
-}
-
-
-
-.p-fileupload-choose {
-    font-size: 16px;
-  }
-  @media screen and (max-width: 914px) {
-    :host ::ng-deep .p-fileupload-filename{
-        display: none !important;
-      }
-  }
- 
-  @media screen and (max-width: 768px) {
-    .p-fileupload-choose {
-      font-size: 14px; 
-    }
-  }
-  @media screen and (max-width: 469px) {
-    :host ::ng-deep  .ng-star-inserted {
+@media screen and (max-width: 469px) {
+    :host ::ng-deep .ng-star-inserted {
         align-items: flex-start;
         flex-direction: column;
     }
-    :host ::ng-deep .p-inputtext{
-        width: 100%;
-    }
-    
-  }
-  
-@media (max-width: 767.98px) {
-    .container{
-        flex-direction: column;
-    }
-    .information, .card{
+
+    :host ::ng-deep .p-inputtext {
         width: 100%;
     }
 
 }
 
+@media (max-width: 767.98px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .information {
+        width: 100%;
+    }
+
+}

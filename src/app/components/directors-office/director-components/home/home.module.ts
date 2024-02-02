@@ -6,19 +6,26 @@ import { HomeStatCounterComponent } from './home-stat-counter/home-stat-counter.
 import { HomeRoutingModule } from './home.routng.module';
 import { TreeSelectModule } from 'primeng/treeselect';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HighchartsChartModule } from 'highcharts-angular';
+import { ChartComponent } from './home-charts/area-chart/chart.component';
+import { PieChartComponent } from './home-charts/pie-chart/pie-chart.component';
+
 
 @NgModule({
   declarations: [
     HomeComponentdirector,
     HomeChartsComponent,
     HomeStatCounterComponent,
+    ChartComponent,
+    PieChartComponent
   ],
   imports: [
     CommonModule,
     HomeRoutingModule,
     TreeSelectModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HighchartsChartModule
   ]
 })
 export class HomeModule { }

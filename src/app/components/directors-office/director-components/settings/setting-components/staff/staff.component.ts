@@ -8,7 +8,8 @@ import { StaffService } from './staff.service';
 })
 export class StaffComponent {
   
-  constructor(private staffService: StaffService){}
+  constructor(private staffService: StaffService,
+){}
 
   DataUsers: any[] = [];
 
@@ -23,4 +24,7 @@ export class StaffComponent {
       }
     );
   }
+
+
+  
 }

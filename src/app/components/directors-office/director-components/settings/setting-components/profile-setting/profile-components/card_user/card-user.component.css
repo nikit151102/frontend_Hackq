@@ -1,0 +1,58 @@
+.card {
+    width: 360px;
+    height: auto;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.15);
+}
+
+.card_profile_img {
+    width: 120px;
+    height: 120px;
+    border-radius: 120px;
+    margin: 0 auto;
+    margin-top: -60px;
+
+}
+
+.card_profile_img img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.card_background_img {
+    width: 100%;
+    height: 180px;
+    border-radius: 10px;
+    background-color: #e1e7ed;
+    background: url("https://source.unsplash.com/9wg5jCEPBsw");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.user_details {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.user_details p {
+    margin-bottom: 20px;
+    margin-top: -5px;
+}
+
+.user_details h3 {
+    margin-top: 10px;
+}
+
+
+@media (max-width: 767.98px) {
+
+    .information,
+    .card {
+        width: 100%;
+    }
+}

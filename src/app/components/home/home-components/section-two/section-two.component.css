@@ -114,6 +114,8 @@ body {
     border-radius: 16px;
 }
 .d_article-img{
+    display: flex;
+    justify-content: center;  
     width: 100%;
 }
 .d_article-title{
