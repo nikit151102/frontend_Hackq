@@ -9,7 +9,7 @@ export class WeeklyScheduleService {
   constructor(private http: HttpClient) {}
   
   sendDataToServer(values:dates) {
-    const url = 'http://127.0.0.1:8000/director/canban/getDataCanban'; 
+    const url = 'http://localhost:8000/director/canban/getDataCanban'; 
     return this.http.post(url,values);
   }
   

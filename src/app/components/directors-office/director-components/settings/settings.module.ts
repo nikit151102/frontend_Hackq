@@ -16,7 +16,8 @@ import { StaffSettingsModule } from './setting-components/staff/staff.module';
     SettingsRoutingModule,
     TabViewModule,
     ProfileSettingsModule,
-    StaffSettingsModule
+    StaffSettingsModule,
   ],
+
 })
 export class SettingsModule { }

@@ -9,9 +9,9 @@ export class ModalgrafsService {
   
   constructor(private http: HttpClient) {}
   viewline(): Observable<any> {
-    return this.http.get<any>('http://127.0.0.1:8000/director/home/statisticsForTheWeek');
+    return this.http.get<any>('http://localhost:8000/director/home/statisticsForTheWeek');
   }
   getDoughnutData(): Observable<any> {
-    return this.http.get('http://127.0.0.1:8000/director/home/todaydoughnut');
+    return this.http.get('http://localhost:8000/director/home/todaydoughnut');
   }
 }

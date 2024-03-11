@@ -11,6 +11,6 @@ export class ModalService {
  constructor(private http: HttpClient) {}
 
  sendDataToServer(data: any){
-    return this.http.post<any>('http://localhost:3000/tableview/additem', data); 
+    return this.http.post<any>('http://localhost:8000/tableview/additem', data); 
  }
 }
