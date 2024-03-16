@@ -9,7 +9,7 @@ export class ApplicationService {
   constructor(private http: HttpClient) { }
 
   sendApplicationData(formData: any) {
-    return this.http.post('http://127.0.0.1:8000/newClientApplication/request', formData);
+    return this.http.put('http://127.0.0.1:8000/newClientApplication/request', formData);
   }
   
 }

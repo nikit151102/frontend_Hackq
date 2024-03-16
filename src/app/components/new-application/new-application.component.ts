@@ -1,5 +1,4 @@
 import { Component, OnInit, } from '@angular/core';
-import { HttpClient } from '@angular/common/http'
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ApplicationService } from './application.service';
 @Component({
@@ -8,6 +7,7 @@ import { ApplicationService } from './application.service';
   styleUrls: ['./new-application.component.css']
 })
 export class NewApplicationComponent implements OnInit {
+
   applicationForm: FormGroup = new FormGroup({});;
   currentStep = 1;
   name: string = '';
@@ -22,22 +22,24 @@ export class NewApplicationComponent implements OnInit {
 
   ngOnInit() {
     this.applicationForm = this.fb.group({
-      applicantType: ['company', Validators.required],
-      companyName: ['', Validators.required],
       fullName: ['', Validators.required],
       email: ['', Validators.required],
       Nomer: ['', Validators.required],
       problema: ['', Validators.required],
       comments: ['', Validators.required],
-      isPrivateHouse: ['', Validators.required],
+      applicantType: ['company', Validators.required],
       street: ['', Validators.required],
       houseNumber: ['', Validators.required],
       officeNumber: ['', Validators.required],
+      typeClient: ['', Validators.required],
+      companyName: ['', Validators.required],
+
+      isPrivateHouse: ['', Validators.required],
+      
       agreement: ['', Validators.required],
     });
-
-
   }
+  
   updateCheckbox(event: Event) {
     const target = event.target as HTMLInputElement;
     this.isCheckedapplicantType = target.checked;
@@ -73,7 +75,7 @@ export class NewApplicationComponent implements OnInit {
 
   addItim() {
     const formData = this.applicationForm.getRawValue();
-  
+
     this.applicationService.sendApplicationData(formData)
       .subscribe(
         (data: any) => {
@@ -84,8 +86,10 @@ export class NewApplicationComponent implements OnInit {
         }
       );
   
-    console.log('Заявка отправлена');
+    console.log('Заявка отправлена',formData);
   
-    this.applicationForm.reset(); // Сброс формы после отправки
+    this.applicationForm.reset();
   }
+
 }
+
