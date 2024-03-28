@@ -10,14 +10,12 @@ import { AddItemModalModule } from '../add-item-modal/add-item-modal.module';
 
 
 @NgModule({
-  declarations: [
-    CanbanCurrentDayComponent
-  ],
-  imports: [
-    CommonModule,
-    CanbanCurrentDayRoutingModule,
-    AddItemModalModule
-  ],
-  providers: [DatePipe,WorkingWithDates]
+    imports: [
+        CommonModule,
+        CanbanCurrentDayRoutingModule,
+        AddItemModalModule,
+        CanbanCurrentDayComponent
+    ],
+    providers: [DatePipe, WorkingWithDates]
 })
 export class CanbanCurrentDayModule { }

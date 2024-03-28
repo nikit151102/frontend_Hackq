@@ -8,8 +8,8 @@ describe('DialogNewApplicationComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [DialogNewApplicationComponent]
-    });
+    imports: [DialogNewApplicationComponent]
+});
     fixture = TestBed.createComponent(DialogNewApplicationComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

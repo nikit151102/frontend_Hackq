@@ -1,16 +1,25 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ModalService } from '../modal.service';
-import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators, ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { ViewApplicationService } from './view-application.service';
 import { StatusApplication, StatusPayment } from './model-interface';
 import { MenuItem } from 'primeng/api';
 import { Initials } from '../chart-analytic/chart-anakytic.interface';
 import { DataChartAnalyticService } from '../chart-analytic/data-chart-analytic.service';
+import { ButtonModule } from 'primeng/button';
+import { NgFor, NgIf } from '@angular/common';
+import { MenubarModule } from 'primeng/menubar';
+import { InputTextareaModule } from 'primeng/inputtextarea';
+import { DropdownModule } from 'primeng/dropdown';
+import { InputTextModule } from 'primeng/inputtext';
+import { TabViewModule } from 'primeng/tabview';
 
 @Component({
-  selector: 'app-add-item-modal',
-  templateUrl: './add-item-modal.component.html',
-  styleUrls: ['./add-item-modal.component.css']
+    selector: 'app-add-item-modal',
+    templateUrl: './add-item-modal.component.html',
+    styleUrls: ['./add-item-modal.component.css'],
+    standalone: true,
+    imports: [ReactiveFormsModule, TabViewModule, InputTextModule, DropdownModule, FormsModule, InputTextareaModule, MenubarModule, NgFor, ButtonModule, NgIf]
 })
 export class AddItemModalComponent implements OnInit {
 

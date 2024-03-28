@@ -1,13 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { login } from '../../connect-interface';
 import { ConnectService } from '../../connect.service';
 import { HttpHeaders } from '@angular/common/http';
 
 @Component({
-  selector: 'app-authorization',
-  templateUrl: './authorization.component.html',
-  styleUrls: ['./authorization.component.css']
+    selector: 'app-authorization',
+    templateUrl: './authorization.component.html',
+    styleUrls: ['./authorization.component.css'],
+    standalone: true,
+    imports: [ReactiveFormsModule]
 })
 export class AuthorizationComponent implements OnInit {
 

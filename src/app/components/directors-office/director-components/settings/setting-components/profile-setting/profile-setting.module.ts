@@ -14,29 +14,28 @@ import { InputTextModule } from 'primeng/inputtext';
 import { ProfileSettingComponent } from './profile-setting.component';
 
 @NgModule({
-  declarations: [
-    ProfileSettingComponent,
-    DataUserComponent,
-    CardUserComponent,
-    ResetPasswordComponent,
-    uploadedImgComponent
-  ],
-  imports: [
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
-    InputTextModule,
-    FieldsetModule,
-    FileUploadModule,
-    ConfirmPopupModule,
-    ToastModule,
-  ],
-  providers: [ConfirmationService,MessageService],
-  exports: [
-    ProfileSettingComponent,
-    DataUserComponent,
-    CardUserComponent,
-    ResetPasswordComponent,
-    uploadedImgComponent]
+    imports: [
+        CommonModule,
+        FormsModule,
+        ReactiveFormsModule,
+        InputTextModule,
+        FieldsetModule,
+        FileUploadModule,
+        ConfirmPopupModule,
+        ToastModule,
+        ProfileSettingComponent,
+        DataUserComponent,
+        CardUserComponent,
+        ResetPasswordComponent,
+        uploadedImgComponent,
+    ],
+    providers: [ConfirmationService, MessageService],
+    exports: [
+        ProfileSettingComponent,
+        DataUserComponent,
+        CardUserComponent,
+        ResetPasswordComponent,
+        uploadedImgComponent
+    ]
 })
 export class ProfileSettingsModule { }

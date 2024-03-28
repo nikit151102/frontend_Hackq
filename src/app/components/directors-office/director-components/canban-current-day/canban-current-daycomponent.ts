@@ -1,11 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { CanbanCurrentDayService } from './canban-current-day.service';
 import { ModalService } from '../modal.service';
+import { AddItemModalComponent } from '../add-item-modal/add-item-modal.component';
+import { NgFor, NgIf } from '@angular/common';
 
 @Component({
-  selector: 'app-weekly-schedule',
-  templateUrl: './canban-current-daycomponent.html',
-  styleUrls: ['./canban-current-day.component.css']
+    selector: 'app-weekly-schedule',
+    templateUrl: './canban-current-daycomponent.html',
+    styleUrls: ['./canban-current-day.component.css'],
+    standalone: true,
+    imports: [NgFor, NgIf, AddItemModalComponent]
 })
 
 export class CanbanCurrentDayComponent implements OnInit {

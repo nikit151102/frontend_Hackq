@@ -16,23 +16,21 @@ export function tokenGetter() {
 }
 
 @NgModule({
-  declarations: [
-    DirectorsOfficeComponent,
-    NavHeaderComponent
-  ],
-  imports: [
-    CommonModule,
-    RouterModule,
-    DirectorRoutingModule,
-    ChartModule,
-    NgChartsModule,
-    JwtModule.forRoot({
-      config: {
-        tokenGetter: tokenGetter,
-        allowedDomains: ['http://localhost:8000'], 
-      }
-    }),
-  ],
-  providers: [ModalService,AuthGuardService,JwtHelperService,AuthService],
+    imports: [
+        CommonModule,
+        RouterModule,
+        DirectorRoutingModule,
+        ChartModule,
+        NgChartsModule,
+        JwtModule.forRoot({
+            config: {
+                tokenGetter: tokenGetter,
+                allowedDomains: ['http://localhost:8000'],
+            }
+        }),
+        DirectorsOfficeComponent,
+        NavHeaderComponent,
+    ],
+    providers: [ModalService, AuthGuardService, JwtHelperService, AuthService],
 })
 export class DirectorsOfficeModule { }

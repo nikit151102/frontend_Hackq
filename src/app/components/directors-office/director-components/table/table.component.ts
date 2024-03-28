@@ -1,21 +1,29 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { DataService } from '../../../data.service';
 import { ModalService } from '../modal.service'
-import { DatePipe } from '@angular/common';
-import { ConfirmationService, MessageService } from 'primeng/api';
+import { DatePipe, NgIf } from '@angular/common';
+import { ConfirmationService, MessageService, SharedModule } from 'primeng/api';
 import { DataItem, TransformedDataItem } from './table.interface';
 import { animate, state, style, transition, trigger } from '@angular/animations';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { AddItemModalComponent } from '../add-item-modal/add-item-modal.component';
+import { ToastModule } from 'primeng/toast';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { RatingModule } from 'primeng/rating';
+import { TableModule } from 'primeng/table';
 
 @Component({
-  selector: 'app-table',
-  templateUrl: './table.component.html',
-  styleUrls: ['./table.component.css'],
-  animations: [
-    trigger('customFadeIn', [
-      state('void', style({ opacity: 0 })), // Состояние компонента при его создании
-      transition(':enter', animate('500ms ease-out', style({ opacity: 1 }))) // Анимация при входе
-    ])
-  ]
+    selector: 'app-table',
+    templateUrl: './table.component.html',
+    styleUrls: ['./table.component.css'],
+    animations: [
+        trigger('customFadeIn', [
+            state('void', style({ opacity: 0 })),
+            transition(':enter', animate('500ms ease-out', style({ opacity: 1 }))) // Анимация при входе
+        ])
+    ],
+    standalone: true,
+    imports: [NgIf, TableModule, SharedModule, RatingModule, ReactiveFormsModule, FormsModule, ToastModule, AddItemModalComponent, ConfirmDialogModule]
 })
 export class TableComponent implements OnInit {
 

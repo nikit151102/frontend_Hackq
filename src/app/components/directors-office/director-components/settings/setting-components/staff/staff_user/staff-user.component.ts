@@ -1,10 +1,16 @@
 import { ChangeDetectorRef, Component, Input } from '@angular/core';
 import { ConfirmationService, MessageService } from 'primeng/api';
+import { ConfirmPopupModule } from 'primeng/confirmpopup';
+import { ToastModule } from 'primeng/toast';
+import { ButtonModule } from 'primeng/button';
+import { NgIf } from '@angular/common';
 
 @Component({
-  selector: 'app-staff-user',
-  templateUrl: './staff-user.component.html',
-  styleUrls: ['./staff-user.component.css']
+    selector: 'app-staff-user',
+    templateUrl: './staff-user.component.html',
+    styleUrls: ['./staff-user.component.css'],
+    standalone: true,
+    imports: [NgIf, ButtonModule, ToastModule, ConfirmPopupModule]
 })
 export class StaffUserComponent {
   @Input() contentUser: {

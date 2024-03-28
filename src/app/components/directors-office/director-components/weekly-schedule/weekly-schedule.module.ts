@@ -8,16 +8,14 @@ import { WeeklySchedulCardComponent } from './weekly-schedule-components/weekly-
 import { ButtonModule } from 'primeng/button';
 
 @NgModule({
-  declarations: [
-    WeeklyScheduleComponent,
-    WeeklySchedulCardComponent
-  ],
-  imports: [
-    CommonModule,
-    weeklyScheduleRoutingModule,
-    AddItemModalModule,
-    ButtonModule
-  ],
-  providers: [DatePipe,WorkingWithDates]
+    imports: [
+        CommonModule,
+        weeklyScheduleRoutingModule,
+        AddItemModalModule,
+        ButtonModule,
+        WeeklyScheduleComponent,
+        WeeklySchedulCardComponent
+    ],
+    providers: [DatePipe, WorkingWithDates]
 })
 export class WeeklyScheduleModule { }

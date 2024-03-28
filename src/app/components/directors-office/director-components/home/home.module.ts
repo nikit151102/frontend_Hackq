@@ -12,20 +12,18 @@ import { PieChartComponent } from './home-charts/pie-chart/pie-chart.component';
 
 
 @NgModule({
-  declarations: [
-    HomeComponentdirector,
-    HomeChartsComponent,
-    HomeStatCounterComponent,
-    ChartComponent,
-    PieChartComponent
-  ],
-  imports: [
-    CommonModule,
-    HomeRoutingModule,
-    TreeSelectModule,
-    FormsModule,
-    ReactiveFormsModule,
-    HighchartsChartModule
-  ]
+    imports: [
+        CommonModule,
+        HomeRoutingModule,
+        TreeSelectModule,
+        FormsModule,
+        ReactiveFormsModule,
+        HighchartsChartModule,
+        HomeComponentdirector,
+        HomeChartsComponent,
+        HomeStatCounterComponent,
+        ChartComponent,
+        PieChartComponent
+    ]
 })
 export class HomeModule { }

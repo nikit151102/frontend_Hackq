@@ -1,10 +1,15 @@
 import { Component, Input, SimpleChanges } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { ButtonModule } from 'primeng/button';
+import { NgIf } from '@angular/common';
+import { InputTextModule } from 'primeng/inputtext';
 
 @Component({
-  selector: 'app-reset-password',
-  templateUrl: './reset-password.component.html',
-  styleUrls: ['./reset-password.component.css']
+    selector: 'app-reset-password',
+    templateUrl: './reset-password.component.html',
+    styleUrls: ['./reset-password.component.css'],
+    standalone: true,
+    imports: [ReactiveFormsModule, InputTextModule, NgIf, ButtonModule]
 })
 export class ResetPasswordComponent {
   

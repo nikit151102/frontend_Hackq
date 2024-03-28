@@ -7,17 +7,24 @@ import { WorkingWithDates } from './dates-class';
 import { DataChartAnalyticService } from './data-chart-analytic.service';
 import { StatusApplication, StatusPayment } from '../add-item-modal/model-interface';
 import { Initials } from './chart-anakytic.interface';
+import { DropdownModule } from 'primeng/dropdown';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { CalendarModule } from 'primeng/calendar';
+import { AccordionModule } from 'primeng/accordion';
+import { NgIf } from '@angular/common';
 
 @Component({
-  selector: 'app-chart-analytic',
-  templateUrl: './chart-analytic.component.html',
-  styleUrls: ['./chart-analytic.component.css'],
-  animations: [
-    trigger('customFadeIn', [
-      state('void', style({ opacity: 0 })), // Состояние компонента при его создании
-      transition(':enter', animate('500ms ease-out', style({ opacity: 1 }))) // Анимация при входе
-    ])
-  ]
+    selector: 'app-chart-analytic',
+    templateUrl: './chart-analytic.component.html',
+    styleUrls: ['./chart-analytic.component.css'],
+    animations: [
+        trigger('customFadeIn', [
+            state('void', style({ opacity: 0 })),
+            transition(':enter', animate('500ms ease-out', style({ opacity: 1 }))) // Анимация при входе
+        ])
+    ],
+    standalone: true,
+    imports: [NgIf, AccordionModule, CalendarModule, ReactiveFormsModule, FormsModule, DropdownModule]
 })
 
 export class ChartAnalyticComponent implements OnInit {

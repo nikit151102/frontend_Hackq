@@ -1,10 +1,14 @@
 import { Component } from '@angular/core';
 import { StaffService } from './staff.service';
+import { StaffUserComponent } from './staff_user/staff-user.component';
+import { NgFor } from '@angular/common';
 
 @Component({
-  selector: 'app-staff',
-  templateUrl: './staff.component.html',
-  styleUrls: ['./staff.component.css']
+    selector: 'app-staff',
+    templateUrl: './staff.component.html',
+    styleUrls: ['./staff.component.css'],
+    standalone: true,
+    imports: [NgFor, StaffUserComponent]
 })
 export class StaffComponent {
   

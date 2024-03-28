@@ -8,8 +8,8 @@ describe('WeeklyScheduleComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [WeeklyScheduleComponent]
-    });
+    imports: [WeeklyScheduleComponent]
+});
     fixture = TestBed.createComponent(WeeklyScheduleComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

@@ -9,18 +9,16 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [
-    ConnecctComponent,
-    AuthorizationComponent,
-    RegistrationComponent,
-    ResetPasswordComponent
-  ],
-  imports: [
-    CommonModule,
-    ConnectRoutingModule,
-    HttpClientModule,
-    ReactiveFormsModule,
-    FormsModule,
-  ]
+    imports: [
+        CommonModule,
+        ConnectRoutingModule,
+        HttpClientModule,
+        ReactiveFormsModule,
+        FormsModule,
+        ConnecctComponent,
+        AuthorizationComponent,
+        RegistrationComponent,
+        ResetPasswordComponent,
+    ]
 })
 export class ConnecctModule { }

@@ -1,11 +1,13 @@
 import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
 import * as Highcharts from 'highcharts';
+import { HighchartsChartModule } from 'highcharts-angular';
 
 @Component({
-  selector: 'app-pie-chart',
-  templateUrl: './pie-chart.component.html',
-  styleUrls: ['./pie-chart.component.css'],
-  
+    selector: 'app-pie-chart',
+    templateUrl: './pie-chart.component.html',
+    styleUrls: ['./pie-chart.component.css'],
+    standalone: true,
+    imports: [HighchartsChartModule],
 })
 export class PieChartComponent implements OnInit {
 

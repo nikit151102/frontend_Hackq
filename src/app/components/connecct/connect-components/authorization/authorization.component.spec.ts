@@ -8,8 +8,8 @@ describe('AuthorizationComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [AuthorizationComponent]
-    });
+    imports: [AuthorizationComponent]
+});
     fixture = TestBed.createComponent(AuthorizationComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

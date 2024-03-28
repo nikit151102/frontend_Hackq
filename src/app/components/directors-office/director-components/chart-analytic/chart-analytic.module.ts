@@ -8,20 +8,18 @@ import { DropdownModule } from 'primeng/dropdown';
 import { CalendarModule } from 'primeng/calendar';
 
 @NgModule({
-  declarations: [
-    ChartAnalyticComponent
-  ],
-  imports: [
-    CommonModule,
-    ChartAnalyticRoutingModule,
-    FormsModule,
-    ReactiveFormsModule,
-    AccordionModule,
-    DropdownModule,
-    CalendarModule
-  ],
-  exports: [
-    ChartAnalyticComponent
-  ]
+    imports: [
+        CommonModule,
+        ChartAnalyticRoutingModule,
+        FormsModule,
+        ReactiveFormsModule,
+        AccordionModule,
+        DropdownModule,
+        CalendarModule,
+        ChartAnalyticComponent
+    ],
+    exports: [
+        ChartAnalyticComponent
+    ]
 })
 export class ChartAnalyticModule { }

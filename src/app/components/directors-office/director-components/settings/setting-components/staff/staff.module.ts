@@ -8,22 +8,20 @@ import { StaffComponent } from './staff.component';
 import { StaffUserComponent } from './staff_user/staff-user.component';
 
 @NgModule({
-  declarations: [
-    StaffComponent,
-    StaffUserComponent
-  ],
-  imports: [
-    CommonModule,
-    ButtonModule,
-    ConfirmPopupModule,
-    ToastModule,
-  ],
-  providers: [
-    ConfirmationService,MessageService
-  ],
-  exports: [
-    StaffComponent,
-    StaffUserComponent
-  ]
+    imports: [
+        CommonModule,
+        ButtonModule,
+        ConfirmPopupModule,
+        ToastModule,
+        StaffComponent,
+        StaffUserComponent,
+    ],
+    providers: [
+        ConfirmationService, MessageService
+    ],
+    exports: [
+        StaffComponent,
+        StaffUserComponent
+    ]
 })
 export class StaffSettingsModule { }

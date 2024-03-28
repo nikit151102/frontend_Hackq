@@ -12,20 +12,18 @@ import { RatingModule } from 'primeng/rating';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 
 @NgModule({
-  declarations: [
-    TableComponent
-  ],
-  imports: [
-    CommonModule,
-    TableRoutingModule,
-    FormsModule,
-    AddItemModalModule,
-    TableModule,
-    ButtonModule,
-    ToastModule,
-    RatingModule,
-    ConfirmDialogModule
-  ],
-  providers: [DatePipe,MessageService,ConfirmationService]
+    imports: [
+        CommonModule,
+        TableRoutingModule,
+        FormsModule,
+        AddItemModalModule,
+        TableModule,
+        ButtonModule,
+        ToastModule,
+        RatingModule,
+        ConfirmDialogModule,
+        TableComponent
+    ],
+    providers: [DatePipe, MessageService, ConfirmationService]
 })
 export class TablepageModule { }

@@ -5,17 +5,22 @@ import { ModalService } from '../modal.service';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { map } from 'rxjs/operators';
 import { ChangeDetectorRef } from '@angular/core';
+import { AddItemModalComponent } from '../add-item-modal/add-item-modal.component';
+import { WeeklySchedulCardComponent } from './weekly-schedule-components/weekly-schedule-card.component';
+import { NgIf, NgFor } from '@angular/common';
 
 @Component({
-  selector: 'app-weekly-schedule',
-  templateUrl: './weekly-schedule.component.html',
-  styleUrls: ['./weekly-schedule.component.css'],
-  animations: [
-    trigger('customFadeIn', [
-      state('void', style({ opacity: 0 })), // Состояние компонента при его создании
-      transition(':enter', animate('500ms ease-out', style({ opacity: 1 }))) // Анимация при входе
-    ])
-  ]
+    selector: 'app-weekly-schedule',
+    templateUrl: './weekly-schedule.component.html',
+    styleUrls: ['./weekly-schedule.component.css'],
+    animations: [
+        trigger('customFadeIn', [
+            state('void', style({ opacity: 0 })),
+            transition(':enter', animate('500ms ease-out', style({ opacity: 1 }))) // Анимация при входе
+        ])
+    ],
+    standalone: true,
+    imports: [NgIf, NgFor, WeeklySchedulCardComponent, AddItemModalComponent]
 })
 
 export class WeeklyScheduleComponent implements OnInit {

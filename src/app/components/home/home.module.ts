@@ -10,23 +10,22 @@ import { SectionThreeComponent } from './home-components/section-three/section-t
 import { SectionFourComponent } from './home-components/section-four/section-four.component';
 import { FooterComponent } from './home-components/footer/footer.component';
 import { NewApplicationModule } from '../new-application/new-application.module';
-
+import { CardModule } from 'primeng/card';
 
 @NgModule({
-  declarations: [
-    HomeComponent,
-    HeaderComponent,
-    DialogNewApplicationComponent,
-    SectionONEComponent,
-    SectionTwoComponent,
-    SectionThreeComponent,
-    SectionFourComponent,
-    FooterComponent
-  ],
-  imports: [
-    CommonModule,
-    HomeRoutingModule,
-    NewApplicationModule
-  ]
+    imports: [
+        CommonModule,
+        HomeRoutingModule,
+        NewApplicationModule,
+        CardModule,
+        HomeComponent,
+        HeaderComponent,
+        DialogNewApplicationComponent,
+        SectionONEComponent,
+        SectionTwoComponent,
+        SectionThreeComponent,
+        SectionFourComponent,
+        FooterComponent
+    ]
 })
 export class HomeModule { }

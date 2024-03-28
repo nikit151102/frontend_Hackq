@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalStatCounterService } from '../modal-stat-counter.service';
+import { NgIf } from '@angular/common';
 
 @Component({
-  selector: 'app-home-stat-counter',
-  templateUrl: './home-stat-counter.component.html',
-  styleUrls: ['./home-stat-counter.component.css']
+    selector: 'app-home-stat-counter',
+    templateUrl: './home-stat-counter.component.html',
+    styleUrls: ['./home-stat-counter.component.css'],
+    standalone: true,
+    imports: [NgIf]
 })
 export class HomeStatCounterComponent implements OnInit {
   

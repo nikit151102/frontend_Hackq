@@ -1,10 +1,15 @@
 import { Component, Input, SimpleChanges } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { ButtonModule } from 'primeng/button';
+import { NgIf } from '@angular/common';
+import { InputTextModule } from 'primeng/inputtext';
 
 @Component({
-  selector: 'app-data-user',
-  templateUrl: './data-user.component.html',
-  styleUrls: ['./data-user.component.css']
+    selector: 'app-data-user',
+    templateUrl: './data-user.component.html',
+    styleUrls: ['./data-user.component.css'],
+    standalone: true,
+    imports: [ReactiveFormsModule, InputTextModule, NgIf, ButtonModule]
 })
 export class DataUserComponent {
 

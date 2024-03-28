@@ -12,24 +12,22 @@ import { MenubarModule } from 'primeng/menubar';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 
 @NgModule({
-  declarations: [
-    AddItemModalComponent
-  ],
-  imports: [
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
-    InputTextModule,
-    TabViewModule,
-    InputTextareaModule,
-    AutoCompleteModule,
-    DropdownModule,
-    ButtonModule,
-    MenubarModule,
-    ConfirmDialogModule
-  ],
-  exports: [
-    AddItemModalComponent
-  ]
+    imports: [
+        CommonModule,
+        FormsModule,
+        ReactiveFormsModule,
+        InputTextModule,
+        TabViewModule,
+        InputTextareaModule,
+        AutoCompleteModule,
+        DropdownModule,
+        ButtonModule,
+        MenubarModule,
+        ConfirmDialogModule,
+        AddItemModalComponent
+    ],
+    exports: [
+        AddItemModalComponent
+    ]
 })
 export class AddItemModalModule { }

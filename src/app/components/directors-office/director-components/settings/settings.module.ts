@@ -8,16 +8,13 @@ import { ProfileSettingsModule } from './setting-components/profile-setting/prof
 import { StaffSettingsModule } from './setting-components/staff/staff.module';
 
 @NgModule({
-  declarations: [
-    SettingsComponent,
-  ],
-  imports: [
-    CommonModule,
-    SettingsRoutingModule,
-    TabViewModule,
-    ProfileSettingsModule,
-    StaffSettingsModule,
-  ],
-
+    imports: [
+        CommonModule,
+        SettingsRoutingModule,
+        TabViewModule,
+        ProfileSettingsModule,
+        StaffSettingsModule,
+        SettingsComponent,
+    ],
 })
 export class SettingsModule { }

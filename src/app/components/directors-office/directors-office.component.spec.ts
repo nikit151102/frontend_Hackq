@@ -8,8 +8,8 @@ describe('DirectorsOfficeComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [DirectorsOfficeComponent]
-    });
+    imports: [DirectorsOfficeComponent]
+});
     fixture = TestBed.createComponent(DirectorsOfficeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

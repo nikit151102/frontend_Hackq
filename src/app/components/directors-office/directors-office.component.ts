@@ -1,10 +1,13 @@
 import { Component, Renderer2, ElementRef } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterOutlet } from '@angular/router';
+import { NavHeaderComponent } from './director-components/nav-header/nav-header.component';
 
 @Component({
-  selector: 'app-directors-office',
-  templateUrl: './directors-office.component.html',
-  styleUrls: ['./directors-office.component.css']
+    selector: 'app-directors-office',
+    templateUrl: './directors-office.component.html',
+    styleUrls: ['./directors-office.component.css'],
+    standalone: true,
+    imports: [NavHeaderComponent, RouterOutlet]
 })
 export class DirectorsOfficeComponent {
   constructor(private renderer: Renderer2, private el: ElementRef,private route: ActivatedRoute) {}

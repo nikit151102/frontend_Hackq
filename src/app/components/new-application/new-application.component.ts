@@ -1,10 +1,13 @@
 import { Component, OnInit, } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { ApplicationService } from './application.service';
+import { NgIf } from '@angular/common';
 @Component({
-  selector: 'app-new-application',
-  templateUrl: './new-application.component.html',
-  styleUrls: ['./new-application.component.css']
+    selector: 'app-new-application',
+    templateUrl: './new-application.component.html',
+    styleUrls: ['./new-application.component.css'],
+    standalone: true,
+    imports: [ReactiveFormsModule, NgIf]
 })
 export class NewApplicationComponent implements OnInit {
 

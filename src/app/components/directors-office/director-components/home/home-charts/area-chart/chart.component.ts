@@ -1,12 +1,14 @@
 import { Component, Input, OnInit } from '@angular/core';
 import * as Highcharts from 'highcharts';
 import { ModalgrafsService } from '../../modalgrafs.service';
+import { HighchartsChartModule } from 'highcharts-angular';
 
 @Component({
-  selector: 'app-area-chart',
-  templateUrl: './chart.component.html',
-  styleUrls: ['./chart.component.css'],
-  
+    selector: 'app-area-chart',
+    templateUrl: './chart.component.html',
+    styleUrls: ['./chart.component.css'],
+    standalone: true,
+    imports: [HighchartsChartModule],
 })
 export class ChartComponent implements OnInit {
 

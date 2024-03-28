@@ -8,8 +8,8 @@ describe('CanbanCurrentDayComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [CanbanCurrentDayComponent]
-    });
+    imports: [CanbanCurrentDayComponent]
+});
     fixture = TestBed.createComponent(CanbanCurrentDayComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

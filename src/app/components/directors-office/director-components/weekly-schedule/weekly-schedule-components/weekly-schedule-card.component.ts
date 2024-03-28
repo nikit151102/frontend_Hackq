@@ -1,10 +1,13 @@
 import { Component, Input } from '@angular/core';
 import { ModalService } from '../../modal.service';
+import { NgIf } from '@angular/common';
 
 @Component({
-  selector: 'app-weekly-schedule-card',
-  templateUrl: './weekly-schedule-card.component.html',
-  styleUrls: ['./weekly-schedule-card.component.css'],
+    selector: 'app-weekly-schedule-card',
+    templateUrl: './weekly-schedule-card.component.html',
+    styleUrls: ['./weekly-schedule-card.component.css'],
+    standalone: true,
+    imports: [NgIf],
 })
 
 export class WeeklySchedulCardComponent {
