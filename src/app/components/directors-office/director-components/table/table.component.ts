@@ -46,7 +46,7 @@ export class TableComponent implements OnInit {
     setTimeout(() => {
       this.isLoading = false;
     }, 500);
-    this.dataService.startPolling(null); // Опрашивать каждые 5 секунд (настройте интервал по вашему усмотрению)
+    this.dataService.startPolling(null); // Опрашивать каждые null секунд
     this.fetchData();
     this.dataService.sendDataToServer().subscribe((response) => {
       console.log('Ответ сервера:', response);
@@ -129,7 +129,6 @@ export class TableComponent implements OnInit {
   updateTable(data: any) {
     console.log('Updating table with data:', data);
     this.dataFromServer = data;
-    // Вызовите метод обновления пагинации, если это необходимо
     this.updatePages();
   }
 
