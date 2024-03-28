@@ -1,12 +1,12 @@
 <div class="DivCanvas">
     <div class="viewCanvas">
       <div class="card flex justify-content-center">
-        <app-pie-chart [chartData]="dataPie"></app-pie-chart>
+        <app-pie-chart [chartData]="dataPie" [chartError]="errorPie"></app-pie-chart>
       </div>
     </div>
     <div class="viewCanvas">
       <div class="card flex justify-content-center">
-        <app-area-chart [chartData]="dataFromEJS"></app-area-chart>
+        <app-area-chart [chartData]="dataFromEJS" [chartError]="errorPie"></app-area-chart>
       </div>
     </div>
 </div>

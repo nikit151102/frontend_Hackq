@@ -16,6 +16,7 @@ export class HomeChartsComponent implements OnInit {
 
   dataFromEJS: any[] = [];
   dataPie: any[] = [];
+  errorPie: string =''
   constructor(private modalgrafsService: ModalgrafsService) { }
  
 
@@ -37,7 +38,8 @@ export class HomeChartsComponent implements OnInit {
         this.dataPie = doughnuttoday
       },
       (error) => {
-        console.error('Error fetching data for doughnut chart:', error);
+        this.errorPie = error.error.detail;
+        console.error(error);
       }
     );
   }
