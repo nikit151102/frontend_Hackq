@@ -27,13 +27,16 @@
                                 <p class="datesSplityear">.{{ datesSplit[i].year }}</p>
                             </div>
                             <div class="cards">
+                                <p-scrollPanel >
+                                    <div *ngFor="let data of displayedData">
+                                        <ng-container *ngIf="data.submissiondate == daysOfWeek[i]">
+                                            <app-weekly-schedule-card [contentrequest]="data"></app-weekly-schedule-card>
+                                        </ng-container>
+    
+                                    </div>
+                                </p-scrollPanel>
                                 <!-- Выводим данные из массива displayedData, если они есть -->
-                                <div *ngFor="let data of displayedData">
-                                    <ng-container *ngIf="data.submissiondate == daysOfWeek[i]">
-                                        <app-weekly-schedule-card [contentrequest]="data"></app-weekly-schedule-card>
-                                    </ng-container>
-
-                                </div>
+                                
                             </div>
 
                         </div>

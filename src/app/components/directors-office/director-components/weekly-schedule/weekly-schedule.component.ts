@@ -9,6 +9,7 @@ import { AddItemModalComponent } from '../add-item-modal/add-item-modal.componen
 import { WeeklySchedulCardComponent } from './weekly-schedule-components/weekly-schedule-card.component';
 import { NgIf, NgFor } from '@angular/common';
 import { ButtonModule } from 'primeng/button';
+import { ScrollPanelModule } from 'primeng/scrollpanel';
 
 @Component({
   selector: 'app-weekly-schedule',
@@ -21,7 +22,7 @@ import { ButtonModule } from 'primeng/button';
     ])
   ],
   standalone: true,
-  imports: [NgIf, NgFor, WeeklySchedulCardComponent, AddItemModalComponent, ButtonModule]
+  imports: [NgIf, NgFor, WeeklySchedulCardComponent, AddItemModalComponent, ButtonModule, ScrollPanelModule]
 })
 
 export class WeeklyScheduleComponent implements OnInit {
