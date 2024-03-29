@@ -1,5 +1,6 @@
 export interface DataItem {
     id: string;
+    typerequest: string;
     requestnumber: string;
     statusrequest: string;
     statuspayment: string;
@@ -41,6 +42,7 @@ export interface DataItemChild {
 
 export interface TransformedDataItem {
     id: string;
+    typerequest: string;
     requestnumber: string;
     discharged: null | string;
     submissiondate: string | null;

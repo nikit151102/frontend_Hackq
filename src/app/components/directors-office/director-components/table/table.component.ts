@@ -56,6 +56,7 @@ export class TableComponent implements OnInit {
       this.transformedData = this.dataFromServer.map(item => {
         return {
           id: item.id,
+          typerequest: item.typerequest,
           requestnumber: item.requestnumber,
           discharged: item.discharged,
           submissiondate: item.submissiondate,
