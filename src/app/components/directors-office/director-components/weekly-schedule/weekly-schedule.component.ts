@@ -8,6 +8,7 @@ import { ChangeDetectorRef } from '@angular/core';
 import { AddItemModalComponent } from '../add-item-modal/add-item-modal.component';
 import { WeeklySchedulCardComponent } from './weekly-schedule-components/weekly-schedule-card.component';
 import { NgIf, NgFor } from '@angular/common';
+import { ButtonModule } from 'primeng/button';
 
 @Component({
   selector: 'app-weekly-schedule',
@@ -20,7 +21,7 @@ import { NgIf, NgFor } from '@angular/common';
     ])
   ],
   standalone: true,
-  imports: [NgIf, NgFor, WeeklySchedulCardComponent, AddItemModalComponent]
+  imports: [NgIf, NgFor, WeeklySchedulCardComponent, AddItemModalComponent, ButtonModule]
 })
 
 export class WeeklyScheduleComponent implements OnInit {

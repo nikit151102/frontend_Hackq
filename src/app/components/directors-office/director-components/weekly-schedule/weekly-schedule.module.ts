@@ -12,7 +12,6 @@ import { ButtonModule } from 'primeng/button';
         CommonModule,
         weeklyScheduleRoutingModule,
         AddItemModalModule,
-        ButtonModule,
         WeeklyScheduleComponent,
         WeeklySchedulCardComponent
     ],
