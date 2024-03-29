@@ -67,11 +67,11 @@ export class WeeklyScheduleComponent implements OnInit {
   DatesSplit(dates: string[]) {
     let spltDates: {day: string, month: string, year: string}[] = [];
     for (let date of dates) {
-      let parts = date.split('.');
+      let parts = date.split('-');
       if (parts.length === 3) {
-        let day = parts[0];
+        let day = parts[2];
         let month = parts[1];
-        let year = parts[2];
+        let year = parts[1];
         spltDates.push({ day, month, year });
       } else {
         console.log(`Неверный формат даты: ${date}`);

@@ -9,7 +9,7 @@ export class WorkingWithDates {
             date = new Date(date); // Преобразовать строку в объект Date
         }
         if (date instanceof Date && !isNaN(date.getTime())) {
-            return formatDate(date, 'dd.MM.yyyy', 'en-US');
+            return formatDate(date, 'yyyy-MM-dd', 'en-US');
         } else {
             return ''; // Вернуть пустую строку, если преобразование не удалось
         }
