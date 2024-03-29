@@ -44,7 +44,7 @@ export class WeeklyScheduleComponent implements OnInit {
   
         this.daysOfWeek = this.workingWithDates.filterdaysOfWeek(currentWeek.monday);
         console.log("this.daysOfWeek", this.daysOfWeek);
-        this.datesSplit = this.DatesSplit(this.daysOfWeek);
+        this.datesSplit = this.workingWithDates.DatesSplit(this.daysOfWeek);
         console.log("this.datesSplit", this.datesSplit);
   
         this.isLoading = false;
@@ -64,44 +64,21 @@ export class WeeklyScheduleComponent implements OnInit {
   }
   
 
-  DatesSplit(dates: string[]) {
-    let spltDates: {day: string, month: string, year: string}[] = [];
-    for (let date of dates) {
-      let parts = date.split('-');
-      if (parts.length === 3) {
-        let day = parts[2];
-        let month = parts[1];
-        let year = parts[1];
-        spltDates.push({ day, month, year });
-      } else {
-        console.log(`Неверный формат даты: ${date}`);
-      }
-    }
-    return spltDates;
-  }
+  
   
   
 
   previousWeek() {
-    let week = this.workingWithDates.viewLastWeek(this.daysOfWeek);
+    let week = this.workingWithDates.viewWeek(this.daysOfWeek, 'last');
+
     if (week) {
-      const formattedFirstDate = week.firstDate
-      const formattedLastDate = week.lastDate
-      console.log("formattedFirstDate", formattedFirstDate)
-      this.daysOfWeek.splice(0, this.daysOfWeek.length);
-      this.daysOfWeek = this.workingWithDates.filterdaysOfWeek(week.firstDate);
-      this.datesSplit = this.DatesSplit(this.daysOfWeek);
-      const formattedDate = `${formattedFirstDate.getDate().toString().padStart(2, '0')}.${(formattedFirstDate.getMonth() + 1).toString().padStart(2, '0')}.${formattedFirstDate.getFullYear()}`;
-      const formattedDate2 = `${formattedLastDate.getDate().toString().padStart(2, '0')}.${(formattedLastDate.getMonth() + 1).toString().padStart(2, '0')}.${formattedLastDate.getFullYear()}`;
+      let {formattedDate, formattedDate2, daysOfWeek} = this.workingWithDates.changeWeek(week, this.daysOfWeek);
+      this.daysOfWeek = daysOfWeek
+
       this.filterDataByDate(formattedDate,formattedDate2)
       .subscribe((response: any) => {
         this.displayedData = response;
-        console.log('displayedData:', this.displayedData);
-        console.log("this.daysOfWeek", this.daysOfWeek);
-
-        this.datesSplit = this.DatesSplit(this.daysOfWeek);
-        console.log("this.datesSplit", this.datesSplit);
-  
+        this.datesSplit = this.workingWithDates.DatesSplit(this.daysOfWeek);
         this.isLoading = false;
         this.cdRef.detectChanges(); 
       });
@@ -110,26 +87,16 @@ export class WeeklyScheduleComponent implements OnInit {
 
 
   nextWeek() {
-    let week = this.workingWithDates.viewNextWeek(this.daysOfWeek);
+    let week = this.workingWithDates.viewWeek(this.daysOfWeek, 'next');
+    
     if (week) {
-      const formattedFirstDate = week.firstDate
-      const formattedLastDate = week.lastDate
-      console.log("formattedFirstDate", formattedFirstDate)
-      this.daysOfWeek.splice(0, this.daysOfWeek.length);
-      this.daysOfWeek = this.workingWithDates.filterdaysOfWeek(week.firstDate);
-      this.datesSplit = this.DatesSplit(this.daysOfWeek);
-      const formattedDate = `${formattedFirstDate.getDate().toString().padStart(2, '0')}.${(formattedFirstDate.getMonth() + 1).toString().padStart(2, '0')}.${formattedFirstDate.getFullYear()}`;
-      const formattedDate2 = `${formattedLastDate.getDate().toString().padStart(2, '0')}.${(formattedLastDate.getMonth() + 1).toString().padStart(2, '0')}.${formattedLastDate.getFullYear()}`;
+      let {formattedDate, formattedDate2, daysOfWeek} = this.workingWithDates.changeWeek(week, this.daysOfWeek);
+      this.daysOfWeek = daysOfWeek
 
       this.filterDataByDate(formattedDate,formattedDate2)
       .subscribe((response: any) => {
         this.displayedData = response;
-        console.log('displayedData:', this.displayedData);
-        console.log("this.daysOfWeek", this.daysOfWeek);
-
-        this.datesSplit = this.DatesSplit(this.daysOfWeek);
-        console.log("this.datesSplit", this.datesSplit);
-  
+        this.datesSplit = this.workingWithDates.DatesSplit(this.daysOfWeek);
         this.isLoading = false;
         this.cdRef.detectChanges(); 
       });

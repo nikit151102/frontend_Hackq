@@ -1,5 +1,12 @@
 import { formatDate } from "@angular/common";
 
+interface changeWeek{
+    firstDate: Date,
+    lastDate: Date
+}
+
+
+
 export class WorkingWithDates {
     formatDate(date: Date | string): string {
         if (typeof date === 'string' && date.trim() === '') {
@@ -45,26 +52,54 @@ export class WorkingWithDates {
 
 
 
-    viewLastWeek(dates: string[]) {
-        const [day, month, year] = dates[0].split('.').map(Number);
-        const firstDate = new Date(year, month - 1, day - 7);
+    viewWeek(dates: string[],type: string): changeWeek {
+        let newday: number = 0;
+        let newday2: number = 0;
 
-        const [day2, month2, year2] = dates[6].split('.').map(Number);
-        const lastDate = new Date(year2, month2 - 1, day2 - 7);
+        const [year, month, day] = dates[0].split('-').map(Number);
+        const [year2, month2, day2] = dates[6].split('-').map(Number);
+        
+        if(type == "last"){
+            newday = day - 7;
+            newday2 = day2 - 7;
+        }
+        if(type == "next"){
+            newday = day + 7;
+            newday2 = day2 + 7;
+        }
 
-        return { firstDate: firstDate, lastDate: lastDate };
+        return { firstDate: new Date(year, month - 1, newday), lastDate: new Date(year2, month2 - 1, newday2) };
     }
 
+    DatesSplit(dates: string[]) {
+        let spltDates: {day: string, month: string, year: string}[] = [];
+        for (let date of dates) {
+          let parts = date.split('-');
+          if (parts.length === 3) {
+            let day = parts[2];
+            let month = parts[1];
+            let year = parts[0];
+            spltDates.push({ day, month, year });
+          } else {
+            console.log(`Неверный формат даты: ${date}`);
+          }
+        }
+        return spltDates;
+      }
+    
+      changeWeek(week: changeWeek, daysOfWeek: string[]) {
+        const formattedFirstDate = week.firstDate;
+        const formattedLastDate = week.lastDate;
 
-
-    viewNextWeek(dates: string[]) {
-        const [day, month, year] = dates[0].split('.').map(Number);
-        const firstDate = new Date(year, month - 1, day + 7);
-
-        const [day2, month2, year2] = dates[6].split('.').map(Number);
-        const lastDate = new Date(year2, month2 - 1, day2 + 7);
-
-        return { firstDate: firstDate, lastDate: lastDate };
+        daysOfWeek.splice(0, daysOfWeek.length);
+        daysOfWeek = this.filterdaysOfWeek(week.firstDate);
+        let datesSplit = this.DatesSplit(daysOfWeek);
+  
+        const formattedDate = `${formattedFirstDate.getFullYear()}-${(formattedFirstDate.getMonth() + 1).toString().padStart(2, '0')}-${formattedFirstDate.getDate().toString().padStart(2, '0')}`;
+        const formattedDate2 = `${formattedLastDate.getFullYear()}-${(formattedLastDate.getMonth() + 1).toString().padStart(2, '0')}-${formattedLastDate.getDate().toString().padStart(2, '0')}`;
+       
+        return { formattedDate: formattedDate, formattedDate2: formattedDate2, daysOfWeek: daysOfWeek };
     }
+
 }
 
