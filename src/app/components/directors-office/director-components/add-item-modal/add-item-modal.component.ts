@@ -124,6 +124,7 @@ export class AddItemModalComponent implements OnInit {
           content: this.dataApplication.reason,
           comment: this.dataApplication.comment,
           phone: this.dataApplication.clientphone,
+          statuspayment: this.dataApplication.statuspayment,
           clientlastname: this.dataApplication.clientlastname,
           clientfirstname: this.dataApplication.clientfirstname,
           clientmiddlename: this.dataApplication.clientmiddlename,
@@ -132,6 +133,7 @@ export class AddItemModalComponent implements OnInit {
           profit: this.dataApplication.profit,
 
         });
+
       }
     );
 
@@ -140,7 +142,7 @@ export class AddItemModalComponent implements OnInit {
         this.dataStatusApplication = response;
       }
     );
-
+   
     this.viewApplicationService.getStatusPayment().subscribe(
       (response: StatusPayment[]) => {
         this.dataStatusPayment = response;
