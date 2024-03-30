@@ -102,12 +102,15 @@ body {
     top: 0;
     left: 0;
     z-index: 50;
+    margin-top: 1rem;
 }
 
 .header__container {
     display: flex;
-    min-height: 114px;
+    min-height: 60px;
     align-items: center;
+    background-color: rgba(255, 255, 255, 0.466);
+    border-radius: 6rem;
 }
 
 .header__logo {
@@ -137,24 +140,27 @@ body {
 
 .menu__list {
     display: flex;
-    background-color: #fafbfd;
+   
 }
 
 .menu__item {
+    padding: 10px 10px 10px 10px;
     margin: 0px 40px 0px 0px;
+    
 }
 
 .menu__link {
-    font-family: Raleway;
     text-transform: uppercase;
     font-weight: 700;
-    font-size: 13px;
-    line-height: 1.2;
     color: #000;
-    letter-spacing: 1px;
+    font-family: 'Inter Tight', sans-serif;
+    font-size: 1rem;
+    line-height: 1;
+    
 }
-.menu__link:hover {
-    text-decoration: underline;
+.menu__item:hover {
+    background-color: rgba(255, 255, 255, 0.384);
+    border-radius: 6rem;
 }
 
 @media (max-width: 991.98px) {
@@ -207,6 +213,9 @@ body {
     .menu__link {
         color: #000;
         font-size: 20px;
+    } 
+    .button {
+        display: none;
     }
 }
 @media (max-width: 479.98px) {
@@ -239,32 +248,23 @@ body {
 }
 
 .button {
-    font-family: Raleway;
     text-transform: uppercase;
     font-weight: 800;
-    font-size: 15px;
-    line-height: 1.2;
     letter-spacing: 1px;
-    color: #fcfdfe;
+    color: #000000;
     padding: 14px 30px;
     border-radius: 5px;
-    background-color: var(--red);
+    background-color: #fcfdfe;
     display: inline-block;
     transition: all 0.3s ease 0s;
+    border-radius: 6rem;
+    font-family: 'Inter Tight', sans-serif;
+    font-size: 1rem;
+    line-height: 1;
 }
 
 .button:hover {
-    background-color: #701b0e;
-}
-
-.button__blue {
-    background-color:#fdfeff;
-    color: #701b0e;
-}
-
-.button__blue:hover {
-    background: #701b0e;
-    color: #fff;
+    background-color: rgba(255, 255, 255, 0.192);
 }
 
 .random-text {
@@ -301,6 +301,9 @@ body {
     .icon-menu span {
         background-color: #000;
         height: 2px;
+    }
+    .button__blue{
+        display: none;
     }
 }
 
