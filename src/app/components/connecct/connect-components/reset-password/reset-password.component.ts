@@ -2,13 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { ConnectService } from '../../connect.service';
 import { resetpassword } from '../../connect-interface';
+import { ButtonModule } from 'primeng/button';
 
 @Component({
     selector: 'app-reset-password',
     templateUrl: './reset-password.component.html',
     styleUrls: ['./reset-password.component.css'],
     standalone: true,
-    imports: [ReactiveFormsModule, FormsModule]
+    imports: [ReactiveFormsModule, FormsModule, ButtonModule]
 })
 export class ResetPasswordComponent implements OnInit {
 

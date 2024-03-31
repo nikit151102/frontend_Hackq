@@ -15,5 +15,5 @@
         <label for="newmail"></label>
     </div>
     <div class="invalidRegistration">{{ errorMessage }}</div>
-    <button type="submit" [disabled]="createForm.invalid">Регистрация</button>
+    <p-button label="Регистрация" type="ngSubmit" [disabled]="createForm.invalid"></p-button>
 </form>

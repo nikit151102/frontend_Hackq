@@ -10,8 +10,10 @@
         <label for="UserPassword" id="label"></label>
     </div>
     <div class="invalidUsernameOrPassword">{{ errorMessage }}</div>
-    <span class="text">
-        <a class="text reset_password" (click)="connectService.islogin=false">Забыл пароль</a>
-    </span>
-    <button type="submit" class="connectBtn" [disabled]="connectForm.invalid">Войти</button>
+    <div class="buttons">
+        <span class="text">
+            <a class="text reset_password" (click)="connectService.islogin=false">Забыл пароль</a>
+        </span>
+        <p-button label="Войти" type="ngSubmit" [disabled]="connectForm.invalid"></p-button>
+    </div>
 </form>

@@ -2,13 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { ConnectService } from '../../connect.service';
 import { registration } from '../../connect-interface';
+import { ButtonModule } from 'primeng/button';
 
 @Component({
     selector: 'app-registration',
     templateUrl: './registration.component.html',
     styleUrls: ['./registration.component.css'],
     standalone: true,
-    imports: [ReactiveFormsModule]
+    imports: [ReactiveFormsModule, ButtonModule]
 })
 export class RegistrationComponent implements OnInit{
 

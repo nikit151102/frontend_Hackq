@@ -3,13 +3,14 @@ import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angula
 import { login } from '../../connect-interface';
 import { ConnectService } from '../../connect.service';
 import { HttpHeaders } from '@angular/common/http';
+import { ButtonModule } from 'primeng/button';
 
 @Component({
     selector: 'app-authorization',
     templateUrl: './authorization.component.html',
     styleUrls: ['./authorization.component.css'],
     standalone: true,
-    imports: [ReactiveFormsModule]
+    imports: [ReactiveFormsModule, ButtonModule]
 })
 export class AuthorizationComponent implements OnInit {
 
