@@ -27,6 +27,5 @@ import { CardModule } from 'primeng/card';
         SectionFourComponent,
         FooterComponent
     ]
-
 })
 export class HomeModule { }

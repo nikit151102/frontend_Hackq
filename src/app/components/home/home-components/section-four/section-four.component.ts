@@ -3,13 +3,14 @@ import { NewApplicationComponent } from '../../../new-application/new-applicatio
 import { MapComponent } from './map/map.component';
 import { StatisticsComponent } from './statistics/statistics.component';
 import { ContactsComponent } from './contacts/contacts.component';
+import { FormaComponent } from './forma/forma.component'
 
 @Component({
     selector: 'app-section-four',
     templateUrl: './section-four.component.html',
     styleUrls: ['./section-four.component.css'],
     standalone: true,
-    imports: [NewApplicationComponent, MapComponent, StatisticsComponent, ContactsComponent]
+    imports: [NewApplicationComponent, MapComponent, StatisticsComponent, ContactsComponent, FormaComponent]
 })
 export class SectionFourComponent {
 
