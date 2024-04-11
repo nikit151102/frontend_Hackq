@@ -29,7 +29,7 @@ export class PieChartComponent implements OnInit {
     }
     ngOnInit() {
         this.optionsChart(this.chartData)
-        console.log("this.chartData", this.chartData)
+        console.log("111this.chartData", this.chartData)
     }
 
     optionsChart(chartData: any) {
