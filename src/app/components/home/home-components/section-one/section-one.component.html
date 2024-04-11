@@ -1,26 +1,21 @@
 <section class="get-started">
     <div class="get-started__container">
-        <div class="get-started__content">
-            <app-dialog-new-application></app-dialog-new-application>
-            <h4 class="wordCarousel">
-                <span>Наша компания занимается </span>
-                <div>
-                    <ul class="flip3">
-                        <li>ремонтом</li>
-                        <li>продажей</li>
-                        <li>обслуживанием</li>
-                    </ul>
-                </div>
-                <div style="width: 100%;">
-                    <span>оргтехники</span>
-                </div>
-                <div class="btn-get-started">
-                    <button class="button_application" onclick="window.dialog.showModal();">
-                        <span>Оставить заявку</span>
-                    </button>
-                </div>
-            </h4>
+        <div class="content">
+            <div class="get-started__content">
+                <app-dialog-new-application></app-dialog-new-application>
+                <h4 >
+                    <span>Добро пожаловать в Виткон Сервис! </span>
+                    <br>
+                    <p>Ваш надежный партнер по ремонту, обслуживанию и продаже офисной техники!</p>
+                </h4>
+            </div>
+            <div class="btn-get-started">
+                <p-button label="Оставить заявку" onclick="window.dialog.showModal();"></p-button>
+            </div>
         </div>
-       
+        <div class="get-started__form">
+            <app-new-application></app-new-application>
+        </div>
     </div>
+    
 </section>
