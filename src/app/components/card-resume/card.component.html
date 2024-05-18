@@ -18,14 +18,23 @@
             Навыки:
         </p>
         <div class="left-content">
-            <div class="avatar">
-                <img src="assets/images/logo.png" alt="Logo">
-    
+            <div style=" display: flex; align-items: center; gap: 1rem;">
+                <div class="avatar">
+                    <img src="assets/images/logo.png" alt="Logo">
+        
+                </div>
+                <p>
+                    {{item.lastname}} {{item.nane}}
+                </p>
             </div>
-            <p>
-                {{item.lastname}} {{item.nane}}
-            </p>
+
+            <div class="icon">
+                <img src="assets/images/like.png" alt="like">
+                <img src="assets/images/comment.png" alt="comment">
+            </div>
+           
         </div>
+        
     </div>
     
 </div>

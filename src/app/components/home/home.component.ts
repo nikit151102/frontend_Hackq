@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { SearchComponent } from '../search/search.component';
-import { CardComponent } from '../card/card.component';
+import { CardComponent } from '../card-resume/card.component';
 
 
 @Component({

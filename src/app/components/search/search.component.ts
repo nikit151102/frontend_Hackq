@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { InputTextModule } from 'primeng/inputtext';
 import { DropdownModule } from 'primeng/dropdown';
 import { SearchService } from './search.service';
+import { NgFor } from '@angular/common';
 
 interface SelectItem {
   name: string;
@@ -13,7 +14,7 @@ interface SelectItem {
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.css'],
   standalone: true,
-  imports: [InputTextModule, DropdownModule]
+  imports: [InputTextModule, DropdownModule, NgFor]
 })
 export class SearchComponent implements OnInit {
 
@@ -23,7 +24,11 @@ export class SearchComponent implements OnInit {
 
   constructor(private searchService: SearchService) {
   }
+  isTagsOpen: boolean = false;
 
+  toggleTags() {
+    this.isTagsOpen = !this.isTagsOpen;
+  }
   ngOnInit(): void {
     this.searchService.sendtags().subscribe(
       (data: any) => {

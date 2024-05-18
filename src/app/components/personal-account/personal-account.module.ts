@@ -4,12 +4,14 @@ import { PersonalAccountRoutingModule } from './personal-account.routing.module'
 import { AuthGuardService } from './auth-guard.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { AuthService } from './auth.service';
+import { PersonalAccountComponent } from './personal-account.component';
 
 @NgModule({
   declarations: [],
   imports: [
     CommonModule,
-    PersonalAccountRoutingModule
+    PersonalAccountRoutingModule,
+    PersonalAccountComponent
   ],
   providers: [AuthGuardService, JwtHelperService, AuthService],
 })

@@ -5,7 +5,11 @@
             <input type="text" aria-describedby="username-help" pInputText />
             <small id="username-help">Фильтры</small>
             
+            
         </span>
+        <ng-container  *ngFor="let item of Tags">
+            <div class="tag-value">{{item.name}}</div>
+        </ng-container>
     </div>
 
 </div>

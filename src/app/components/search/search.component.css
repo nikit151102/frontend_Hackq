@@ -21,3 +21,19 @@
 #username-help{
     font-size: 100% !important;
 }
+
+.tags{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+.tag-value{
+    padding: 4px;
+    border-radius: 3px;
+    color: #FFFFFF;
+    background-color: #1E516D;
+    transition: 1s;
+}
+.tag-value:hover{
+    transform: scale(1.1);
+}
