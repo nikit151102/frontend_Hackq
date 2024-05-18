@@ -1,7 +1,6 @@
 import { Component, Renderer2, ElementRef } from '@angular/core';
 import { ConnectService } from './connect.service';
 import { RegistrationComponent } from './connect-components/registration/registration.component';
-import { ResetPasswordComponent } from './connect-components/reset-password/reset-password.component';
 import { AuthorizationComponent } from './connect-components/authorization/authorization.component';
 import { NgIf } from '@angular/common';
 
@@ -10,7 +9,7 @@ import { NgIf } from '@angular/common';
     templateUrl: './connect.component.html',
     styleUrls: ['./connect.component.css'],
     standalone: true,
-    imports: [NgIf, AuthorizationComponent, ResetPasswordComponent, RegistrationComponent]
+    imports: [NgIf, AuthorizationComponent, RegistrationComponent]
 })
 export class ConnectComponent {
 

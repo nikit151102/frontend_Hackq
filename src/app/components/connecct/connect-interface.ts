@@ -1,6 +1,6 @@
 export interface login {
-    UserLogin: string,
-    UserPassword: string
+    telegram: string,
+    password: string
 }
 
 export interface registration{

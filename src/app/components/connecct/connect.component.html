@@ -5,9 +5,6 @@
                 <ng-container *ngIf="connectService.islogin">
                     <app-authorization></app-authorization>
                 </ng-container>
-                <ng-container *ngIf="!connectService.islogin">
-                    <app-reset-password></app-reset-password>
-                </ng-container>
                 <div class="login-signup">
                     <span class="text">У вас нет аккаунта?
                         <a class="text signup-link">Регистрация</a>

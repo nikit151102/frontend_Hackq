@@ -32,6 +32,7 @@ interface user {
   styleUrls: ['./userprofiles.component.css'],
   standalone: true,
   imports: [TableModule, ButtonModule, RippleModule, ToastModule, ConfirmDialogModule],
+  styles:['width: 90%;']
 })
 export class UserprofilesComponent {
 

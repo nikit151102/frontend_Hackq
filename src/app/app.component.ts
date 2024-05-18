@@ -11,12 +11,14 @@ export class AppComponent {
   showHeader = true;
 
   constructor(private router: Router) {}
-
+  
   ngOnInit() {
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
-        this.showHeader = !event.url.includes('/login');
+        this.showHeader = !(event.url.includes('/login') || event.url.includes('/admin'));
       }
     });
+
   }
+
 }

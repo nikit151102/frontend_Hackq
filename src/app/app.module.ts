@@ -10,7 +10,7 @@ import { HeaderComponent } from './components/header/header.component';
 
 @NgModule({
   declarations: [
-    AppComponent,   
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -20,7 +20,7 @@ import { HeaderComponent } from './components/header/header.component';
     ReactiveFormsModule,
     FormsModule,
     HeaderComponent,
-    
+
   ],
   bootstrap: [AppComponent]
 })

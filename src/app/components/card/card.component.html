@@ -1,23 +1,31 @@
-<div class="content">
+<div class="border">
 
-    <div class="left-content">
-        <div class="avatar">
-            <img src="assets/images/logo.png" alt="Logo">
-
+    <div class="content">
+        
+        <div class="items">
+            <p class="title">
+                {{item.title}}
+            </p>
+            <p class="description">
+                {{item.description}}
+            </p>
+            
         </div>
-        <p>
-            {{item.lastname}} {{item.nane}}
-        </p>
-    </div>
-    <div class="items">
-        <p class="title">
-            {{item.title}}
+        <p class="description">
+            Профессия:
         </p>
         <p class="description">
-            {{item.description}}
+            Навыки:
         </p>
+        <div class="left-content">
+            <div class="avatar">
+                <img src="assets/images/logo.png" alt="Logo">
+    
+            </div>
+            <p>
+                {{item.lastname}} {{item.nane}}
+            </p>
+        </div>
     </div>
-    <div class="icon">
-        hrtth
-    </div>
+    
 </div>

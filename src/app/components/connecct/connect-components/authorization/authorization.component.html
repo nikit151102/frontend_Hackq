@@ -1,23 +1,23 @@
-<form [formGroup]="connectForm" (ngSubmit)="onSubmit()" class="ConnectForm" style="    display: flex; flex-direction: column; gap: 1.5rem;">
-    <span class="p-float-label">
-        <input pInputText id="telegram" formControlName="telegram" autocomplete="off" 
-               style="border-radius: 10px; width: 100%;" (focus)="addAtSign()" />
-        <label for="telegram">Телеграм</label>
-        <div *ngIf="connectForm.get('telegram')?.touched && connectForm.get('telegram')?.invalid" class="error-message">
-            <div *ngIf="connectForm.get('telegram')?.errors?.['required']">Телеграм обязателен.</div>
-            <div *ngIf="connectForm.get('telegram')?.errors?.['minlength']">Телеграм должен быть не менее 3 символов.</div>
+<form [formGroup]="connectForm" (ngSubmit)="onSubmit()" class="ConnectForm"
+    style="    display: flex; flex-direction: column; gap: 1.5rem;">
+    <div class="inputs">
+        <div class="item">
+            <div class="input-container inputlogin">
+                <input type="text" id="myInput" name="myInput" formControlName="login">
+            </div>
+    
         </div>
-    </span>
-    <span class="p-float-label">
-        <input pInputText id="UserPassword" formControlName="UserPassword" style="border-radius: 10px; width: 100%;" />
-        <label htmlFor="UserPassword">Пароль</label>
-    </span>
-
-    <div class="invalidUsernameOrPassword">{{ errorMessage }}</div>
-    <div class="buttons">
-        <span class="text">
-            <a class="text reset_password" (click)="connectService.islogin=false">Забыл пароль</a>
-        </span>
-        <p-button label="Войти" type="ngSubmit" [disabled]="connectForm.invalid"></p-button>
+        <div class="item">
+            <div class="input-container inputpassword">
+                <input type="text" id="myInput" name="myInput" formControlName="password">
+            </div>
+    
+        </div>
+    
+        <div class="invalidUsernameOrPassword">{{ errorMessage }}</div>
+        <div class="buttons">
+            <p-button label="Войти" type="ngSubmit" [disabled]="connectForm.invalid"></p-button>
+        </div>
     </div>
+    
 </form>

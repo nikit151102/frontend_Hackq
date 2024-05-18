@@ -19,3 +19,12 @@
     display: flex;
     justify-content: center;
 }
+.cards{
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 80%;
+}
+.cards .card {flex: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;}

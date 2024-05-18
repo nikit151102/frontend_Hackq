@@ -6,13 +6,14 @@ import { ButtonModule } from 'primeng/button';
 import { NgIf } from '@angular/common';
 import { InputMaskModule } from 'primeng/inputmask';
 import { InputTextModule } from 'primeng/inputtext';
+import { RadioButtonModule } from 'primeng/radiobutton';
 
 @Component({
   selector: 'app-registration',
   templateUrl: './registration.component.html',
   styleUrls: ['./registration.component.css'],
   standalone: true,
-  imports: [ReactiveFormsModule, ButtonModule, NgIf, InputMaskModule, InputTextModule,]
+  imports: [ReactiveFormsModule, ButtonModule, NgIf, InputMaskModule, InputTextModule,RadioButtonModule]
 })
 export class RegistrationComponent implements OnInit {
 
@@ -23,10 +24,16 @@ export class RegistrationComponent implements OnInit {
 
   ngOnInit() {
     this.createForm = this.fb.group({
-      telegram: ['', [Validators.required, Validators.minLength(3)]],
+      firstName: ['', [Validators.required, Validators.minLength(3)]],
+      lastName: ['', [Validators.required, Validators.minLength(3)]],
       email: ['', [Validators.required, Validators.email]],
+      gender: ['', [Validators.required]],
+      age: ['', [Validators.required]],
+      cityOfResidence: ['', [Validators.required]],
       phone: ['', [Validators.required]],
-      password: ['', [Validators.required, Validators.minLength(8)]]
+      telegram: ['', [Validators.required]],
+      password: ['', [Validators.required, Validators.minLength(8)]],
+      ownLink: ['', [Validators.required]]
     });
   }
 
@@ -45,14 +52,34 @@ export class RegistrationComponent implements OnInit {
   }
 
   onCreateSubmit() {
-    if (this.createForm.valid) {
-      const formData: registration = {
-        telegram: this.createForm.value.telegram,
-        email: this.createForm.value.email,
-        phone: this.createForm.value.phone,
-        password: this.createForm.value.password,
+      const formValues = this.createForm.value;
+
+      const requestData = {
+        id: 0,
+        firstName: formValues.firstName,
+        lastName: formValues.lastName,
+        tags: [
+          {
+            id: 0,
+            name: "string",
+            type: "MISC",
+            availabilityStatus: "VERIFICATION"
+          }
+        ],
+        gender: formValues.gender,
+        age: formValues.age,
+        freeLink: "string",
+        ownLink: formValues.ownLink,
+        aboutMe: "string",
+        dateOfRegistration: new Date().toISOString(),
+        cityOfResidence: formValues.cityOfResidence,
+        telegram: formValues.telegram,
+        email: formValues.email,
+        phone: formValues.phone,
+        password: formValues.password
       };
-      this.connectService.sendregistration(formData).subscribe(
+      console.log("requestData",requestData)
+      this.connectService.sendregistration(requestData).subscribe(
         (data: any) => {
           console.log(data);
         },
@@ -60,10 +87,6 @@ export class RegistrationComponent implements OnInit {
           console.error('AJAX error:', error);
         }
       );
-    } else {
-      this.errorMessage = 'Заполните все поля.';
-    }
   }
-
 
 }

@@ -23,8 +23,8 @@ export class AuthorizationComponent implements OnInit {
 
   ngOnInit() {
     this.connectForm = this.fb.group({
-      telegram: ['', Validators.required],
-      UserPassword: ['', Validators.required]
+      login: ['', Validators.required],
+      password: ['', Validators.required]
     });
   }
 
@@ -45,8 +45,8 @@ export class AuthorizationComponent implements OnInit {
   onSubmit() {
     if (this.connectForm.valid) {
       const formData: login = {
-        UserLogin: this.connectForm.value.UserLogin,
-        UserPassword: this.connectForm.value.UserPassword,
+        telegram: this.connectForm.value.login,
+        password: this.connectForm.value.password,
       };
       this.connectService.sendlogin(formData).subscribe(
         (data: any) => {

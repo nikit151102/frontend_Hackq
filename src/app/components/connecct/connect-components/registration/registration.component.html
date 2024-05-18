@@ -1,42 +1,128 @@
 <form [formGroup]="createForm" (ngSubmit)="onCreateSubmit()" id="create-Form" autocomplete="off">
+    <div class="inputs">
+        <div class="item">
+            <div class="input-container inputname">
+                <input type="text" id="myInput " name="myInput" formControlName="firstName">
+            </div>
 
-    <span class="p-float-label">
-        <input pInputText id="telegram" formControlName="telegram" autocomplete="off" 
-               style="border-radius: 10px; width: 100%;" (focus)="addAtSign()" />
-        <label for="telegram">Телеграм</label>
-        <div *ngIf="createForm.get('telegram')?.touched && createForm.get('telegram')?.invalid" class="error-message">
-            <div *ngIf="createForm.get('telegram')?.errors?.['required']">Телеграм обязателен.</div>
-            <div *ngIf="createForm.get('telegram')?.errors?.['minlength']">Телеграм должен быть не менее 3 символов.</div>
+            <div *ngIf="createForm.get('firstName')?.touched && createForm.get('firstName')?.invalid"
+                class="error-message">
+                <div *ngIf="createForm.get('firstName')?.errors?.['required']">Телеграм обязателен.</div>
+                <div *ngIf="createForm.get('firstName')?.errors?.['minlength']">Телеграм должен быть не менее 3
+                    символов.
+                </div>
+            </div>
         </div>
-    </span>
-    
-    <span class="p-float-label">
-        <input pInputText id="email" formControlName="email" autocomplete="off" style="border-radius: 10px; width: 100%;" />
-        <label for="email">Электронная почта</label>
-        <div *ngIf="createForm.get('email')?.touched && createForm.get('email')?.invalid" class="error-message">
-            <div *ngIf="createForm.get('email')?.errors?.['required']">Электронная почта обязательна.</div>
-            <div *ngIf="createForm.get('email')?.errors?.['email']">Введите действительный адрес электронной почты.</div>
-        </div>
-    </span>
+        <div class="item">
+            <div class="input-container inputlastname">
+                <input type="text" id="myInput " name="myInput" formControlName="lastName">
+            </div>
 
-    <span class="p-float-label">
-        <p-inputMask mask="8 (999) 999-9999" formControlName="phone" id="phone" autocomplete="off" [style]="{ 'border-radius': '10px', 'width': '100%' }"></p-inputMask>
-        <label for="phone">Номер телефона</label>
-        <div *ngIf="createForm.get('phone')?.touched && createForm.get('phone')?.invalid" class="error-message">
-            <div *ngIf="createForm.get('phone')?.errors?.['required']">Номер телефона обязателен.</div>
+            <div *ngIf="createForm.get('lastName')?.touched && createForm.get('lastName')?.invalid"
+                class="error-message">
+                <div *ngIf="createForm.get('lastName')?.errors?.['required']">Телеграм обязателен.</div>
+                <div *ngIf="createForm.get('lastName')?.errors?.['minlength']">Телеграм должен быть не менее 3 символов.
+                </div>
+            </div>
         </div>
-    </span>
+        <div class="item">
+            <div class="input-container inputemail">
+                <input type="text" id="myInput " name="myInput" formControlName="email">
+            </div>
 
-    <span class="p-float-label">
-        <input pInputText id="password" formControlName="password" autocomplete="off"  style="border-radius: 10px; width: 100%;" />
-        <label for="password">Пароль</label>
-        <div *ngIf="createForm.get('password')?.touched && createForm.get('password')?.invalid" class="error-message">
-            <div *ngIf="createForm.get('password')?.errors?.['required']">Пароль обязателен.</div>
-            <div *ngIf="createForm.get('password')?.errors?.['minlength']">Пароль должен быть не менее 8 символов.</div>
+            <div *ngIf="createForm.get('email')?.touched && createForm.get('email')?.invalid" class="error-message">
+                <div *ngIf="createForm.get('email')?.errors?.['required']">Телеграм обязателен.</div>
+
+            </div>
         </div>
-    </span>
 
-    <div class="invalidRegistration">{{ errorMessage }}</div>
-    <p-button label="Регистрация" type="submit" [disabled]="createForm.invalid"></p-button>
+        <div class="flex flex-wrap gap-3 justify-content-center ">
+            <p>Пол:</p>
+            <div class="flex align-items-center">
+                <p-radioButton name="pizza" value="MALE" formControlName="gender" inputId="ingredient1"></p-radioButton>
+                <label for="ingredient1" class="ml-2">Мужской</label>
+            </div>
+            
+            <div class="flex align-items-center">
+                <p-radioButton name="pizza" value="Female" formControlName="gender" inputId="ingredient2"></p-radioButton>
+                <label for="ingredient2" class="ml-2">Женский</label>
+            </div>
+            
+        </div>
+        
+    </div>
+
+    <div class="inputs">
+        <div class="age-and-city">
+            <div class="item">
+                <div class="input-container inputage">
+                    <input type="text" id="myInput " name="myInput" formControlName="age">
+                </div>
+
+                <div *ngIf="createForm.get('age')?.touched && createForm.get('age')?.invalid" class="error-message">
+                    <div *ngIf="createForm.get('age')?.errors?.['required']">Телеграм обязателен.</div>
+                    <div *ngIf="createForm.get('age')?.errors?.['minlength']">Телеграм должен быть не менее 3
+                        символов.
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="input-container inputcity">
+                    <input type="text" id="myInput" name="myInput" formControlName="cityOfResidence">
+                </div>
+                <div *ngIf="createForm.get('cityOfResidence')?.touched && createForm.get('cityOfResidence')?.invalid"
+                    class="error-message">
+                    <div *ngIf="createForm.get('cityOfResidence')?.errors?.['required']">Электронная почта обязательна.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="item">
+            <div class="input-container inputphone">
+                <input type="text" id="myInput" name="myInput" formControlName="phone">
+            </div>
+            <div *ngIf="createForm.get('phone')?.touched && createForm.get('phone')?.invalid" class="error-message">
+                <div *ngIf="createForm.get('phone')?.errors?.['required']">Номер телефона обязателен.</div>
+            </div>
+        </div>
+        <div class="item">
+            <div class="input-container inputtelegram">
+                <input type="text" id="myInput" name="myInput" formControlName="telegram">
+            </div>
+            <div *ngIf="createForm.get('telegram')?.touched && createForm.get('telegram')?.invalid"
+                class="error-message">
+                <div *ngIf="createForm.get('telegram')?.errors?.['required']">Номер телефона обязателен.</div>
+            </div>
+        </div>
+
+
+        <div class="item">
+            <div class="input-container inputpassword">
+                <input type="text" id="myInput" name="myInput" formControlName="password">
+            </div>
+            <div *ngIf="createForm.get('password')?.touched && createForm.get('password')?.invalid"
+                class="error-message">
+                <div *ngIf="createForm.get('password')?.errors?.['required']">Пароль обязателен.</div>
+                <div *ngIf="createForm.get('password')?.errors?.['minlength']">Пароль должен быть не менее 8 символов.
+                </div>
+            </div>
+        </div>
+        
+        <div class="item">
+            <div class="input-container inputlink">
+                <input type="text" id="myInput" name="myInput" formControlName="ownLink">
+            </div>
+            <div *ngIf="createForm.get('ownLink')?.touched && createForm.get('ownLink')?.invalid" class="error-message">
+                <div *ngIf="createForm.get('ownLink')?.errors?.['required']">Номер телефона обязателен.</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="btns inputs">
+
+        <div class="invalidRegistration">{{ errorMessage }}</div>
+        <p-button label="Регистрация" type="submit" ></p-button>
+    </div>
+
 </form>
-
