@@ -1,0 +1,39 @@
+<div class="content">
+    <form *ngIf="resumeForm" [formGroup]="resumeForm" (ngSubmit)="onSubmit()">
+        <h3>Резюме</h3>
+        <div class="group-input">
+            <div class="input-item">
+                <label for="motivation">Мотивация:</label>
+                <input type="text" id="motivation" name="motivation" formControlName="motivation">
+            </div>
+            <div class="input-item">
+                <label for="hoursPerWeek">Часы в неделю:</label>
+                <input type="number" id="hoursPerWeek" name="hoursPerWeek" formControlName="hoursPerWeek">
+            </div>
+        </div>
+        <div class="group-input">
+            <div class="input-item">
+                <label for="freeLink">Ссылка (свободная):</label>
+                <input type="text" id="freeLink" name="freeLink" formControlName="freeLink">
+            </div>
+            <div class="input-item">
+                <label for="ownLink">Ссылка (личная):</label>
+                <input type="text" id="ownLink" name="ownLink" formControlName="ownLink">
+            </div>
+        </div>
+        <div class="group-input">
+            <div class="input-item">
+                <label for="details">Детали:</label>
+                <textarea id="details" name="details" formControlName="details"></textarea>
+            </div>
+            <div class="input-item">
+                <label for="selectedtags">Скиллы:</label>
+                <p-multiSelect [options]="Tags" formControlName="selectedtags" optionLabel="name"></p-multiSelect>
+            </div>
+        </div>
+        <div class="btn">
+            <button type="submit" class="submit-button">Отправить</button>
+        </div>
+
+    </form>
+</div>

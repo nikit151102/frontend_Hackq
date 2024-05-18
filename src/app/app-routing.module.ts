@@ -20,6 +20,14 @@ const routes: Routes = [
   {
     path: 'admin',
     loadChildren: () => import('./components/admin/admin.module').then(m => m.AdminModule)
+  },
+  {
+    path: 'newRezume',
+    loadChildren: () => import('./components/create-rezume/create-rezume.module').then(m => m.CreateRezumeModule)
+  },
+  {
+    path: 'newProject',
+    loadChildren: () => import('./components/create-project/create-project.module').then(m => m.CreateProjectModule)
   }
 ];
 

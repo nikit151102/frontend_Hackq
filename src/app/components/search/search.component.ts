@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { InputTextModule } from 'primeng/inputtext';
 import { DropdownModule } from 'primeng/dropdown';
+import { SearchService } from './search.service';
 
 interface SelectItem {
   name: string;
@@ -12,21 +13,29 @@ interface SelectItem {
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.css'],
   standalone: true,
-  imports: [InputTextModule,DropdownModule]
+  imports: [InputTextModule, DropdownModule]
 })
-export class SearchComponent {
+export class SearchComponent implements OnInit {
 
-  items: SelectItem[];
-    
+  items: SelectItem[] = [];
   selectedItem: string | undefined;
+  Tags: any = []
 
-  constructor() {
-      this.items = [
-            { name: 'New York', code: 'NY' },
-            { name: 'Rome', code: 'RM' },
-            { name: 'London', code: 'LDN' },
-            { name: 'Istanbul', code: 'IST' },
-            { name: 'Paris', code: 'PRS' }
-        ];
+  constructor(private searchService: SearchService) {
+  }
+
+  ngOnInit(): void {
+    this.searchService.sendtags().subscribe(
+      (data: any) => {
+        console.log(data);
+        this.Tags = data;
+        console.log(this.Tags);
+      },
+      error => {
+        console.error('Error fetching tags', error);
+      }
+    );
   }
 }
+
+

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ResumeRoutingModule } from './resume.routing.module';
+import { CreateProjectRoutingModule } from './create-project.routing.module';
 
 
 
@@ -8,7 +8,7 @@ import { ResumeRoutingModule } from './resume.routing.module';
   declarations: [],
   imports: [
     CommonModule,
-    ResumeRoutingModule
+    CreateProjectRoutingModule
   ]
 })
-export class ResumeModule { }
+export class CreateProjectModule { }

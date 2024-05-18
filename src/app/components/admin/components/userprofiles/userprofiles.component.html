@@ -7,12 +7,12 @@ currentPageReportTemplate="Отображение с {first} по {last} из  {
             <th ></th>
             <th style="display: none;">id</th>
             <th ></th>
-            <th pSortableColumn="Date_of_registration">Дата регистрации <p-sortIcon field="Date_of_registration"></p-sortIcon></th>
-            <th pSortableColumn="First_Name">Имя <p-sortIcon field="First_Name"></p-sortIcon></th>
-            <th pSortableColumn="Last_Name">Фамилия <p-sortIcon field="Last_Name"></p-sortIcon></th>
-            <th pSortableColumn="Paul">Пол <p-sortIcon field="Paul"></p-sortIcon></th>
-            <th pSortableColumn="Age">Возраст <p-sortIcon field="Age"></p-sortIcon></th>
-            <th pSortableColumn="City_of_residence">Город проживания <p-sortIcon field="City_of_residence"></p-sortIcon></th>
+            <th pSortableColumn="dateOfRegistration">Дата регистрации <p-sortIcon field="dateOfRegistration"></p-sortIcon></th>
+            <th pSortableColumn="firstName">Имя <p-sortIcon field="firstName"></p-sortIcon></th>
+            <th pSortableColumn="lastName">Фамилия <p-sortIcon field="lastName"></p-sortIcon></th>
+            <th pSortableColumn="gender">Пол <p-sortIcon field="gender"></p-sortIcon></th>
+            <th pSortableColumn="age">Возраст <p-sortIcon field="age"></p-sortIcon></th>
+            <th pSortableColumn="cityOfResidence">Город проживания <p-sortIcon field="cityOfResidence"></p-sortIcon></th>
         </tr>
     </ng-template>
     <ng-template pTemplate="body" let-product let-expanded="expanded">
@@ -32,12 +32,12 @@ currentPageReportTemplate="Отображение с {first} по {last} из  {
                 </div>
             </td>
             <td style="display: none;">{{product.id}}</td>
-            <td>{{ product.Date_of_registration }}</td>
-            <td>{{product.First_Name}}</td>
-            <td>{{product.Last_Name}}</td>
-            <td>{{product.Paul}}</td>
-            <td>{{product.Age}}</td>
-            <td>{{product.City_of_residence}}</td>
+            <td>{{ product.dateOfRegistration }}</td>
+            <td>{{product.firstName}}</td>
+            <td>{{product.lastName}}</td>
+            <td>{{product.gender}}</td>
+            <td>{{product.age}}</td>
+            <td>{{product.cityOfResidence}}</td>
 
         </tr>
     </ng-template>
@@ -45,28 +45,24 @@ currentPageReportTemplate="Отображение с {first} по {last} из  {
         <tr>
             <td colspan="7">
                 <div class="p-1">
-                    <p-table [value]="product.child" dataKey="id" [style]="{'width': '100%'}">
+                    <p-table [value]="product" dataKey="id" [style]="{'width': '100%'}">
 
                         <ng-template pTemplate="header">
                             <tr>
-                                <th pSortableColumn="Specialization">Специальность </th>
-                                <th pSortableColumn="Mail">Почта </th>
-                                <th pSortableColumn="Telephone">Телефон </th>
-                                <th pSortableColumn="Telegram">Телеграм </th>
-                                <th pSortableColumn="About_me">О себе/Свободное поле </th>
-                                <th pSortableColumn="Free_link">Свободная ссылка </th>
-                                <th pSortableColumn="Own_link">Cобственная ссылка </th>
+                                <th pSortableColumn="email">Почта </th>
+                                <th pSortableColumn="telegram">Телеграм </th>
+                                <th pSortableColumn="aboutMe">О себе/Свободное поле </th>
+                                <th pSortableColumn="freeLink">Свободная ссылка </th>
+                                <th pSortableColumn="ownLink">Cобственная ссылка </th>
                             </tr>
                         </ng-template>
-                        <ng-template pTemplate="body" let-child>
+                        <ng-template pTemplate="body" let-product>
                             <tr>
-                                <td>{{ child.Specialization }}</td>
-                                <td>{{ child.Mail }}</td>
-                                <td>{{ child.Telephone }}</td>
-                                <td>{{ child.Telegram }}</td>
-                                <td>{{ child.About_me }}</td>
-                                <td>{{ child.Free_link }}</td>
-                                <td>{{ child.Own_link }}</td>
+                                <td>{{ product.email }}</td>
+                                <td>{{ product.telegram }}</td>
+                                <td>{{ product.aboutMe }}</td>
+                                <td>{{ product.freeLink }}</td>
+                                <td>{{ product.ownLink }}</td>
                                
                             </tr>
                         </ng-template>

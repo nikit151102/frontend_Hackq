@@ -1,0 +1,59 @@
+<div class="content">
+    <form *ngIf="resumeForm" [formGroup]="resumeForm" (ngSubmit)="onSubmit()">
+        <h3>Проект</h3>
+        <div class="form-group">
+        <div class="input-item">
+          <label for="title">Название:</label>
+          <input type="text" id="title" formControlName="title" required>
+        </div>
+        <div class="input-item">
+          <label for="status">Статус:</label>
+          <select id="status" formControlName="status" required>
+            <option value="active">Active</option>
+            <option value="inactive">Inactive</option>
+          </select>
+        </div>
+        <div class="input-item">
+          <label for="sphere">Сфера:</label>
+          <input type="text" id="sphere" formControlName="sphere" required>
+        </div>
+        <div class="input-item">
+          <label for="description">Описание:</label>
+          <textarea id="description" formControlName="description" required></textarea>
+        </div>
+        <div class="input-item">
+          <label for="links">Ссылки:</label>
+          <input type="text" id="links" formControlName="links">
+        </div>
+        <div class="input-item">
+          <label for="avatar">Ава:</label>
+          <input type="file" id="avatar" formControlName="avatar">
+        </div>
+        <div class="input-item">
+          <label for="achievements">Что сделано:</label>
+          <textarea id="achievements" formControlName="achievements" required></textarea>
+        </div>
+        <div class="input-item">
+          <label for="tasks">Задачи:</label>
+          <textarea id="tasks" formControlName="tasks" required></textarea>
+        </div>
+        <div class="input-item">
+          <label for="team">Команда:</label>
+          <input type="text" id="team" formControlName="team">
+        </div>
+        <div class="input-item">
+          <label for="projectNews">Новости проекта:</label>
+          <textarea id="projectNews" formControlName="projectNews"></textarea>
+        </div>
+        <div class="input-item">
+          <label for="announcements">Объявления:</label>
+          <textarea id="announcements" formControlName="announcements"></textarea>
+        </div>
+      </div>
+      <div class="btn">
+        <button type="submit" class="submit-button">Отправить</button>
+      </div>
+     
+    </form>
+  </div>
+  

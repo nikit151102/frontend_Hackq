@@ -4,7 +4,13 @@ import { AdminComponent } from './admin.component';
 import { AdminRoutingModule } from './admin.routing.module';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { HeaderAdminComponent } from './components/header-admin/header-admin.component';
+import { JwtHelperService, JwtModule } from '@auth0/angular-jwt';
+import { AuthGuardService } from './auth-guard.service';
+import { AuthService } from './auth.service';
 
+export function tokenGetter() {
+  return localStorage.getItem('token');
+}
 
 @NgModule({
   declarations: [
@@ -13,8 +19,14 @@ import { HeaderAdminComponent } from './components/header-admin/header-admin.com
   imports: [
     CommonModule,
     AdminRoutingModule,
-    HeaderAdminComponent
+    HeaderAdminComponent,
+    JwtModule.forRoot({
+      config: {
+          tokenGetter: tokenGetter,
+          allowedDomains: ['http://localhost:8000'],
+      }
+  }),
   ],
-  providers: [MessageService,ConfirmationService ]
+  providers: [MessageService,ConfirmationService,AuthGuardService, JwtHelperService, AuthService  ]
 })
 export class AdminModule { }
