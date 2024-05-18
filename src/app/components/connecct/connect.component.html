@@ -1,0 +1,34 @@
+<div class="body">
+    <div class="container">
+        <div class="forms">
+            <div class="form login">
+                <ng-container *ngIf="connectService.islogin">
+                    <app-authorization></app-authorization>
+                </ng-container>
+                <ng-container *ngIf="!connectService.islogin">
+                    <app-reset-password></app-reset-password>
+                </ng-container>
+                <div class="login-signup">
+                    <span class="text">У вас нет аккаунта?
+                        <a class="text signup-link">Регистрация</a>
+                    </span>
+
+                </div>
+            </div>
+            <div class="form signup">
+                <app-registration></app-registration>
+                <div class="login-signup">
+                    <span class="text">Уже зарегистрированы?
+                        <a class="text login-link">Войти</a>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <dialog id="dialogyesresetpassword">
+        <button onclick="window.dialog.close();" aria-label="close" class="x">❌</button>
+        <div class="titledialog">
+            проверьте почту
+        </div>
+    </dialog>
+</div>

@@ -1,0 +1,184 @@
+
+*{
+	margin: 0;
+	padding: 0;
+	font-family: 'poppins',sans-serif;
+}
+
+
+.body{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(241 241 241);
+    /* background-size: cover;
+    background-position: center; 
+    backdrop-filter: blur(4px);*/
+    margin: 0px;
+}
+
+
+
+.containertitle{
+    flex: 50;
+    display: flex;
+    flex-direction: column;
+}
+#logo{
+    width: 100%;
+    height: 180px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+.texttitle{
+    width: 100%;
+    height: calc(100% - 140px);
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+.containertitle h2{
+    font-size: 2em;
+}
+
+
+.container{
+    
+    flex: 50;
+    position: relative;
+    max-width: 365px;
+    width: 100%;
+    border-radius: 20px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    margin: 0;
+	backdrop-filter: blur(8px);
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.container .forms{
+    display: flex;
+    align-items: center;
+    height: 100%;
+    width: 200%;
+    transition: height 0.2s ease;
+}
+
+
+.container .form{
+    width: 50%;
+    padding: 30px;
+    transition: margin-left 0.18s ease;
+}
+
+.container.active .login{
+    margin-left: -50%;
+    opacity: 0;
+    transition: margin-left 0.18s ease, opacity 0.15s ease;
+    
+}
+
+.container .signup{
+    opacity: 0;
+    transition: opacity 0.09s ease;
+}
+.container.active .signup{
+    opacity: 1;
+    transition: opacity 0.2s ease;
+}
+
+.container.active .forms{
+    height: 100%;
+}
+
+
+
+
+.form .text.reset_password,
+.form .text.viewConnectForm{
+	float: right;
+	margin-top: -27px;
+}
+.form a.text{
+    color: #4070f4;
+    text-decoration: none;
+}
+.form a:hover{
+    text-decoration: underline;
+}
+
+.form .button{
+    margin-top: 35px;
+}
+
+.form .button input{
+    border: none;
+    color: #fff;
+    font-size: 17px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    border-radius: 6px;
+    background-color: #4070f4;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.button input:hover{
+    background-color: #265df2;
+}
+
+.form .login-signup{
+    margin-top: 30px;
+    text-align: center;
+}
+
+.ResetPasswordForm{
+    display: none;
+}
+
+
+
+/* Модальное окно  */
+dialog {
+	padding: 1rem 3rem;
+	background: var(--white);
+	max-width: 500px;
+	padding-top: 2rem;
+	border-radius: 20px;
+	border: 0;
+	box-shadow: 0 5px 30px 0 rgb(0 0 0 / 10%);
+	animation: fadeIn 1s ease both;
+    height: 200px;
+    margin: auto;
+}
+
+dialog::backdrop {
+		animation: fadeIn 1s ease both;
+		background: rgb(255 255 255 / 40%);
+		z-index: 2;
+		backdrop-filter: blur(20px);
+	}
+.x {
+    filter: grayscale(1);
+    border: none;
+    background: none;
+    position: absolute;
+    top: 15px;
+    right: 10px;
+    transition: ease filter, transform 0.3s;
+    cursor: pointer;
+    transform-origin: center;
+}
+.x:hover {
+    filter: grayscale(0);
+    transform: scale(1.1);
+}
+.titledialog{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}

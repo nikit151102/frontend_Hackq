@@ -1,19 +1,42 @@
-<form [formGroup]="createForm" (ngSubmit)="onCreateSubmit()" id="create-Form">
-    <div class="inputbox">
-        <input type="text" id="newlogin" formControlName="newlogin" placeholder="Логин"
-            autocomplete="off" required />
-        <label for="newlogin"></label>
-    </div>
-    <div class="inputbox">
-        <input type="password" id="newpassword" formControlName="newpassword" placeholder="Пароль"
-            spellcheck="false" autocomplete="off" required />
-        <label for="newpassword"></label>
-    </div>
-    <div class="inputbox">
-        <input type="email" id="newmail" formControlName="newmail" placeholder="Почта"
-            autocomplete="off" required />
-        <label for="newmail"></label>
-    </div>
+<form [formGroup]="createForm" (ngSubmit)="onCreateSubmit()" id="create-Form" autocomplete="off">
+
+    <span class="p-float-label">
+        <input pInputText id="telegram" formControlName="telegram" autocomplete="off" 
+               style="border-radius: 10px; width: 100%;" (focus)="addAtSign()" />
+        <label for="telegram">Телеграм</label>
+        <div *ngIf="createForm.get('telegram')?.touched && createForm.get('telegram')?.invalid" class="error-message">
+            <div *ngIf="createForm.get('telegram')?.errors?.['required']">Телеграм обязателен.</div>
+            <div *ngIf="createForm.get('telegram')?.errors?.['minlength']">Телеграм должен быть не менее 3 символов.</div>
+        </div>
+    </span>
+    
+    <span class="p-float-label">
+        <input pInputText id="email" formControlName="email" autocomplete="off" style="border-radius: 10px; width: 100%;" />
+        <label for="email">Электронная почта</label>
+        <div *ngIf="createForm.get('email')?.touched && createForm.get('email')?.invalid" class="error-message">
+            <div *ngIf="createForm.get('email')?.errors?.['required']">Электронная почта обязательна.</div>
+            <div *ngIf="createForm.get('email')?.errors?.['email']">Введите действительный адрес электронной почты.</div>
+        </div>
+    </span>
+
+    <span class="p-float-label">
+        <p-inputMask mask="8 (999) 999-9999" formControlName="phone" id="phone" autocomplete="off" [style]="{ 'border-radius': '10px', 'width': '100%' }"></p-inputMask>
+        <label for="phone">Номер телефона</label>
+        <div *ngIf="createForm.get('phone')?.touched && createForm.get('phone')?.invalid" class="error-message">
+            <div *ngIf="createForm.get('phone')?.errors?.['required']">Номер телефона обязателен.</div>
+        </div>
+    </span>
+
+    <span class="p-float-label">
+        <input pInputText id="password" formControlName="password" autocomplete="off"  style="border-radius: 10px; width: 100%;" />
+        <label for="password">Пароль</label>
+        <div *ngIf="createForm.get('password')?.touched && createForm.get('password')?.invalid" class="error-message">
+            <div *ngIf="createForm.get('password')?.errors?.['required']">Пароль обязателен.</div>
+            <div *ngIf="createForm.get('password')?.errors?.['minlength']">Пароль должен быть не менее 8 символов.</div>
+        </div>
+    </span>
+
     <div class="invalidRegistration">{{ errorMessage }}</div>
-    <p-button label="Регистрация" type="ngSubmit" [disabled]="createForm.invalid"></p-button>
+    <p-button label="Регистрация" type="submit" [disabled]="createForm.invalid"></p-button>
 </form>
+

@@ -1,6 +1,21 @@
-div{
-    background-image: url('../../../assets/images/background-pages.png');
-    background-repeat: no-repeat;
-    background-size: cover; 
-    background-position: center; 
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap');
+
+.content {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.title{
+    width: 85%;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 4.5rem;
+}
+
+.search{
+    width: 80%;
+    display: flex;
+    justify-content: center;
 }

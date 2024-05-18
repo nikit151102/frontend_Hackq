@@ -1,0 +1,37 @@
+<header>
+    <div class="content">
+        <div class="content-left">
+            <div class="content-logo">
+                <div class="logo">
+                    <img src="assets/images/logo.png" alt="Logo">
+                </div>
+            </div>
+            <div class="menu">
+                <nav class="links" style="--items: 5;">
+                    <a [routerLink]="['login']">Вакансии</a>
+                    <a [routerLink]="['login']">Проекты</a>
+                    <a [routerLink]="['login']">Помощь</a>
+                    <a [routerLink]="['login']">О нас</a>
+                </nav>
+            </div>
+        </div>
+        <div>
+            <ng-container *ngIf="!token">
+                <a [routerLink]="['login']">Войти</a>
+                
+               
+            </ng-container>
+            <ng-container *ngIf="token" style="display: flex; align-items: center;">
+                <p-avatar label="P" styleClass="mr-2" size="xlarge" shape="circle"></p-avatar>
+                <p-toast></p-toast>
+                <p-menu #menu [model]="items" [popup]="true"></p-menu>
+                <button pButton pRipple type="button" (click)="menu.toggle($event)" [icon]="expanded ? 'pi pi-align-justify' : 'pi pi-times'"
+                    class="p-button-text p-button-rounded p-button-plain" style="color: white !important;" ></button>
+        
+                    
+            </ng-container>
+        </div>
+
+
+    </div>
+</header>

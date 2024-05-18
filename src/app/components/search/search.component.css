@@ -1,0 +1,23 @@
+.search-content{
+    width: 100%;
+    border-radius: 0.5rem;
+    background-color: #FFFFFF;
+    margin-bottom: 2rem;
+}
+:host ::ng-deep .p-inputtext{
+    width: 100%;
+    border-radius: 20px;
+}
+
+:host ::ng-deep .p-input-icon-right{
+    width: 95%;
+    margin-top: 2.5rem;
+    margin-bottom: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+#username-help{
+    font-size: 100% !important;
+}

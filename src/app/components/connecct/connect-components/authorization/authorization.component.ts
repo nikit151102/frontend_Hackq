@@ -4,13 +4,15 @@ import { login } from '../../connect-interface';
 import { ConnectService } from '../../connect.service';
 import { HttpHeaders } from '@angular/common/http';
 import { ButtonModule } from 'primeng/button';
+import { InputTextModule } from 'primeng/inputtext';
+import { NgIf } from '@angular/common';
 
 @Component({
     selector: 'app-authorization',
     templateUrl: './authorization.component.html',
     styleUrls: ['./authorization.component.css'],
     standalone: true,
-    imports: [ReactiveFormsModule, ButtonModule]
+    imports: [ReactiveFormsModule, ButtonModule, InputTextModule, NgIf]
 })
 export class AuthorizationComponent implements OnInit {
 
@@ -21,11 +23,24 @@ export class AuthorizationComponent implements OnInit {
 
   ngOnInit() {
     this.connectForm = this.fb.group({
-      UserLogin: ['', Validators.required],
+      telegram: ['', Validators.required],
       UserPassword: ['', Validators.required]
     });
   }
-  
+
+  addAtSign() {
+    if (this.connectForm) {
+      const telegramControl = this.connectForm.get('telegram');
+      if (telegramControl) {
+        let value = telegramControl.value;
+        if (!value) {
+          telegramControl.setValue('@');
+        } else if (!value.startsWith('@')) {
+          telegramControl.setValue('@' + value);
+        }
+      }
+    }
+  }
 
   onSubmit() {
     if (this.connectForm.valid) {

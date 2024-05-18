@@ -13,11 +13,11 @@ export class ConnectService {
     islogin:boolean = true;
 
     sendlogin(data: login) {
-        return this.http.post<login>('http://127.0.0.1:8000/personal_account/user', data);
+        return this.http.post<login>('http://87.249.49.250:8080/users/signup', data);
     }
 
     sendregistration(data: registration) {
-        return this.http.post<registration>('http://127.0.0.1:8000/personal_account/registration', data);
+        return this.http.post<registration>('http://87.249.49.250:8080/users/signin', data);
     }
 
     sendresetpassword(data: resetpassword) {

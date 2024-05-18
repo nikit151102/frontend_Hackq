@@ -4,9 +4,10 @@ export interface login {
 }
 
 export interface registration{
-    newlogin: string,
-    newpassword: string,
-    newmail: string
+    telegram: string,
+    email: string,
+    phone: string,
+    password: string
 }
 
 export interface resetpassword{

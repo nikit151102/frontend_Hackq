@@ -1,0 +1,91 @@
+
+
+<p-table [value]="products" dataKey="id" [tableStyle]="{ 'min-width': '60rem' }" [paginator]="true"
+[rows]="10" [showCurrentPageReport]="true" [tableStyle]="{ 'min-width': '50rem' }"
+currentPageReportTemplate="Отображение с {first} по {last} из  {totalRecords} записей"
+(onPage)="pageChange($event)" [rowsPerPageOptions]="[10, 25, 50]">
+    <ng-template pTemplate="header">
+        <tr>
+            <th ></th>
+            <th style="display: none;">id</th>
+            <th ></th>
+            <th pSortableColumn="Date_of_registration">Дата регистрации <p-sortIcon field="Date_of_registration"></p-sortIcon></th>
+            <th pSortableColumn="User_profile">Профиль юзера <p-sortIcon field="User_profile"></p-sortIcon></th>
+            <th pSortableColumn="Specialization">Специальность <p-sortIcon field="Specialization"></p-sortIcon></th>
+            <th >Навыки </th>
+            <th pSortableColumn="Role">Роль <p-sortIcon field="Role"></p-sortIcon></th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-product let-expanded="expanded">
+        <tr>
+            <td>
+                <button type="button" pButton pRipple [pRowToggler]="product"
+                class="p-button-text p-button-rounded p-button-plain"
+                [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></button>
+            </td>
+            <td>
+                <div class="btnrow">
+
+                    <button pButton pRipple type="button" icon="pi pi-times"
+                        class="p-button-rounded p-button-text p-button-danger"
+                        (click)="confirm1($event, product.id)"></button>
+
+                </div>
+            </td>
+            <td style="display: none;">{{product.id}}</td>
+            <td>{{ product.Date_of_registration }}</td>
+            <td>{{product.User_profile}}</td>
+            <td>{{product.Specialization}}</td>
+            <td>{{product.Skills}}</td>
+            <td>{{product.Role}}</td>
+
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="rowexpansion" let-product>
+        <tr>
+            <td colspan="7">
+                <div class="p-1">
+                    <p-table [value]="product.child" dataKey="id" [style]="{'width': '100%'}">
+
+                        <ng-template pTemplate="header">
+                            <tr>
+                                <th pSortableColumn="Motivation">Мотивация </th>
+                                <th pSortableColumn="Specialization">Специальность </th>
+                                <th pSortableColumn="time_allocated_per_week">Сколько времени могу выделить в неделю </th>
+                                <th pSortableColumn="Job_status">Статус работы </th>
+                                <th pSortableColumn="Areas">Сферы, в которых работал </th>
+                                <th pSortableColumn="About_me">О себе/Свободное поле </th>
+                                <th pSortableColumn="Free_link">Свободная ссылка </th>
+                                <th pSortableColumn="Own_link">Cобственная ссылка </th>
+                            </tr>
+                        </ng-template>
+                        <ng-template pTemplate="body" let-child>
+                            <tr>
+                                <td>{{ child.Motivation }}</td>
+                                <td>{{ child.Specialization }}</td>
+                                <td>{{ child.time_allocated_per_week }}</td>
+                                <td>{{ child.Job_status }}</td>
+                                <td>{{ child.Areas }}</td>
+                                <td>{{ child.About_me }}</td>
+                                <td>{{ child.Free_link }}</td>
+                                <td>{{ child.Own_link }}</td>
+                               
+                            </tr>
+                        </ng-template>
+                        <ng-template pTemplate="emptymessage">
+                            <tr>
+                                <td colspan="6">There are no order for this product yet.</td>
+                            </tr>
+                        </ng-template>
+                    </p-table>
+                </div>
+            </td>
+        </tr>
+    </ng-template>
+</p-table>
+
+
+<div class="card flex justify-content-center gap-2">
+    <p-toast></p-toast>
+    <p-confirmDialog></p-confirmDialog>
+</div>
