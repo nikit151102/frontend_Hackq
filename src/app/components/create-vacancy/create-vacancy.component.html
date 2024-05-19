@@ -1,0 +1,46 @@
+<div class="content">
+    <form *ngIf="profileForm" [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+        <h3>Вакансия</h3>
+        <div class="group-input">
+            <div class="input-item">
+                <label for="title">Заголовок карточки:</label>
+                <input type="text" id="title" name="title" formControlName="title">
+                <div *ngIf="profileForm.get('title')?.invalid && (profileForm.get('title')?.dirty || profileForm.get('title')?.touched)">
+                    <small class="text-danger" *ngIf="profileForm.get('title')?.errors">Заголовок карточки обязателен</small>
+                </div>
+            </div>
+            <div class="input-item">
+                <label for="specialty">Специальность:</label>
+                <p-multiSelect [options]="Tags" formControlName="specialty" optionLabel="name"></p-multiSelect>
+                <div *ngIf="profileForm.get('specialty')?.invalid && (profileForm.get('specialty')?.dirty || profileForm.get('specialty')?.touched)">
+                    <small class="text-danger">Специальность обязательна</small>
+                </div>
+            </div>
+        </div>
+        <div class="group-input">
+            <div class="input-item">
+                <label for="skills">Навыки:</label>
+                <p-multiSelect [options]="Skills" formControlName="skills" optionLabel="name"></p-multiSelect>
+            </div>
+            <div class="input-item">
+                <label for="paymentFormat">Формат оплаты:</label>
+                <p-multiSelect [options]="paymentFormats" formControlName="paymentFormat"></p-multiSelect>
+                <div *ngIf="profileForm.get('paymentFormat')?.invalid && (profileForm.get('paymentFormat')?.dirty || profileForm.get('paymentFormat')?.touched)">
+                    <small class="text-danger">Формат оплаты обязателен</small>
+                </div>
+            </div>
+        </div>
+        <div class="group-input">
+            <div class="input-item">
+                <label for="about">О себе/Свободное поле:</label>
+                <input type="text" id="about" name="about" formControlName="about">
+                <div *ngIf="profileForm.get('about')?.invalid && (profileForm.get('about')?.dirty || profileForm.get('about')?.touched)">
+                    <small class="text-danger">Поле "О себе" обязательно</small>
+                </div>
+            </div>
+        </div>
+        <div class="btn">
+            <button type="submit" class="submit-button">Отправить</button>
+        </div>
+    </form>
+</div>

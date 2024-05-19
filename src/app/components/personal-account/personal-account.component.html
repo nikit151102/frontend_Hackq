@@ -20,23 +20,17 @@
 			<div class="cont-vert" style="gap:64px 64px; width:75%; margin-top: 2rem;">
 				<!-- Строка 1 -->
 				<div class="cont-horiz-around w100" style="gap:30px 30px;">
-					<div class="white33">
+					<div class="white33" (click)="navigateTo('newVacancy')">
 						<img src="assets/images/add.png" alt="">
-						<p>
-							Создать вакансию
-						</p>
+						<p>Создать вакансию</p>
 					</div>
-					<div class="white33">
+					<div class="white33" (click)="navigateTo('newRezume')">
 						<img src="assets/images/add.png" alt="">
-						<p>
-							Создать резюме
-						</p>
+						<p>Создать резюме</p>
 					</div>
-					<div class="white33">
+					<div class="white33" (click)="navigateTo('newProject')">
 						<img src="assets/images/add.png" alt="">
-						<p>
-							Создать проект
-						</p>
+						<p>Создать проект</p>
 					</div>
 				</div>
 				<!-- Строка 2 -->

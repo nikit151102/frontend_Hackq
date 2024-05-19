@@ -59,3 +59,8 @@ a {
     background-color: transparent !important;
     border: 0 solid transparent !important;
 }
+
+.headerNav{
+display: flex;
+align-items: center;
+}

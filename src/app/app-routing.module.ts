@@ -28,7 +28,12 @@ const routes: Routes = [
   {
     path: 'newProject',
     loadChildren: () => import('./components/create-project/create-project.module').then(m => m.CreateProjectModule)
+  },
+  {
+    path: 'newVacancy',
+    loadChildren: () => import('./components/create-vacancy/create-vacancy.module').then(m => m.CreateVacancyModule)
   }
+
 ];
 
 @NgModule({

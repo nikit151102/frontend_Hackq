@@ -19,12 +19,18 @@
     display: flex;
     justify-content: center;
 }
-.cards{
+.cards {
     display: flex;
     flex-wrap: wrap;
-    max-width: 80%;
+    max-width: 70%;
+    margin: 0 auto; /* Центрируем контейнер */
 }
-.cards .card {flex: 30%;
+
+.cards .card {
+    flex: 0 0 48%; /* Задаем ширину каждой карточки (48% позволяет оставить место для отступов) */
+    margin: 1%; /* Добавляем отступы между карточками */
     display: flex;
     justify-content: center;
-    align-items: center;}
+    align-items: center;
+    box-sizing: border-box; /* Учитываем маржины и паддинги в размере элемента */
+}
