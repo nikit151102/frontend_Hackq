@@ -1,6 +1,340 @@
-.content {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
+.w100{
+	width:100%; 
+}  
+p, h1,h2, h3, h4   {
+	color:#000;
 }
+p{
+	margin:0px;
+	padding:0px;
+	font-size:1.125rem;
+}
+h1{
+	font-size: 4rem; 
+	text-align:left;
+}
+h2{
+	font-size: 2rem;
+	text-align:left;
+}
+h3{
+	font-size: 1.5rem;
+	text-align:left;
+}
+h4{
+	font-size: 1rem;
+	font-family: bold;
+	text-align:left;
+}
+.margintop10{margin-top:10px; }
+.margintop20{margin-top:20px;}
+.margintop30{margin-top:30px;}
+.margintop40{margin-top:40px;}
+.margintop50{margin-top:50px;}
+
+.margintopbottom20{margin-top:20px;margin-bottom:20px;}
+
+.marginbottom10{margin-bottom:10px;}
+.marginbottom20{margin-bottom:20px;}
+.marginbottom30{margin-bottom:30px;}
+.marginbottom40{margin-bottom:40px;}
+.marginbottom50{margin-bottom:50px;}
+ 
+/*Блоки горизонтально: Слева верхний угол */
+.cont-horiz-start-start{
+	display: flex;
+	align-items: flex-start; 
+} 
+/*Блоки горизонтально: Слева по центру*/
+.cont-horiz-start{
+	display: flex;
+	align-items: center;
+	}
+/*Блоки горизонтально: Слева снизу*/
+.cont-horiz-start-end{
+	display: flex;
+	align-items: flex-end;
+}
+/*Блоки горизонтально: По центру вверху*/
+.cont-horiz-center-start{
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+}
+/*Блоки горизонтально: По Центру*/
+.cont-horiz{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+/*Блоки горизонтально: По центру снизу*/
+.cont-horiz-center-end{
+	display: flex;
+	justify-content: center;
+	align-items: flex-end;
+}
+/*Блоки горизонтально: Справа сверху*/
+.cont-horiz-end-start{
+	display: flex;
+	justify-content: flex-end;
+	align-items: flex-start;
+}
+/*Блоки горизонтально: Справа по центру*/
+.cont-horiz-end-center{
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+}
+/*Блоки горизонтально: Справа внизу*/
+.cont-horiz-end-end{
+	display: flex;
+	justify-content: flex-end;
+	align-items: flex-end;
+}
+/*Блоки горизонтально: Равномерно сверху по центру*/
+.cont-horiz-around-start{
+	display: flex;
+	justify-content: space-around;
+	align-items: flex-start;
+}
+/*Блоки горизонтально: Равномерно по центру*/
+.cont-horiz-around{
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
+/*Блоки горизонтально: Равномерно по центру снизу*/
+.cont-horiz-around-end{
+	display: flex;
+	justify-content: space-around;
+	align-items: flex-end;
+}
+/*Блоки горизонтально: Равноудаленно сверху по центру*/
+.cont-horiz-between-start{
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+}
+/*Блоки горизонтально: Равноудаленно*/
+.cont-horiz-between{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+/*Блоки горизонтально: Равноудаленно снизу*/
+.cont-horiz-between-end{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+/*--------------------------------------------*/
+/*--------------------------------------------*/
+/*--------------------------------------------*/
+
+/*Блоки вертикально: Слева вверху */ 
+.cont-vert-start-start{
+	flex-flow: column nowrap;
+	align-items: flex-start;
+	align-content: flex-start;
+}
+/*Блоки вертикально: Слева по центру*/
+.cont-vert-start-center{
+	flex-flow: column nowrap;
+	justify-content: center;
+	align-items: flex-start;
+	align-content: flex-start;
+}
+/*Блоки вертикально: Слева снизу*/
+.cont-vert-start-end{
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content: flex-end;
+	align-items: flex-start;
+	align-content: flex-start;
+}
+/*Блоки вертикально: По центру сверху*/
+.cont-vert-center-start{
+	display: flex;
+	flex-flow: column nowrap;
+	align-items: center;
+	align-content: flex-start;
+}
+/*Блоки вертикально: По цеентру*/
+.cont-vert{
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content: center;
+	align-items: center;
+	align-content: flex-start;
+}
+/*Блоки вертикально: По центру снизу*/
+.cont-vert-center-end{
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content: flex-end;
+	align-items: center;
+	align-content: flex-start;	
+}
+/*Блоки вертикально: Справа Сверху */
+.cont-vert-end-start{
+	display: flex;
+	flex-flow: column nowrap;
+	align-items: flex-end;
+	align-content: flex-start;
+}
+/*Блоки вертикально: Справа по центру*/
+.cont-vert-end-center{
+	 display: flex;
+	flex-flow: column nowrap;
+	justify-content: center;
+	align-items: flex-end;
+	align-content: flex-start;
+}
+/*Блоки вертикально: Справа снизу*/
+.cont-vert-end-end{
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content: flex-end;
+	align-items: flex-end;
+	align-content: flex-start;
+}
+/*Блоки вертикально: Равномерно Слева*/
+.cont-vert-around-left{
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content: space-around;
+	align-items: flex-start;
+	align-content: flex-start;
+}
+/*Блоки вертикально: Равномерно по-центру*/
+.cont-vert-around{
+	display: flex;
+	 flex-flow: column nowrap;
+	 justify-content: space-around;
+	 align-items: center;
+	 align-content: flex-start;
+}
+/*Блоки вертикально: Равномерно справа*/
+.cont-vert-around-end{
+	 display: flex;
+	 flex-flow: column nowrap;
+	 justify-content: space-around;
+	 align-items: flex-end;
+	 align-content: flex-start;
+}
+/*Блоки вертикально: Равноудаленно Слева */
+.cont-vert-between-start{
+	display: flex;
+	 flex-flow: column nowrap;
+	 justify-content: space-between;
+	 align-items: flex-start;
+	 align-content: flex-start;
+}
+/*Блоки вертикально: Равноудаленно по центру*/
+.cont-vert-center-between{
+	display: flex;
+	 flex-flow: column nowrap;
+	 justify-content: space-between;
+	 align-items: center;
+	 align-content: flex-start;
+}
+/*Блоки вертикально: Равноудаленно справа*/
+.cont-vert-between-end{
+	display: flex;
+	 flex-flow: column nowrap;
+	 justify-content: space-between;
+	 align-items: flex-end;
+	 align-content: flex-start;
+}
+
+/*-------------- ЦВЕТА ---------------------*/
+/* Зеленый */
+.green{
+	color:#50B229; 
+}
+.yellow{
+	color:#FFAB00;
+	}
+.red{
+	color:#E24414;
+}
+.blue-dark{
+	color:#1E516D;
+} 
+.blue{
+	color:#096ED8;
+} 
+/*Стандартные Теги*/
+.btn-red,.btn-yellow,.btn-green, .btn-blue-dark, .btn-blue-light, .btn-magenta{
+	border-radius: 5px;
+	/*width:83px;*/
+	height: 40px; 
+	padding-left:10px;
+	padding-right:10px; 
+	color:#000;
+}
+.btn-blue-dark-mid{
+	border-radius: 24px;
+	padding: 24px 64px 24px 64px;
+	font-size:1.5rem;
+	color:#fff ; 
+}
+.btn-blue-dark2{
+	border-radius: 5px;
+	height: 40px; 
+	padding:0px;
+	}
+.btn_spec_lvl{
+	padding: 5px;
+	border-radius:5px;
+}
+/* Расположение внутри тега */
+.btn-red,.btn-yellow,.btn-green,
+.round40-green, .round40-yellow, .round40-red,
+.round30-green, .round30-yellow, .round30-red,
+ .btn-blue-dark, .btn-blue-light, .btn-magenta  {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+} 
+/* цвета тегов */
+.btn-red, .round40-red, .round30-red, .your_lvl-red{background-color:#E24414;}
+.btn-yellow, .round40-yellow, .round30-yellow, .your_lvl-yellow{background-color:#FFAB00;}
+.btn-green, .round40-green, .round30-green, .your_lvl-green{background-color:#50B229;}
+.btn-blue-dark,.btn-blue-dark2,.btn-blue-dark-mid,.btn_spec_lvl{background-color:#1E516D; color:#fff;}
+.btn-blue-light{background-color:#096ED8;}
+.btn-magenta{background-color:#CF87F1  }
+.your_lvl-red, .your_lvl-yellow,.your_lvl-green{
+	border-radius: 5px;
+	height:50px;
+}
+
+/* Теги Круглые  */	
+.round40-green, .round40-yellow, .round40-red{
+	width: 40px;
+	height: 40px;
+	border-radius: 40px;  
+} 
+.round30-green, .round30-yellow, .round30-red{
+	width: 30px;
+	height: 30px;
+	border-radius: 30px;
+	color: #000;
+} 
+.btn_spec_lvl{
+	gap: 10px 10px;
+}
+ 
+/* ------------------*/
+.whitebox{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 16px;
+	color:2B5278;
+	background-color:#fff;
+	padding:30px;
+	overflow: hidden;
+	width: 385px;
+} 

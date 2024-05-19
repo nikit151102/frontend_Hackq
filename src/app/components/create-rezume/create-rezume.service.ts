@@ -11,6 +11,9 @@ export class CreateRezumeService {
   islogin: boolean = true;
 
   sendtags() {
-    return this.http.get('http://87.249.49.250:8080/tags?page=0&size=100&types=SKILL&avStatuses=AVAILABLE&avStatuses=VERIFICATION&avStatuses=UNAVAILABLE');
+    return this.http.get('http://31.128.39.73:8080/tags?page=0&size=100&types=SKILL&avStatuses=AVAILABLE&avStatuses=VERIFICATION&avStatuses=UNAVAILABLE');
+  }
+  postValue(data: any){
+    return this.http.post('http://31.128.39.73:8080/resumes', data);
   }
 }

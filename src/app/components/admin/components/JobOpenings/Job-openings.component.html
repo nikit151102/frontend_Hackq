@@ -9,7 +9,7 @@ currentPageReportTemplate="Отображение с {first} по {last} из  {
             <th ></th>
             <th style="display: none;">id</th>
             <th ></th>
-            <th pSortableColumn="Date_of_registration">Дата регистрации <p-sortIcon field="Date_of_registration"></p-sortIcon></th>
+            <th pSortableColumn="dateOfRegistration">Дата регистрации <p-sortIcon field="dateOfRegistration"></p-sortIcon></th>
             <th pSortableColumn="User_profile">Профиль юзера <p-sortIcon field="User_profile"></p-sortIcon></th>
             <th pSortableColumn="Project">Проект <p-sortIcon field="Project"></p-sortIcon></th>
             <th pSortableColumn="Card_title">Заголовок карточки <p-sortIcon field="Card_title"></p-sortIcon></th>
@@ -32,7 +32,7 @@ currentPageReportTemplate="Отображение с {first} по {last} из  {
                 </div>
             </td>
             <td style="display: none;">{{product.id}}</td>
-            <td>{{ product.Date_of_registration }}</td>
+            <td>{{ product.dateOfRegistration }}</td>
             <td>{{product.User_profile}}</td>
             <td>{{product.Project}}</td>
             <td>{{product.Card_title}}</td>
@@ -43,7 +43,7 @@ currentPageReportTemplate="Отображение с {first} по {last} из  {
         <tr>
             <td colspan="7">
                 <div class="p-1">
-                    <p-table [value]="product.child" dataKey="id" [style]="{'width': '100%'}">
+                    <p-table [value]="product" dataKey="id" [style]="{'width': '100%'}">
 
                         <ng-template pTemplate="header">
                             <tr>
@@ -54,14 +54,14 @@ currentPageReportTemplate="Отображение с {first} по {last} из  {
                                 <th pSortableColumn="Payment_format">Формат оплаты </th>
                             </tr>
                         </ng-template>
-                        <ng-template pTemplate="body" let-child>
+                        <ng-template pTemplate="body" let-product>
                             <tr>
-                                <td>{{ child.Specialization }}</td>
-                                <td>{{ child.Skills }}</td>
-                                <td>{{ child.Work_schedule }}</td>
-                                <td>{{ child.Areas }}</td>
-                                <td>{{ child.About_me }}</td>
-                                <td>{{ child.Payment_format }}</td>
+                                <td>{{ product.Specialization }}</td>
+                                <td>{{ product.Skills }}</td>
+                                <td>{{ product.Work_schedule }}</td>
+                                <td>{{ product.Areas }}</td>
+                                <td>{{ product.About_me }}</td>
+                                <td>{{ product.Payment_format }}</td>
                                
                             </tr>
                         </ng-template>

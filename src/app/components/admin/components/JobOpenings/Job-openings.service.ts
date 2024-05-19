@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -5,5 +6,13 @@ import { Injectable } from '@angular/core';
 })
 export class JobOpeningsService {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
+
+  sendData(){
+    return this.http.get(`http://31.128.39.73:8080/vacancies`);
+  }
+  deleteItem(vacancyid: number){
+    return this.http.delete(`http://31.128.39.73:8080/vacancies/${vacancyid}`);
+  }
+  
 }

@@ -28,6 +28,7 @@ interface User {
   Own_link: string;
 }
 
+
 @Component({
   selector: 'app-userprofiles',
   templateUrl: './userprofiles.component.html',
@@ -36,7 +37,7 @@ interface User {
   imports: [TableModule, ButtonModule, RippleModule, ToastModule, ConfirmDialogModule]
 })
 export class UserprofilesComponent implements OnInit {
-  products: User[] = [];
+  
   clonedProducts: { [s: string]: User } = {};
 
   constructor(
@@ -46,19 +47,19 @@ export class UserprofilesComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.userprofilesService.sendUsers().pipe(
-      catchError(error => {
-        console.error('AJAX error:', error);
-        return of([]);
-      })
-    ).subscribe(
-      (data: any) => {
-        console.log(data);
-        this.products = data;
-        console.log(this.products);
-      }
-    );
-    this.fetchData();
+    // this.userprofilesService.sendUsers().pipe(
+    //   catchError(error => {
+    //     console.error('AJAX error:', error);
+    //     return of([]);
+    //   })
+    // ).subscribe(
+    //   (data: any) => {
+    //     console.log(data);
+    //     this.products = data;
+    //     console.log(this.products);
+    //   }
+    // );
+    // this.fetchData();
   }
   
   onRowEditInit(product: User) {
@@ -89,7 +90,135 @@ export class UserprofilesComponent implements OnInit {
     this.first = event.first;
     this.rows = event.rows;
   }
-
+   products: User[] = [
+    {
+      id: '1',
+      dateOfRegistration: '2022-01-01',
+      firstName: 'Иван',
+      lastName: 'Иванов',
+      gender: 'Мужской',
+      age: 30,
+      cityOfResidence: 'Москва',
+      Specialization: 'Разработчик Java',
+      Mail: 'ivan.ivanov@example.com',
+      Telephone: '+79991234567',
+      Telegram: '@ivanov_ivan',
+      About_me: 'Опытный Java разработчик',
+      Free_link: 'ivanov_dev',
+      Own_link: 'ivanov_dev_link'
+    },
+    {
+      id: '2',
+      dateOfRegistration: '2022-01-15',
+      firstName: 'Анна',
+      lastName: 'Смирнова',
+      gender: 'Женский',
+      age: 28,
+      cityOfResidence: 'Санкт-Петербург',
+      Specialization: 'Веб-дизайнер',
+      Mail: 'anna.smirnova@example.com',
+      Telephone: '+79999876543',
+      Telegram: '@smirnova_anna',
+      About_me: 'Опытный дизайнер веб-интерфейсов',
+      Free_link: 'smirnova_design',
+      Own_link: 'smirnova_design_link'
+    },
+    {
+      id: '3',
+      dateOfRegistration: '2022-02-03',
+      firstName: 'Петр',
+      lastName: 'Петров',
+      gender: 'Мужской',
+      age: 35,
+      cityOfResidence: 'Екатеринбург',
+      Specialization: 'Аналитик данных',
+      Mail: 'petr.petrov@example.com',
+      Telephone: '+79997654321',
+      Telegram: '@petrov_petr',
+      About_me: 'Опытный аналитик данных',
+      Free_link: 'petrov_analytics',
+      Own_link: 'petrov_analytics_link'
+    },
+    {
+      id: '4',
+      dateOfRegistration: '2022-02-20',
+      firstName: 'Мария',
+      lastName: 'Кузнецова',
+      gender: 'Женский',
+      age: 32,
+      cityOfResidence: 'Новосибирск',
+      Specialization: 'DevOps инженер',
+      Mail: 'maria.kuznetsova@example.com',
+      Telephone: '+79996543210',
+      Telegram: '@kuznetsova_maria',
+      About_me: 'Опытный специалист по DevOps',
+      Free_link: 'kuznetsova_devops',
+      Own_link: 'kuznetsova_devops_link'
+    },
+    {
+      id: '5',
+      dateOfRegistration: '2022-03-05',
+      firstName: 'Алексей',
+      lastName: 'Сидоров',
+      gender: 'Мужской',
+      age: 29,
+      cityOfResidence: 'Казань',
+      Specialization: 'Системный администратор',
+      Mail: 'aleksey.sidorov@example.com',
+      Telephone: '+79994433221',
+      Telegram: '@sidorov_aleksey',
+      About_me: 'Опытный администратор сетей',
+      Free_link: 'sidorov_sysadmin',
+      Own_link: 'sidorov_sysadmin_link'
+    },
+    {
+      id: '6',
+      dateOfRegistration: '2022-03-18',
+      firstName: 'Елена',
+      lastName: 'Иванова',
+      gender: 'Женский',
+      age: 27,
+      cityOfResidence: 'Самара',
+      Specialization: 'Тестировщик ПО',
+      Mail: 'elena.ivanova@example.com',
+      Telephone: '+79992233445',
+      Telegram: '@ivanova_elena',
+      About_me: 'Опытный QA инженер',
+      Free_link: 'ivanova_qa',
+      Own_link: 'ivanova_qa_link'
+    },
+    {
+      id: '7',
+      dateOfRegistration: '2022-04-02',
+      firstName: 'Дмитрий',
+      lastName: 'Козлов',
+      gender: 'Мужской',
+      age: 33,
+      cityOfResidence: 'Ростов-на-Дону',
+      Specialization: 'Backend разработчик',
+      Mail: 'dmitriy.kozlov@example.com',
+      Telephone: '+79995678900',
+      Telegram: '@kozlov_dmitriy',
+      About_me: 'Опытный разработчик бэкенда',
+      Free_link: 'kozlov_backend',
+      Own_link: 'kozlov_backend_link'
+    },
+    {
+      id: '8',
+      dateOfRegistration: '2022-04-17',
+      firstName: 'Ольга',
+      lastName: 'Морозова',
+      gender: 'Женский',
+      age: 31,
+      cityOfResidence: 'Воронеж',
+      Specialization: 'Специалист по маркетингу',
+      Mail: 'olga.morozova@example.com',
+      Telephone: '+79998887766',
+      Telegram: '@morozova_olga',
+      About_me: 'Опытный маркетолог',
+      Free_link: 'morozova_marketing',
+      Own_link: 'morozova_marketing_link'
+    }]
   fetchData() {
     // this.dataService.sendDataToServer().subscribe((response) => {
     //   this.updateTable(response);

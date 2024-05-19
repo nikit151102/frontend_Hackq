@@ -42,6 +42,9 @@ export class AuthorizationComponent implements OnInit {
       }
     }
   }
+
+
+  
   onSubmit() {
     if (this.connectForm.valid) {
       const formData: login = {
@@ -55,7 +58,8 @@ export class AuthorizationComponent implements OnInit {
           if (data) {
             console.log('Redirecting to:', `/user/3к3к43`);
             localStorage.setItem('token', data.token);
-            this.router.navigate([`/user`, data.token]);
+            this.router.navigate([`/user`, data.token])
+             new HttpHeaders().set('Authorization', 'Bearer ' + data.token);;
           } else {
             this.errorMessage = `/user/${data.token}`;
           }

@@ -4,7 +4,7 @@ import { MultiSelectModule } from 'primeng/multiselect';
 import { CreateRezumeService } from './create-rezume.service';
 import { catchError, of } from 'rxjs';
 import { NgIf } from '@angular/common';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 interface Teg {
   id: number;
@@ -51,9 +51,10 @@ export class CreateRezumeComponent implements OnInit {
   createTag(): FormGroup {
     return this.fb.group({
       id: [0],
-      name: [''],
+      name: ['ee'],
       type: ['MISC'],
-      availabilityStatus: ['VERIFICATION']
+      availabilityStatus: ['VERIFICATION'],
+      competenceLevel: ["NONE"]
     });
   }
 
@@ -75,11 +76,14 @@ export class CreateRezumeComponent implements OnInit {
 
   onSubmit() {
     if (this.resumeForm?.valid) {
-      this.http.post('URL_TO_YOUR_BACKEND_API', this.resumeForm?.value).subscribe(response => {
-        console.log('Resume submitted successfully', response);
-      }, (error: any) => {
-        console.error('Error submitting resume', error);
-      });
+      const headers = new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token')); // Use getItem() instead of directly accessing localStorage
+      this.http.post('http://31.128.39.73:8080/resumes', this.resumeForm?.value, { headers }) // Corrected the order of parameters
+        .subscribe(response => {
+          console.log('Resume submitted successfully', response);
+        }, (error: any) => {
+          console.error('Error submitting resume', error);
+        });
     }
   }
+  
 }

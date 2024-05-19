@@ -64,3 +64,37 @@ a {
 display: flex;
 align-items: center;
 }
+/* Для мобильных устройств шириной до 767px */
+@media screen and (max-width: 767px) {
+    .content {
+      width: 100%; /* Ширина контейнера на всю ширину экрана */
+      padding: 0 20px; /* Добавляем отступы слева и справа */
+      flex-direction: column; /* Располагаем элементы вертикально */
+      align-items: flex-start; /* Выравниваем элементы по левому краю */
+    }
+  
+    .content-logo {
+      margin-bottom: 20px; /* Отступ снизу для логотипа */
+    }
+  
+    .menu {
+      display: none; /* Скрываем меню */
+    }
+  
+    .headerNav {
+      display: flex;
+      align-items: center;
+      flex-grow: 1; /* Растягиваем блок, чтобы кнопка занимала всю доступную ширину */
+      justify-content: space-between; /* Размещаем элементы по краям */
+      padding-top: 20px; /* Добавляем отступ сверху для выравнивания с логотипом */
+    }
+  
+    .headerNav a {
+      font-size: 1.2rem; /* Уменьшаем размер шрифта */
+    }
+  
+    .headerNav p-avatar {
+      margin-right: 20px; /* Отступ между аватаром и кнопкой */
+    }
+  }
+  
