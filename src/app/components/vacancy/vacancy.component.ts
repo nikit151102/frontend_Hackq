@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
-import { CardComponent } from '../card/card.component';
 
 @Component({
   selector: 'app-vacancy',
   templateUrl: './vacancy.component.html',
   styleUrls: ['./vacancy.component.css'],
   standalone: true,
-  imports:[CardComponent]
+  imports:[]
 })
 export class VacancyComponent {
 
