@@ -8,16 +8,19 @@
 					<img src="assets/images/logo.png" alt="" width="180px" height="180px">
 				</div>
 				<p>{{currentUser.firstName}}{{currentUser.lastname}}</p>
+				<div style="    display: flex; aling-items: center;">
 					<img src="assets/images/location.png" alt="" width="25px" height="25px">
 					<p>
 						{{currentUser.city}}
 					</p>
+				</div>
+
 			</div>
 			<!-- Основное поле-->
 			<div class="cont-vert" style="gap:64px 64px; width:75%; margin-top: 2rem;">
 				<!-- Строка 1 -->
 				<div class="cont-horiz-around w100" style="gap:30px 30px;">
-					<div class="white33" >
+					<div class="white33">
 						<img src="assets/images/add.png" alt="">
 						<p>
 							Создать вакансию
@@ -44,8 +47,8 @@
 					</div>
 					<!-- Карточки -->
 					<div class="cards">
-						<app-card  [item]=value ></app-card>
-						<app-card  [item]=value ></app-card>
+						<app-card [item]=value></app-card>
+						<app-card [item]=value></app-card>
 					</div>
 					<div class="w100 cont-horiz-start title2">
 						Смотреть все..
@@ -59,8 +62,8 @@
 					</div>
 					<!-- Карточки -->
 					<div class="cont-horiz-around w100" style="gap:30px 30px; ">
-						<app-card-job [item]=value  style="width: 49%;"></app-card-job>
-						<app-card-job [item]=value  style="width: 49%;"></app-card-job>
+						<app-card-job [item]=value style="width: 49%;"></app-card-job>
+						<app-card-job [item]=value style="width: 49%;"></app-card-job>
 					</div>
 					<div class="w100 cont-horiz-start title2">
 						Смотреть все..
@@ -74,8 +77,8 @@
 					</div>
 					<!-- Карточки -->
 					<div class="cont-horiz-around w100" style="gap:30px 30px;">
-						<app-card-project  [item]=value  style="width: 49%;"></app-card-project>
-						<app-card-project  [item]=value  style="width: 49%;"></app-card-project>
+						<app-card-project [item]=value style="width: 49%;"></app-card-project>
+						<app-card-project [item]=value style="width: 49%;"></app-card-project>
 					</div>
 					<div class="w100 cont-horiz-start title2">
 						Смотреть все..
